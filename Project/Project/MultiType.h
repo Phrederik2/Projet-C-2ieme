@@ -2,6 +2,7 @@
 typedef union Multi_Type
 {
 	char str[120]; // chaine de 120 char.
+	char c;
 	long l;
 	unsigned long ul;
 	int i;
@@ -9,4 +10,5 @@ typedef union Multi_Type
 	float f;
 	double d;
 	void* p;
+	string* string;
 }; Multi_Type;

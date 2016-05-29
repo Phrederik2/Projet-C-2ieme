@@ -1,11 +1,3 @@
-﻿  ZoneSaisie.cpp
-  Menu_Adresse.cpp
-  Menu.cpp
-  main.cpp
-  LigneMenu.cpp
-  form_adresse.cpp
-  Container.cpp
-  Application.cpp
-  adresse.cpp
-  Génération de code en cours...
+﻿  main.cpp
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\multitype.h(14): warning C4091: 'typedef ' : ignoré à gauche de 'Multi_Type' quand aucune variable n'est déclarée
   Project.vcxproj -> C:\Users\Phrederik\Source\Repos\Projet-C-2ieme\Project\Debug\Project.exe
