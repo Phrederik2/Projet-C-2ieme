@@ -28,4 +28,7 @@ public:
 	void Error();
 	void Quit();
 	void Bydefault();
+
+protected:
+	void Controller(enum_Menu mnemo);
 };

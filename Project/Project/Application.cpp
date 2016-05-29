@@ -143,3 +143,28 @@ void Application::Quit()
 void Application::Bydefault()
 {
 }
+
+void Application::Controller(enum_Menu mnemo)
+{
+	switch (mnemo)
+	{
+
+	case eCREATE:		Create();	break;
+	case eREAD:			Read();		break;
+	case eUPDATE:		Update();	break;
+	case eDELETE:		Delete();	break;
+	case eDELETEALL:	DeleteAll(); break;
+	case eLIST:			List();		break;
+	case eFIRST:		First();	break;
+	case eNEXT:			Next();		break;
+	case eLAST:			Last();		break;
+	case ePREVIOUS:		Previous();	break;
+	case eSORT:			Sort();		break;
+	case eSEARCH:		Shearch();	break;
+	case eERROR:		Error();	break;
+	case eQUIT:			Quit();		break;
+	default:			Bydefault(); break;
+
+	}
+}
+	
