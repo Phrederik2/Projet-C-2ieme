@@ -3,17 +3,17 @@
 
 
 using namespace std;
-
+template <class ENTITY>
 class Form_Adresse
 {
 friend
-ostream & operator<<(ostream & COUT, Adresse & adresse);
+ostream & operator<<(ostream & COUT, ENTITY & other);
 
 public:
-	void operator<<(Adresse & adresse);
-	void operator>>(Adresse & adresse);
-	void View_Adresse(Adresse& adresse);
-	void Encode_Adresse(Adresse& adresse);
+	void operator<<(ENTITY & other);
+	void operator>>(ENTITY & other);
+	void View_Adresse(ENTITY& other);
+	void Encode_Adresse(ENTITY& other);
 
 private:
 

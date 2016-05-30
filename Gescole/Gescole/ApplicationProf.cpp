@@ -3,9 +3,7 @@
 
 void ApplicationProf::Create()
 {
-	Temp = new Professeur;
-	Container_Professeur.Add(Temp);
-	Frm >> *Temp;
+	
 
 }
 

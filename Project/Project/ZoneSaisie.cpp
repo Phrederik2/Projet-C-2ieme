@@ -11,10 +11,9 @@ char ZoneSaisie::ValChar()
 	return Temp[0];
 }
 
-string* ZoneSaisie::ValString()
+char* ZoneSaisie::ValString()
 {
-	string* buf = new string(Temp);
-	return buf;
+	return Temp;
 }
 
 int ZoneSaisie::ValInt()

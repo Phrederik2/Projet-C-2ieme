@@ -1,34 +1,36 @@
 #include "Application.h"
 #include "Adresse.h"
-#include "form_adresse.h"
+#include "form_adresse.cpp"
 #include <iostream>
 #include <string>
 #include<vector>
 #include"Menu_Adresse.h"
 
 
-
+template <class ENTITY>
 Application::Application()
 {
-	this->MenuStandart = NULL;
+	this->menu = NULL;
 }
 
-
+template <class ENTITY>
 Application::~Application()
 {
 }
 
-void Application::setMenu(Menu * menuStandart)
+template <class ENTITY>
+void Application::setMenu(Menu * menu)
 {
-	if (menuStandart)
+	if (menu)
 	{
-		this->MenuStandart = menuStandart;
+		this->MMEnu = menu;
 	}
 }
 
+template <class ENTITY>
 void Application::run()
 {
-	if (!MenuStandart)
+	if (!MMEnu)
 	{
 		cout << "Pas de menu accocher à l'application en cours! " << endl;
 		return;
@@ -36,13 +38,12 @@ void Application::run()
 
 	this->Again = true;
 
-	//Container<Adresse> Professeur;
 
 	do
 	{
-		this->MenuStandart->display(cout);
+		this->MMEnu->display(cout);
 
-		switch (this->MenuStandart->askChoice(cout))
+		switch (this->MMEnu->askChoice(cout))
 		{
 
 		case eCREATE:		Create();	break;
@@ -69,77 +70,120 @@ void Application::run()
 
 }
 
+template <class ENTITY>
 void Application::Create()
 {
-	cout << "Create" << endl;
+	Temp = new ENTITY;
+	Container.Add(Temp);
+	//Frm >> *Temp;
 }
 
+template <class ENTITY>
 void Application::Read()
 {
 	cout << "Read" << endl;
 }
 
+template <class ENTITY>
 void Application::Update()
 {
 	cout << "Update" << endl;
 }
 
+template <class ENTITY>
 void Application::Delete()
 {
 	cout << "Delete" << endl;
 }
 
+template <class ENTITY>
 void Application::DeleteAll()
 {
 	cout << "Delete All" << endl;
 }
 
+template <class ENTITY>
 void Application::List()
 {
 	cout << "List" << endl;
 }
 
+template <class ENTITY>
 void Application::First()
 {
 	cout << "First" << endl;
 }
 
+template <class ENTITY>
 void Application::Next()
 {
 	cout << "Next" << endl;
 }
 
+template <class ENTITY>
 void Application::Last()
 {
 	cout << "Last" << endl;
 }
 
+template <class ENTITY>
 void Application::Previous()
 {
 	cout << "Previous" << endl;
 }
 
+template <class ENTITY>
 void Application::Sort()
 {
 	cout << "Sort" << endl;
 }
 
+template <class ENTITY>
 void Application::Shearch()
 {
 	cout << "Shearch" << endl;
 }
 
+template <class ENTITY>
 void Application::Error()
 {
 	cout << "Error" << endl;
 }
 
+template <class ENTITY>
 void Application::Quit()
 {
 	cout << "Quit" << endl;
 	this->Again = false;
 }
 
+template <class ENTITY>
 void Application::Bydefault()
 {
 }
+
+template <class ENTITY>
+void Application::Controller(enum_Menu menu)
+{
+	switch (menu)
+	{
+
+	case eCREATE:		Create();	break;
+	case eREAD:			Read();		break;
+	case eUPDATE:		Update();	break;
+	case eDELETE:		Delete();	break;
+	case eDELETEALL:	DeleteAll(); break;
+	case eLIST:			List();		break;
+	case eFIRST:		First();	break;
+	case eNEXT:			Next();		break;
+	case eLAST:			Last();		break;
+	case ePREVIOUS:		Previous();	break;
+	case eSORT:			Sort();		break;
+	case eSEARCH:		Shearch();	break;
+	case eERROR:		Error();	break;
+	case eQUIT:			Quit();		break;
+	default:			Bydefault(); break;
+
+	}
+}
+	

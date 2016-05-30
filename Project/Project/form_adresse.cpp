@@ -5,65 +5,69 @@
 #include "form_adresse.h"
 #include "Message.h"
 #include "ZoneSaisie.h"
+#include<iostream>
 
 using namespace std;
 
-
-ostream & operator<<(ostream & COUT, Adresse & adresse)
+template <class ENTITY>
+ostream & operator<<(ostream & COUT, ENTITY & other)
 {
 	
-	Form_Adresse frm;
+	Form_Adresse<ENTITY> frm;
 
-	frm.View_Adresse(adresse);
+	frm.View_Adresse(other);
 	
 	return (COUT);
 }
 
-
-void Form_Adresse::operator<<(Adresse & adresse)
+template <class ENTITY>
+void Form_Adresse::operator<<(ENTITY & other)
 {
-	cout << adresse;
+	cout << other;
 }
 
-void Form_Adresse::operator>>(Adresse & adresse)
+template <class ENTITY>
+void Form_Adresse::operator>>(ENTITY & other)
 {
 
-	Encode_Adresse(adresse);
+	Encode_Adresse(other);
 
 }
 
-void Form_Adresse::View_Adresse(Adresse & adresse)
+template <class ENTITY>
+void Form_Adresse::View_Adresse(ENTITY & other)
 {
 	
 	cout << endl;
-	cout << ADRESSE_ID << ADRESSE_DEUXPOINT << adresse.get_Id_Adresse() << endl;
-	cout << ASRESSE_LOCALITE << ADRESSE_DEUXPOINT << adresse.get_Localite() << endl;
-	cout << ASRESSE_RUE << ADRESSE_DEUXPOINT << adresse.get_Rue() << endl;
-	cout << ASRESSE_NUMERO << ADRESSE_DEUXPOINT << adresse.get_Numero() << endl;
-	cout << ASRESSE_BOITE << ADRESSE_DEUXPOINT << adresse.get_Boite() << endl;
-	cout << ASRESSE_CODEPOSTAL << ADRESSE_DEUXPOINT << adresse.get_Code_Postal() << endl;
-	cout << ASRESSE_LIGNE << endl;
+	cout << ADRESSE_ID << ADRESSE_DEUXPOINT << other.get_Id_Adresse() << endl;
+	cout << ADRESSE_LOCALITE << ADRESSE_DEUXPOINT << other.get_Localite() << endl;
+	cout << ADRESSE_RUE << ADRESSE_DEUXPOINT << other.get_Rue() << endl;
+	cout << ADRESSE_NUMERO << ADRESSE_DEUXPOINT << other.get_Numero() << endl;
+	cout << ADRESSE_BOITE << ADRESSE_DEUXPOINT << other.get_Boite() << endl;
+	cout << ADRESSE_CODEPOSTAL << ADRESSE_DEUXPOINT << other.get_Code_Postal() << endl;
+	cout << ADRESSE_LIGNE << endl;
 }
 
-void Form_Adresse::Encode_Adresse(Adresse & adresse)
+template <class ENTITY>
+void Form_Adresse::Encode_Adresse(ENTITY & other)
 {
 	ZoneSaisie ZS;
 	cout << endl;
-	cout << ADRESSE_ID << ADRESSE_DEUXPOINT << adresse.get_Id_Adresse() << endl;
-	cout << ASRESSE_LOCALITE << ADRESSE_DEUXPOINT << endl;
+	cout << ADRESSE_ID << ADRESSE_DEUXPOINT << other.get_Id_Adresse() << endl;
+	cout << ADRESSE_LOCALITE << ADRESSE_DEUXPOINT << endl;
 	
-	if (ZS.Ask())adresse.set_Localite(ZS.ValString());
-	cout << ASRESSE_RUE << ADRESSE_DEUXPOINT << endl;
+	if (ZS.Ask())other.set_Localite(ZS.ValString());
+	cout << ADRESSE_RUE << ADRESSE_DEUXPOINT << endl;
 	
-	if (ZS.Ask())adresse.set_Rue(ZS.ValString());
-	cout << ASRESSE_NUMERO << ADRESSE_DEUXPOINT << endl;
+	if (ZS.Ask())other.set_Rue(ZS.ValString());
+	cout << ADRESSE_NUMERO << ADRESSE_DEUXPOINT << endl;
 	
-	if (ZS.Ask())adresse.set_Numero(ZS.ValInt());
-	cout << ASRESSE_BOITE << ADRESSE_DEUXPOINT << endl;
+	if (ZS.Ask())other.set_Numero(ZS.ValInt());
+	cout << ADRESSE_BOITE << ADRESSE_DEUXPOINT << endl;
 	
-	if (ZS.Ask())adresse.set_Boite(ZS.ValChar());
-	cout << ASRESSE_CODEPOSTAL << ADRESSE_DEUXPOINT << endl;
+	if (ZS.Ask())other.set_Boite(ZS.ValChar());
+	cout << ADRESSE_CODEPOSTAL << ADRESSE_DEUXPOINT << endl;
 	
-	if (ZS.Ask())adresse.set_Code_Postal(ZS.ValULong());
-	cout << ASRESSE_LIGNE << endl;
+	if (ZS.Ask())other.set_Code_Postal(ZS.ValULong());
+	cout << ADRESSE_LIGNE << endl;
 }
