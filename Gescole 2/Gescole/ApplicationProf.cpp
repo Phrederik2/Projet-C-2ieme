@@ -9,6 +9,11 @@ void ApplicationProf::Create()
 
 }
 
+void ApplicationProf::Update()
+{
+	Frm >> *Temp;
+}
+
 void ApplicationProf::List()
 {
 	this->Temp = this->Container_Professeur.First();

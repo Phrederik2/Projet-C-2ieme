@@ -14,6 +14,7 @@ protected:
 
 public:
 	void Create();
+	void Update();
 	void List();
 	void First();
 	void Next();
