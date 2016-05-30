@@ -8,4 +8,4 @@ typedef union Multi_Type
 	float f;
 	double d;
 	void* p;
-}; Multi_Type;
+} Multi_Type;

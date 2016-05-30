@@ -1,3 +1,177 @@
-﻿  main.cpp
-c:\users\phrederik\source\repos\projet-c-2ieme\project\project\multitype.h(14): warning C4091: 'typedef ' : ignoré à gauche de 'Multi_Type' quand aucune variable n'est déclarée
-  Project.vcxproj -> C:\Users\Phrederik\Source\Repos\Projet-C-2ieme\Project\Debug\Project.exe
+﻿  form_adresse.cpp
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(24): error C2955: 'Form_Adresse' : l'utilisation de classe modèle requiert une liste d'arguments modèle
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.h(8): note: voir la déclaration de 'Form_Adresse'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(27): error C2244: 'Form_Adresse::operator <<' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(24): note: voir la déclaration de 'Form_Adresse::operator <<'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(27): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(27): note: 'void Form_Adresse::operator <<(ENTITY &)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(27): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(27): note: 'void Form_Adresse<ENTITY>::operator <<(ENTITY &)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(35): error C2244: 'Form_Adresse::operator >>' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(30): note: voir la déclaration de 'Form_Adresse::operator >>'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(35): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(35): note: 'void Form_Adresse::operator >>(ENTITY &)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(35): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(35): note: 'void Form_Adresse<ENTITY>::operator >>(ENTITY &)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(49): error C2244: 'Form_Adresse::View_Adresse' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(38): note: voir la déclaration de 'Form_Adresse::View_Adresse'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(49): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(49): note: 'void Form_Adresse::View_Adresse(ENTITY &)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(49): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(49): note: 'void Form_Adresse<ENTITY>::View_Adresse(ENTITY &)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(73): error C2244: 'Form_Adresse::Encode_Adresse' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(52): note: voir la déclaration de 'Form_Adresse::Encode_Adresse'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(73): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(73): note: 'void Form_Adresse::Encode_Adresse(ENTITY &)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(73): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(73): note: 'void Form_Adresse<ENTITY>::Encode_Adresse(ENTITY &)'
+  Application.cpp
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(24): error C2955: 'Form_Adresse' : l'utilisation de classe modèle requiert une liste d'arguments modèle
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.h(8): note: voir la déclaration de 'Form_Adresse'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(27): error C2244: 'Form_Adresse::operator <<' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(24): note: voir la déclaration de 'Form_Adresse::operator <<'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(27): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(27): note: 'void Form_Adresse::operator <<(ENTITY &)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(27): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(27): note: 'void Form_Adresse<ENTITY>::operator <<(ENTITY &)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(35): error C2244: 'Form_Adresse::operator >>' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(30): note: voir la déclaration de 'Form_Adresse::operator >>'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(35): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(35): note: 'void Form_Adresse::operator >>(ENTITY &)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(35): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(35): note: 'void Form_Adresse<ENTITY>::operator >>(ENTITY &)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(49): error C2244: 'Form_Adresse::View_Adresse' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(38): note: voir la déclaration de 'Form_Adresse::View_Adresse'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(49): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(49): note: 'void Form_Adresse::View_Adresse(ENTITY &)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(49): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(49): note: 'void Form_Adresse<ENTITY>::View_Adresse(ENTITY &)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(73): error C2244: 'Form_Adresse::Encode_Adresse' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(52): note: voir la déclaration de 'Form_Adresse::Encode_Adresse'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(73): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(73): note: 'void Form_Adresse::Encode_Adresse(ENTITY &)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(73): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\form_adresse.cpp(73): note: 'void Form_Adresse<ENTITY>::Encode_Adresse(ENTITY &)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(14): error C2244: 'Application::Application' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(11): note: voir la déclaration de 'Application::Application'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(14): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(14): note: 'Application::Application(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(14): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(14): note: 'Application<ENTITY>::Application(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(19): error C2244: 'Application::~Application' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(17): note: voir la déclaration de 'Application::~Application'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(19): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(19): note: 'Application::~Application(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(19): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(19): note: 'Application<ENTITY>::~Application(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(28): error C2244: 'Application::setMenu' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(22): note: voir la déclaration de 'Application::setMenu'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(28): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(28): note: 'void Application::setMenu(Menu *)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(28): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(28): note: 'void Application<ENTITY>::setMenu(Menu *)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(71): error C2244: 'Application::run' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(31): note: voir la déclaration de 'Application::run'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(71): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(71): note: 'void Application::run(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(71): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(71): note: 'void Application<ENTITY>::run(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(79): error C2244: 'Application::Create' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(74): note: voir la déclaration de 'Application::Create'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(79): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(79): note: 'void Application::Create(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(79): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(79): note: 'void Application<ENTITY>::Create(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(85): error C2244: 'Application::Read' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(82): note: voir la déclaration de 'Application::Read'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(85): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(85): note: 'void Application::Read(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(85): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(85): note: 'void Application<ENTITY>::Read(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(91): error C2244: 'Application::Update' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(88): note: voir la déclaration de 'Application::Update'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(91): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(91): note: 'void Application::Update(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(91): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(91): note: 'void Application<ENTITY>::Update(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(97): error C2244: 'Application::Delete' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(94): note: voir la déclaration de 'Application::Delete'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(97): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(97): note: 'void Application::Delete(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(97): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(97): note: 'void Application<ENTITY>::Delete(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(103): error C2244: 'Application::DeleteAll' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(100): note: voir la déclaration de 'Application::DeleteAll'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(103): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(103): note: 'void Application::DeleteAll(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(103): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(103): note: 'void Application<ENTITY>::DeleteAll(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(109): error C2244: 'Application::List' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(106): note: voir la déclaration de 'Application::List'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(109): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(109): note: 'void Application::List(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(109): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(109): note: 'void Application<ENTITY>::List(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(115): error C2244: 'Application::First' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(112): note: voir la déclaration de 'Application::First'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(115): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(115): note: 'void Application::First(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(115): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(115): note: 'void Application<ENTITY>::First(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(121): error C2244: 'Application::Next' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(118): note: voir la déclaration de 'Application::Next'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(121): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(121): note: 'void Application::Next(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(121): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(121): note: 'void Application<ENTITY>::Next(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(127): error C2244: 'Application::Last' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(124): note: voir la déclaration de 'Application::Last'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(127): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(127): note: 'void Application::Last(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(127): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(127): note: 'void Application<ENTITY>::Last(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(133): error C2244: 'Application::Previous' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(130): note: voir la déclaration de 'Application::Previous'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(133): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(133): note: 'void Application::Previous(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(133): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(133): note: 'void Application<ENTITY>::Previous(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(139): error C2244: 'Application::Sort' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(136): note: voir la déclaration de 'Application::Sort'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(139): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(139): note: 'void Application::Sort(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(139): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(139): note: 'void Application<ENTITY>::Sort(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(145): error C2244: 'Application::Shearch' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(142): note: voir la déclaration de 'Application::Shearch'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(145): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(145): note: 'void Application::Shearch(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(145): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(145): note: 'void Application<ENTITY>::Shearch(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(151): error C2244: 'Application::Error' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(148): note: voir la déclaration de 'Application::Error'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(151): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(151): note: 'void Application::Error(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(151): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(151): note: 'void Application<ENTITY>::Error(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(158): error C2244: 'Application::Quit' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(154): note: voir la déclaration de 'Application::Quit'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(158): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(158): note: 'void Application::Quit(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(158): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(158): note: 'void Application<ENTITY>::Quit(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(163): error C2244: 'Application::Bydefault' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(161): note: voir la déclaration de 'Application::Bydefault'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(163): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(163): note: 'void Application::Bydefault(void)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(163): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(163): note: 'void Application<ENTITY>::Bydefault(void)'
+c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(188): error C2244: 'Application::Controller' : impossible de faire correspondre la définition de fonction avec une déclaration existante
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(166): note: voir la déclaration de 'Application::Controller'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(188): note: définition
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(188): note: 'void Application::Controller(enum_Menu)'
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(188): note: déclarations existantes
+  c:\users\phrederik\source\repos\projet-c-2ieme\project\project\application.cpp(188): note: 'void Application<ENTITY>::Controller(enum_Menu)'
+  Génération de code en cours...
+  Ignoré... (aucune modification pertinente détectée)
+  Container.cpp

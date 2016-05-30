@@ -9,7 +9,7 @@ protected:
 public:
 	char Ask();
 	char ValChar();
-	string* ValString();
+	char* ValString();
 	int ValInt();
 	unsigned int ValUInt();
 	long ValLong();

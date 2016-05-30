@@ -1,14 +1,14 @@
 #pragma once
 typedef union Multi_Type
 {
-	char str[120]; // chaine de 120 char.
-	char c;
-	long l;
-	unsigned long ul;
-	int i;
-	unsigned int ui;
-	float f;
-	double d;
-	void* p;
-	string* string;
-}; Multi_Type;
+	char str[100]; // chaine de 120 char.
+	char Char;
+	long Long;
+	unsigned long ULong;
+	int Int;
+	unsigned int UInt;
+	float Float;
+	double Double;
+	void* Void;
+	string* String;
+} Multi_Type;

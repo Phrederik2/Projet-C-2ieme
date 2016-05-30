@@ -1,8 +1,6 @@
 #pragma once
 #include "adresse.h"
 #include <iostream>
-#include <string>
-#include <string.h>
 #include "Message.h"
 
 using namespace std;
@@ -15,48 +13,21 @@ unsigned long Adresse::AdresseEnVie = 0;
 Adresse::Adresse()
 {
 	
-	CompteurAdresse++;
-	AdresseEnVie++;
-	
-	InitializeString();
+	Initialize(ADRESSE_INCONNU,ADRESSE_INCONNU,0,' ',0);
 
-	set_Id_Adresse(new string(ASRESSE_ADRESSE + CompteurAdresse));
-	set_Rue(new string(ASRESSE_INCONNU));
-	set_Localite(new string(ASRESSE_INCONNU));
-	set_Numero(0);
-	set_Boite(0);
-	set_Code_Postal(0);
+	
 }
 
 Adresse::Adresse(Adresse& adresse)
 {
-	CompteurAdresse++;
-	AdresseEnVie++;
 
-	InitializeString();
-	
-	set_Id_Adresse(adresse.ID_Adresse);
-	set_Localite(adresse.Localite);
-	set_Rue(adresse.Rue);
-	set_Numero(adresse.Numero);
-	set_Boite(adresse.Boite);
-	set_Code_Postal(adresse.Code_Postal);
+	Initialize(adresse.Localite, adresse.Rue, adresse.Numero, adresse.Boite, adresse.Code_Postal);
 }
 
-Adresse::Adresse(string* localite, string* rue, int numero, char boite, int code_postal)
+Adresse::Adresse(char* localite, char* rue, int numero, char boite, int code_postal)
 {
 
-	CompteurAdresse++;
-	AdresseEnVie++;
-
-	InitializeString();
-
-	set_Id_Adresse(new string(ASRESSE_ADRESSE + CompteurAdresse));
-	set_Localite(localite);
-	set_Rue(rue);
-	set_Numero(numero);
-	set_Boite(boite);
-	set_Code_Postal(code_postal);
+	Initialize(localite, rue, numero, boite, code_postal);
 
 }
 
@@ -66,25 +37,24 @@ Adresse::Adresse(string* localite, string* rue, int numero, char boite, int code
 Adresse::~Adresse()
 {
 	AdresseEnVie--;
-	cout << ASRESSE_INSTANCE << AdresseEnVie << endl;
-	delete ID_Adresse;
+	cout << ADRESSE_INSTANCE << AdresseEnVie << endl;
 	delete Localite;
 	delete Rue;
 }
 
 // ------------ Seteur ------------ 
 
-void Adresse::set_Id_Adresse(string* id_adresse)
+void Adresse::set_Id_Adresse(int id_adresse)
 {
 	ID_Adresse = id_adresse;
 }
 
-void Adresse::set_Localite(string* localite)
+void Adresse::set_Localite(char* localite)
 {
 	Localite = localite;
 }
 
-void Adresse::set_Rue(string* rue)
+void Adresse::set_Rue(char* rue)
 {
 	Rue = rue;
 }
@@ -106,19 +76,19 @@ void Adresse::set_Code_Postal(int code_postal)
 	Code_Postal = code_postal;
 }
 
-string* Adresse::get_Id_Adresse(void)
+int Adresse::get_Id_Adresse(void)
 {
 	return ID_Adresse;
 }
 
 // ------------ Geteur ------------ 
 
-string* Adresse::get_Localite(void)
+char* Adresse::get_Localite(void)
 {
 	return Localite;
 }
 
-string* Adresse::get_Rue(void)
+char* Adresse::get_Rue(void)
 {
 	return Rue;
 }
@@ -138,9 +108,25 @@ int Adresse::get_Code_Postal(void)
 	return Code_Postal;
 }
 
-void Adresse::InitializeString()
+void Adresse::Initialize(char* localite, char* rue, int numero, char boite, int code_postal)
 {
-	ID_Adresse = new string;
-	Localite = new string;
-	Rue = new string;
+	
+	Localite = new char[TAILLE_GRD];
+	Rue = new char[TAILLE_GRD];
+	memset(Localite, 0, sizeof(char[TAILLE_GRD]));
+	memset(Rue, 0, sizeof(char[TAILLE_GRD]));
+
+	CompteurAdresse++;
+	AdresseEnVie++;
+
+	char bufID[TAILLE_GRD];
+	sprintf(bufID, "%s%04d", ADRESSE_ADRESSE, CompteurAdresse);
+
+	set_Id_Adresse(CompteurAdresse);
+	set_Rue(rue);
+	set_Localite(localite);
+	set_Numero(numero);
+	set_Boite(boite);
+	set_Code_Postal(code_postal);
+
 }

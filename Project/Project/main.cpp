@@ -23,15 +23,17 @@ void main(void)
 	// Test Stream
 
 	Adresse adresse;
-	Form_Adresse frm;
+	Form_Adresse<Adresse> frm;
 	fstream fileprof;
 	Multi_Type buffeur;
 
 	frm >> adresse;
 
+	frm << adresse;
+
 
 	fileprof.open("Adresse.dat",
-		ios_base::binary |
+		/*ios_base::binary |*/
 		ios_base::in |
 		ios_base::out |
 		ios_base::trunc);
@@ -42,15 +44,14 @@ void main(void)
 	}
 
 	fileprof.clear();
-
-	buffeur.string = adresse.get_Id_Adresse();
-	fileprof.write((char*)&buffeur, sizeof(char[TAILLE_GRD]));
-	fileprof.write((char*)adresse.get_Localite(), sizeof(char[TAILLE_GRD]));
+	buffeur.Int = adresse.get_Id_Adresse();
+	fileprof.write((char*)&buffeur,sizeof(int));
+	/*fileprof.write((char*)adresse.get_Localite(), sizeof(char[TAILLE_GRD]));
 	fileprof.write((char*)adresse.get_Rue(), sizeof(char[TAILLE_GRD]));
-	buffeur.i = adresse.get_Numero();
-	fileprof.write((char*)&buffeur, sizeof(char[TAILLE_GRD]));
-	buffeur.c = adresse.get_Boite();
-	fileprof.write((char*)&buffeur, sizeof(char[TAILLE_GRD]));
+	buffeur.Int = adresse.get_Numero();
+	fileprof.write((char*)&buffeur, sizeof(int));
+	buffeur.Char = adresse.get_Boite();
+	fileprof.write((char*)&buffeur, sizeof(char));*/
 
 
 	fileprof.close();
@@ -63,12 +64,9 @@ void main(void)
 	}
 
 	fileprof.clear();
-	string buf;
-	for (size_t i = 0; i < 5; i++)
-	{
-		getline(fileprof, buf);
-		cout << buf << endl;
-	}
+	char buf[TAILLE_GRD];
+
+	
 	
 
 	_getch();

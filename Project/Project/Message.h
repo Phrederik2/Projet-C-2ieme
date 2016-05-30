@@ -9,34 +9,34 @@
 //--------------------------
 
 #define ADRESSE_DEUXPOINT ": "
-#define ASRESSE_LIGNE "---------------------------------------------"
-#define ASRESSE_VIDE ''
+#define ADRESSE_LIGNE "---------------------------------------------"
+#define ADRESSE_VIDE ''
 
 #if defined (LANGUE_FR)
 
 #define ADRESSE_ID "ID"
-#define ASRESSE_LOCALITE "Localite"
-#define ASRESSE_RUE "Rue"
-#define ASRESSE_NUMERO "Numero"
-#define ASRESSE_BOITE "Boite"
-#define ASRESSE_CODEPOSTAL "Code Postal"
-#define ASRESSE_INCONNU "Inconnu"
-#define ASRESSE_ADRESSE "Adresse"
-#define ASRESSE_INSTANCE "Nombre d'instance d'Adresse: "
+#define ADRESSE_LOCALITE "Localite"
+#define ADRESSE_RUE "Rue"
+#define ADRESSE_NUMERO "Numero"
+#define ADRESSE_BOITE "Boite"
+#define ADRESSE_CODEPOSTAL "Code Postal"
+#define ADRESSE_INCONNU "Inconnu"
+#define ADRESSE_ADRESSE "Adresse"
+#define ADRESSE_INSTANCE "Nombre d'instance d'Adresse: "
 
 #endif // Langue française
 
 #if defined (LANGUE_EN)
 
 #define ADRESSE_ID "ID"
-#define ASRESSE_LOCALITE "Locality"
-#define ASRESSE_RUE "Street"
-#define ASRESSE_NUMERO "Number"
-#define ASRESSE_BOITE "Box"
-#define ASRESSE_CODEPOSTAL "Postal code"
-#define ASRESSE_INCONNU "Unknown"
-#define ASRESSE_ADRESSE "Address"
-#define ASRESSE_INSTANCE "Number of instance of Address: "
+#define ADRESSE_LOCALITE "Locality"
+#define ADRESSE_RUE "Street"
+#define ADRESSE_NUMERO "Number"
+#define ADRESSE_BOITE "Box"
+#define ADRESSE_CODEPOSTAL "Postal code"
+#define ADRESSE_INCONNU "Unknown"
+#define ADRESSE_ADRESSE "Address"
+#define ADRESSE_INSTANCE "Number of instance of Address: "
 
 
 

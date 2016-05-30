@@ -13,9 +13,9 @@ class Adresse
 protected:
 	static unsigned long CompteurAdresse;
 	static unsigned long AdresseEnVie;
-	string* ID_Adresse;
-	string* Localite;
-	string* Rue;
+	int ID_Adresse;
+	char* Localite;
+	char* Rue;
 	int Numero;
 	char Boite;
 	int Code_Postal;
@@ -24,29 +24,29 @@ protected:
 public:
 	Adresse();
 	Adresse(Adresse& adresse);
-	Adresse(string* localite, string* rue, int numero, char boite, int code_postal);
+	Adresse(char* localite, char* rue, int numero, char boite, int code_postal);
 	~Adresse();
 
 
 	// ------------ Seteur ------------ 
-	void set_Id_Adresse(string* id_adresse);
-	void set_Localite(string* localite);
-	void set_Rue(string* rue);
+	void set_Id_Adresse(int id_adresse);
+	void set_Localite(char* localite);
+	void set_Rue(char* rue);
 	void set_Numero(int numero);
 	void set_Boite(char boite);
 	void set_Code_Postal(int code_postal);
 
 	// ------------ Geteur ------------ 
 
-	string* get_Id_Adresse(void);
-	string* get_Localite(void);
-	string* get_Rue(void);
+	int get_Id_Adresse(void);
+	char* get_Localite(void);
+	char* get_Rue(void);
 	int get_Numero(void);
 	char get_Boite(void);
 	int get_Code_Postal(void);
 
 	// ------------ Fonction ------------
-	void InitializeString();
+	void Initialize(char* localite, char* rue, int numero, char boite, int code_postal);
 };
 
 #endif // !ADRESSE_H
