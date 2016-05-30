@@ -13,7 +13,6 @@ using namespace std;
 
 void main(void)
 {
-
 	
 	Menu menu("Test");
 	Application<Professeur> AppProf;
