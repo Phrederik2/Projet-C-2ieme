@@ -1,9 +1,8 @@
-#include"MenuProf.h"
-#include"ApplicationProf.h"
+#include"Application.h"
 #include<fstream>
 #include<iostream>
-#include"MultiType.h"
 #include<conio.h>
+#include"Professeur.h"
 
 
 using namespace std;
@@ -17,7 +16,7 @@ void main(void)
 
 	
 	Menu menu("Test");
-	ApplicationProf AppProf;
+	Application<Professeur> AppProf;
 
 	AppProf.setMenu(&menu);
 	AppProf.run();

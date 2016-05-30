@@ -1,14 +1,22 @@
-#include "Professeur.h"
-#include "FormProf.h"
+#pragma once
+
 #include "Message.h"
-#include <string.h>
 #include <iostream>
 #include "ZoneSaisie.h"
 
-using namespace std;
+template<class ENTITY>
+class Formulaire
+{
+public:
+
+	void operator<<(ENTITY& Prof);
+	void operator>>(ENTITY& Prof);
+
+};
 
 
-void FormProf::operator<<(Professeur& Prof)
+template<class ENTITY>
+void Formulaire<ENTITY>::operator<<(ENTITY& Prof)
 {
 	if (&Prof)
 	{
@@ -21,10 +29,11 @@ void FormProf::operator<<(Professeur& Prof)
 		cout << FRM_PROF_SALAIRE << FRM_PROF_DEUXPOINTS << Prof.getSalaireMensuel_Eur() << endl;
 		cout << "------------------" << endl;
 	}
-	
+
 }
 
-void FormProf::operator>>(Professeur& Prof)
+template<class ENTITY>
+void Formulaire<ENTITY>::operator >> (ENTITY& Prof)
 {
 	ZoneSaisie zs;
 	cout << FRM_PROF_NOM << FRM_PROF_DEUXPOINTS << endl;
@@ -38,5 +47,6 @@ void FormProf::operator>>(Professeur& Prof)
 	cout << FRM_PROF_SALAIRE << FRM_PROF_DEUXPOINTS << endl;
 	if (zs.Ask()) Prof.setSalaireMensuel_Eur(zs.ValFloat());
 	cout << "------------------" << endl;
-	
+
 }
+

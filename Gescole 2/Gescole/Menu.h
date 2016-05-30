@@ -2,7 +2,7 @@
 #include<vector>
 #include"LigneMenu.h"
 #include<iostream>
-#include"Container.cpp"
+#include"Container.h"
 
 //template<class ENTITY>
 class Menu: public Container<LigneMenu>
