@@ -27,6 +27,7 @@ void main(void)
 	cout << "Alive ENTITY: " << adr1.getAlive()<<endl;
 	ENTITY adr4;
 	cout << adr4;
+	Adresse::
 
 	Menu menu("Statut Livraison");
 	Application<ENTITY> adresse;
