@@ -9,25 +9,25 @@ class Formulaire
 {
 public:
 
-	void operator<<(ENTITY& Prof);
-	void operator>>(ENTITY& Prof);
+	void operator<<(ENTITY& other);
+	void operator>>(ENTITY& other);
 
 };
 
 
 template<class ENTITY>
-void Formulaire<ENTITY>::operator<<(ENTITY& Prof)
+void Formulaire<ENTITY>::operator<<(ENTITY& other)
 {
-	if (&Prof)
+	if (&other)
 	{
-		Prof.Display();
+		other.Display();
 	}
 
 }
 
 template<class ENTITY>
-void Formulaire<ENTITY>::operator >> (ENTITY& Prof)
+void Formulaire<ENTITY>::operator >> (ENTITY& other)
 {
-	Prof.Encode();
+	other.Encode();
 }
 

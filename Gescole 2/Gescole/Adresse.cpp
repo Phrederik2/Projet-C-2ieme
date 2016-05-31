@@ -1,15 +1,11 @@
 #include "Adresse.h"
 #include"ZoneSaisie.h"
 
-double Adresse::Alive = 0;
-double Adresse::Compter = 0;
+
 char Adresse::Title[100]= "Adresse";
 
 Adresse::Adresse()
 {
-	Alive++;
-	Compter++;
-	ID = Alive;
 	Numero = 0;
 	Boite = ' ';
 	CodePostal = 0;
@@ -24,7 +20,6 @@ Adresse::Adresse(Adresse& other)
 
 Adresse::~Adresse()
 {
-	Alive--;
 }
 
 void Adresse::setLocalite(const char * localite)
@@ -54,7 +49,7 @@ void Adresse::setCodePostal(int codepostal)
 
 double Adresse::getID()
 {
-	return ID;
+	return ID.getPrimaryKey();
 }
 
 const char * Adresse::getLocalite()
@@ -84,7 +79,7 @@ int Adresse::getCodePostal()
 
 double Adresse::getAlive()
 {
-	return Alive;
+	return ID.getAlive();
 }
 
 void Adresse::Display(ostream& stream)

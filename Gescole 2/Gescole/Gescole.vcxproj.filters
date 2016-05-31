@@ -42,6 +42,9 @@
     <ClCompile Include="ContainerEntity.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="StatutLivraison.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -79,6 +82,12 @@
     </ClInclude>
     <ClInclude Include="Adresse.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="StatutLivraison.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimaryKey.h">
+      <Filter>Classe Atomique</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,15 +1,14 @@
 
 #include "ContainerEntity.h"
 #include"Text.h"
+#include"PrimaryKey.h"
 class Adresse :
 	public ContainerEntity
 {
 	//DataMenbre
 protected:
-	static double Alive;
-	static double Compter;
+	PrimaryKey<Adresse> ID;
 	static char Title[100];
-	double ID;
 	Text Localite;
 	Text Rue;
 	int Numero;

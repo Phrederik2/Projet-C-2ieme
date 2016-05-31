@@ -148,6 +148,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Professeur.cpp" />
+    <ClCompile Include="StatutLivraison.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="ZoneSaisie.cpp" />
   </ItemGroup>
@@ -161,7 +162,9 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="MultiType.h" />
+    <ClInclude Include="PrimaryKey.h" />
     <ClInclude Include="Professeur.h" />
+    <ClInclude Include="StatutLivraison.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="ZoneSaisie.h" />
   </ItemGroup>
