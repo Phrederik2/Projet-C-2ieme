@@ -28,6 +28,7 @@ public:
 	void setCodePostal(int codepostal);
 
 	unsigned long getID();
+	char* getTitle();
 	const char* getLocalite();
 	const char* getRue();
 	int getNumero();

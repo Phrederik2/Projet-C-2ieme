@@ -4,10 +4,12 @@
 #include<iostream>
 #include"Container.h"
 
-class Menu: public Container<LigneMenu>
+template<class ENTITY>
+class Menu//: protected Container<LigneMenu>
 {
 
 protected:
+	Container<LigneMenu> m_Menu;
 	string* m_title;// titre du menu
 	eMENU m_choice;//choix fait dans le menu
 
@@ -16,9 +18,9 @@ protected:
 public:
 	Menu();				// sans paramettre
 	Menu(char* title);	// avec paramettre
-	Menu(const Menu& other);	// recopie
+	Menu(const Menu<ENTITY>& other);	// recopie
 	~Menu();			// Destructeur
-	Menu& operator=(Menu& other); // copie
+	Menu<ENTITY>& operator=(Menu<ENTITY>& other); // copie
 
 	const char* getTitle() const;
 	void setTitle(const char* Title);

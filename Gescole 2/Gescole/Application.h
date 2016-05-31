@@ -1,5 +1,5 @@
 #pragma once
-#include"Menu.h"
+#include"Menu.cpp"
 #include"Container.h"
 #include"Formulaire.h"
 
@@ -8,7 +8,7 @@ class Application
 {
 
 protected:
-	Menu* MenuStandart;
+	Menu<ENTITY> MenuStandart;
 	bool Again;
 	Container<ENTITY> Container;
 	Formulaire<ENTITY> Frm;
@@ -17,25 +17,24 @@ protected:
 public:
 	Application();
 	~Application();
-	virtual void setMenu(Menu* menuStandart);
-	virtual void run();
-	virtual void Create();
-	virtual void Read();
-	virtual void Update();
-	virtual void Delete();
-	virtual void DeleteAll();
-	virtual void List();
-	virtual void First();
-	virtual void Next();
-	virtual void Last();
-	virtual void Previous();
-	virtual void Sort();
-	virtual void Shearch();
-	virtual void Error();
-	virtual void Quit();
-	virtual void Bydefault();
+	void run();
+	void Create();
+	void Read();
+	void Update();
+	void Delete();
+	void DeleteAll();
+	void List();
+	void First();
+	void Next();
+	void Last();
+	void Previous();
+	void Sort();
+	void Shearch();
+	void Error();
+	void Quit();
+	void Bydefault();
 protected:
-	virtual void Controller(eMENU mnemo);
+	void Controller(eMENU mnemo);
 };
 
 
@@ -52,15 +51,6 @@ Application<ENTITY>::~Application()
 }
 
 template <class ENTITY>
-void Application<ENTITY>::setMenu(Menu * menuStandart)
-{
-	if (menuStandart)
-	{
-		this->MenuStandart = menuStandart;
-	}
-}
-
-template <class ENTITY>
 void Application<ENTITY>::run()
 {
 	this->Again = true;
@@ -68,9 +58,9 @@ void Application<ENTITY>::run()
 
 	do
 	{
-		this->MenuStandart->display(cout);
+		this->MenuStandart.display(cout);
 
-		Controller(this->MenuStandart->askChoice(cout));
+		Controller(this->MenuStandart.askChoice(cout));
 
 	} while (this->Again);
 

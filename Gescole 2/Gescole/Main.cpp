@@ -25,10 +25,10 @@ void main(void)
 	
 	
 
-	Menu menu("Statut Livraison");
-	Application<StatutLivraison> appli;
+	//Menu menu("Statut Livraison");
+	Application<Adresse> appli;
 
-	appli.setMenu(&menu);
+	//appli.setMenu(&menu);
 	appli.run();
 	_getch();
 

@@ -52,6 +52,11 @@ unsigned long Adresse::getID()
 	return ID.getPrimaryKey();
 }
 
+char * Adresse::getTitle()
+{
+	return Title;
+}
+
 const char * Adresse::getLocalite()
 {
 	return Localite.getText();

@@ -1,51 +1,63 @@
 #include "Menu.h"
 #include"ZoneSaisie.h"
 
-Menu::Menu()
-	:Container<LigneMenu>()
+template<class ENTITY>
+Menu<ENTITY>::Menu()
 {
-	m_title = new string;
-	setTitle("");
+	
+	m_title = new string("Test");
 	m_choice = eNULL;
+
+	m_Menu.Add(new LigneMenu(eCREATE, 'C', "Cree."));
+	m_Menu.Add(new LigneMenu(eREAD, 'A', "Afficher l'enregistrement courant."));
+	m_Menu.Add(new LigneMenu(eUPDATE, 'M', "Modifier."));
+	m_Menu.Add(new LigneMenu(eDELETE, 'E', "Effacer l'enregistrement courant."));
+	m_Menu.Add(new LigneMenu(eFIRST, 'P', "Premier."));
+	m_Menu.Add(new LigneMenu(eNEXT, 'S', "Suivant."));
+	m_Menu.Add(new LigneMenu(ePREVIOUS, 'R', "Precedent."));
+	m_Menu.Add(new LigneMenu(eLAST, 'D', "Dernier."));
+	m_Menu.Add(new LigneMenu(eLIST, 'L', "Lister les enregistrement."));
+	m_Menu.Add(new LigneMenu(eQUIT, 'Q', "Quitter."));
 }
 
-Menu::Menu(char * title)
-	:Container<LigneMenu>()
+template<class ENTITY>
+Menu<ENTITY>::Menu(char * title)
 {
-	m_title = new string;
-	setTitle(title);
+	m_title = new string("Test");
 	m_choice = eNULL;
 
 
-	Add(new LigneMenu(eCREATE, 'C', "Cree."));
-	Add(new LigneMenu(eREAD, 'A', "Afficher l'enregistrement courant."));
-	Add(new LigneMenu(eUPDATE, 'M', "Modifier."));
-	Add(new LigneMenu(eDELETE, 'E', "Effacer l'enregistrement courant."));
-	Add(new LigneMenu(eFIRST, 'P', "Premier."));
-	Add(new LigneMenu(eNEXT, 'S', "Suivant."));
-	Add(new LigneMenu(ePREVIOUS, 'R', "Precedent."));
-	Add(new LigneMenu(eLAST, 'D', "Dernier."));
-	Add(new LigneMenu(eLIST, 'L', "Lister les enregistrement."));
-	Add(new LigneMenu(eQUIT, 'Q', "Quitter."));
+	m_Menu.Add(new LigneMenu(eCREATE, 'C', "Cree."));
+	m_Menu.Add(new LigneMenu(eREAD, 'A', "Afficher l'enregistrement courant."));
+	m_Menu.Add(new LigneMenu(eUPDATE, 'M', "Modifier."));
+	m_Menu.Add(new LigneMenu(eDELETE, 'E', "Effacer l'enregistrement courant."));
+	m_Menu.Add(new LigneMenu(eFIRST, 'P', "Premier."));
+	m_Menu.Add(new LigneMenu(eNEXT, 'S', "Suivant."));
+	m_Menu.Add(new LigneMenu(ePREVIOUS, 'R', "Precedent."));
+	m_Menu.Add(new LigneMenu(eLAST, 'D', "Dernier."));
+	m_Menu.Add(new LigneMenu(eLIST, 'L', "Lister les enregistrement."));
+	m_Menu.Add(new LigneMenu(eQUIT, 'Q', "Quitter."));
 	
 	
 }
 
-Menu::Menu(const Menu & other)
-	: Container<LigneMenu>(other)
+template<class ENTITY>
+Menu<ENTITY>::Menu(const Menu<ENTITY> & other)
 {
 	if (this == &other) return;
 	m_title = new string;
-	setTitle(other.m_title->c_str());
+	setTitle(" ");
 	m_choice = other.m_choice;
 }
 
-Menu::~Menu()
+template<class ENTITY>
+Menu<ENTITY>::~Menu()
 {
 	delete m_title;
 }
 
-Menu & Menu::operator=(Menu & other)
+template<class ENTITY>
+Menu<ENTITY> & Menu<ENTITY>::operator=(Menu<ENTITY> & other)
 {
 	if (this == &other)return *this;
 	Container<LigneMenu>::operator=(other);
@@ -54,33 +66,35 @@ Menu & Menu::operator=(Menu & other)
 	return *this;
 }
 
-
-
-const char * Menu::getTitle() const
+template<class ENTITY>
+const char * Menu<ENTITY>::getTitle() const
 {
 	return (m_title->c_str());
 }
 
-void Menu::setTitle(const char * Title)
+template<class ENTITY>
+void Menu<ENTITY>::setTitle(const char * Title)
 {
-	*m_title = Title;
+	m_title = " ";
 }
 
-void Menu::display(ostream & COUT)
+template<class ENTITY>
+void Menu<ENTITY>::display(ostream & COUT)
 {
 	LigneMenu* temp_Menu;
 
 	COUT << getTitle() << endl;
-	temp_Menu = First();
+	temp_Menu = m_Menu.First();
 	while (temp_Menu)
 	{
 		COUT << "\t" << temp_Menu->getHockey() << " - " << *(temp_Menu->getLigne()) << endl;
-		temp_Menu = Next();
+		temp_Menu = m_Menu.Next();
 	}
 
 }
 
-eMENU Menu::askChoice(ostream & COUT)
+template<class ENTITY>
+eMENU Menu<ENTITY>::askChoice(ostream & COUT)
 {
 	ZoneSaisie zs;
 	do
@@ -93,14 +107,15 @@ eMENU Menu::askChoice(ostream & COUT)
 	
 }
 
-eMENU Menu::translateHotkey(char hotkey)
+template<class ENTITY>
+eMENU Menu<ENTITY>::translateHotkey(char hotkey)
 {
 	LigneMenu* temp;
-	temp = First();
+	temp = m_Menu.First();
 
 	while (temp && (temp->getHockey() != hotkey))
 	{
-		temp = Next();
+		temp = m_Menu.Next();
 	}
 
 	if (temp) m_choice = temp->getNemo();
