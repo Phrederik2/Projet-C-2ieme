@@ -36,10 +36,10 @@
     <ClCompile Include="Text.cpp">
       <Filter>Classe Atomique</Filter>
     </ClCompile>
-    <ClCompile Include="ContainerEntity.cpp">
+    <ClCompile Include="Adresse.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Adresse.cpp">
+    <ClCompile Include="ContainerEntity.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

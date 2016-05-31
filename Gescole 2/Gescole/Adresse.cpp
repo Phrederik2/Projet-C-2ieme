@@ -3,6 +3,7 @@
 
 double Adresse::Alive = 0;
 double Adresse::Compter = 0;
+char Adresse::Title[100]= "Adresse";
 
 Adresse::Adresse()
 {
@@ -13,6 +14,11 @@ Adresse::Adresse()
 	Boite = ' ';
 	CodePostal = 0;
 
+}
+
+Adresse::Adresse(Adresse& other)
+{
+	*this = other;
 }
 
 
@@ -46,7 +52,7 @@ void Adresse::setCodePostal(int codepostal)
 	CodePostal = codepostal;
 }
 
-int Adresse::getID()
+double Adresse::getID()
 {
 	return ID;
 }
@@ -81,37 +87,50 @@ double Adresse::getAlive()
 	return Alive;
 }
 
-void Adresse::Display(Adresse& other)
+void Adresse::Display(ostream& stream)
 {
-	cout << "ID: " << other.getID() << endl;
-	cout << "Localite: " << other.getLocalite() << endl;
-	cout << "Rue: " << other.getRue() << endl;
-	cout << "Numero: " << other.getNumero() << endl;
-	cout << "Boite: " << other.getBoite() << endl;
-	cout << "Code Postal: " << other.getCodePostal() << endl;
+	stream << "ID: " << getID() << endl;
+	stream << "Localite: " << getLocalite() << endl;
+	stream << "Rue: " << getRue() << endl;
+	stream << "Numero: " << getNumero() << endl;
+	stream << "Boite: " << getBoite() << endl;
+	stream << "Code Postal: " << getCodePostal() << endl;
 }
 
-void Adresse::Encode(Adresse & other)
+void Adresse::Encode()
 {
 	ZoneSaisie zs;
 
-	cout << "ID: " << other.getID() << endl;
+	cout << "ID: " << getID() << endl;
 	cout << "Localite: " << endl;
-	if (zs.Ask()) other.setLocalite(zs.ValString());
+	if (zs.Ask()) setLocalite(zs.ValString());
 	cout << "Rue: " << endl;
-	if (zs.Ask()) other.setRue(zs.ValString());
+	if (zs.Ask()) setRue(zs.ValString());
 	cout << "Numero: " <<endl;
-	if (zs.Ask()) other.setNumero(zs.ValInt());
+	if (zs.Ask()) setNumero(zs.ValInt());
 	cout << "Boite: " <<  endl;
-	if (zs.Ask()) other.setBoite(zs.ValChar());
+	if (zs.Ask()) setBoite(zs.ValChar());
 	cout << "Code Postal: " <<  endl;
-	if (zs.Ask()) other.setCodePostal(zs.ValInt());
+	if (zs.Ask()) setCodePostal(zs.ValInt());
 	
 	cout << "------------------" << endl;
 }
 
+Adresse & Adresse::operator=(Adresse & other)
+{
+	if (this == &other)return *this;
+
+	setLocalite(other.getLocalite());
+	setRue(other.getRue());
+	setNumero(other.getNumero());
+	setBoite(other.getBoite());
+	setCodePostal(other.getCodePostal());
+	return *this;
+	
+}
+
 ostream & operator<<(ostream & COUT, Adresse& other)
 {
-	other.Display(other);
+	other.Display(COUT);
 	return COUT;
 }

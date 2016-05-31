@@ -4,6 +4,7 @@
 #include<conio.h>
 #include"Professeur.h"
 #include"Adresse.h"
+#include<fstream>
 
 
 using namespace std;
@@ -14,16 +15,12 @@ using namespace std;
 
 void main(void)
 {
-	
-	Adresse adresse;
 
-	cout << adresse << endl;
+	Menu menu("Adresse");
+	Application<Adresse> adresse;
 
-	Menu menu("Test");
-	Application<Professeur> AppProf;
-
-	AppProf.setMenu(&menu);
-	AppProf.run();
+	adresse.setMenu(&menu);
+	adresse.run();
 	_getch();
 
 }

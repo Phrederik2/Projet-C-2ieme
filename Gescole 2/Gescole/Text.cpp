@@ -1,5 +1,6 @@
 #include "Text.h"
 #include<iostream>
+#include<cstring>
 using namespace std;
 
 Text::Text(size_t size)

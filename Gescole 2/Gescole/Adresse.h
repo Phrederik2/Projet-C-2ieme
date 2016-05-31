@@ -8,7 +8,8 @@ class Adresse :
 protected:
 	static double Alive;
 	static double Compter;
-	int ID;
+	static char Title[100];
+	double ID;
 	Text Localite;
 	Text Rue;
 	int Numero;
@@ -18,6 +19,7 @@ protected:
 
 public:
 	Adresse();
+	Adresse(Adresse& other);
 	~Adresse();
 
 	void setLocalite(const char* localite);
@@ -26,7 +28,7 @@ public:
 	void setBoite(char boite);
 	void setCodePostal(int codepostal);
 
-	int getID();
+	double getID();
 	const char* getLocalite();
 	const char* getRue();
 	int getNumero();
@@ -34,8 +36,9 @@ public:
 	int getCodePostal();
 	double getAlive();
 
-	void Display(Adresse& other);
-	void Encode(Adresse& other);
+	void Display(ostream& stream = cout);
+	void Encode();
 
+	Adresse& operator=(Adresse& other);
 	friend ostream& operator<<(ostream& COUT, Adresse& other);
 };

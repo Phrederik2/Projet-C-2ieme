@@ -43,7 +43,7 @@ protected:
 template <class ENTITY>
 Application<ENTITY>::Application()
 {
-	this->MenuStandart = NULL;
+
 }
 
 template <class ENTITY>
@@ -148,7 +148,7 @@ void Application<ENTITY>::Bydefault()
 template <class ENTITY>
 void Application<ENTITY>::Create()
 {
-	Temp = new Professeur;
+	Temp = new ENTITY;
 	Container.Add(Temp);
 	Frm >> *Temp;
 
