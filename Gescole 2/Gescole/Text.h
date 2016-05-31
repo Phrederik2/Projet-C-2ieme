@@ -16,6 +16,7 @@ public:
 	Text(Text& other); // constructeur de recopie basé sur l'operateur de copie
 
 	Text& operator=(Text& other); // operateur de copie
+	Text& operator=(const char* other); // operateur d'assignation
 	friend ostream& operator<<(ostream& COUT, Text& other);
 	~Text(); // destructeur (delete)
 	void setText(const char* text);

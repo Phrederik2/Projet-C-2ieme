@@ -25,6 +25,12 @@ Text& Text::operator=(Text& other)
 	return *this;
 }
 
+Text & Text::operator=(const char * other)
+{
+	setText(other);
+	return *this;
+}
+
 ostream &  operator<<(ostream& COUT, Text & other)
 {
 	COUT << other.getText();

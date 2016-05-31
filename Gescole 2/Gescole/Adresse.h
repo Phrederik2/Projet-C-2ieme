@@ -27,13 +27,13 @@ public:
 	void setBoite(char boite);
 	void setCodePostal(int codepostal);
 
-	double getID();
+	unsigned long getID();
 	const char* getLocalite();
 	const char* getRue();
 	int getNumero();
 	char getBoite();
 	int getCodePostal();
-	double getAlive();
+	unsigned long getAlive();
 
 	void Display(ostream& stream = cout);
 	void Encode();

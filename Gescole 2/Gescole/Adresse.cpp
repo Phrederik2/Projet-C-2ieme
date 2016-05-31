@@ -47,7 +47,7 @@ void Adresse::setCodePostal(int codepostal)
 	CodePostal = codepostal;
 }
 
-double Adresse::getID()
+unsigned long Adresse::getID()
 {
 	return ID.getPrimaryKey();
 }
@@ -77,7 +77,7 @@ int Adresse::getCodePostal()
 	return CodePostal;
 }
 
-double Adresse::getAlive()
+unsigned long Adresse::getAlive()
 {
 	return ID.getAlive();
 }

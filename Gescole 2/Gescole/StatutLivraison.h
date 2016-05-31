@@ -5,15 +5,34 @@ using namespace std;
 class StatutLivraison :
 	public ContainerEntity
 {
+	//DataMembre.
 protected:
-	//static double Alive;
-	//static double Compter;
+	PrimaryKey<StatutLivraison> ID;
+	Text Name;
+
 public:
-	StatutLivraison();
-	~StatutLivraison();
-	double getAlive();
+	//Constructeur
+	StatutLivraison();// normal
+	StatutLivraison(StatutLivraison& other); // recopie
+	~StatutLivraison(); // destructeur
+
+					  //Seteur.
+	void setName(const char* name);
+
+					  //Getteur
+	const char* getName();
+
+	
+
+	unsigned long getID();
+	unsigned long getAlive();
+
+	//Function membre.
 	void Display(std::ostream& stream = std::cout);
 	void Encode();
-	friend ostream& operator<<(ostream& COUT, StatutLivraison& other) ;
+
+	//Surcharge operateur
+	StatutLivraison& operator=(StatutLivraison& other);
+	friend ostream& operator<<(ostream& COUT, StatutLivraison& other);
 };
 
