@@ -142,21 +142,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Adresse.cpp" />
+    <ClCompile Include="ContainerEntity.cpp" />
     <ClCompile Include="LigneMenu.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Professeur.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="ZoneSaisie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Adresse.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Container.h" />
+    <ClInclude Include="ContainerEntity.h" />
     <ClInclude Include="Formulaire.h" />
     <ClInclude Include="LigneMenu.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="MultiType.h" />
     <ClInclude Include="Professeur.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="ZoneSaisie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

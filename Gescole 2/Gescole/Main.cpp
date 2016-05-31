@@ -3,6 +3,7 @@
 #include<iostream>
 #include<conio.h>
 #include"Professeur.h"
+#include"Adresse.h"
 
 
 using namespace std;
@@ -14,6 +15,10 @@ using namespace std;
 void main(void)
 {
 	
+	Adresse adresse;
+
+	cout << adresse << endl;
+
 	Menu menu("Test");
 	Application<Professeur> AppProf;
 

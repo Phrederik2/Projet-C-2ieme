@@ -4,7 +4,6 @@
 #include<iostream>
 #include"Container.h"
 
-//template<class ENTITY>
 class Menu: public Container<LigneMenu>
 {
 

@@ -22,7 +22,7 @@ protected:
 public:
 		 Professeur(void);// Constructeur sans paramettres
 		 Professeur(Professeur& prof);// Constructeur sans paramettres
-		 Professeur(const char* nom,const char* prenom, unsigned int anneenaissance, float salairemensuel_eur, float poids_kg);// Constructeur sans paramettres
+		 Professeur(const char* nom,const char* prenom, unsigned int anneenaissance, float salairemensuel_eur, float poids_kg);// Constructeur avec paramettres
 
 		~Professeur(void);// Destructeur sans paramettres
 
@@ -41,7 +41,7 @@ public:
 
 	Professeur& operator = (Professeur& prof);
 
-	void Display(Professeur Prof);
+	 static void Display(Professeur Prof);
 
 protected:
 	void InitProfesseur(const char* nom, const char* prenom, unsigned int anneenaissance, float salairemensuel_eur, float poids_kg);// Constructeur sans paramettres
