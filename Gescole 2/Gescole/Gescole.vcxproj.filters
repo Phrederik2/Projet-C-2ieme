@@ -48,7 +48,7 @@
     <ClCompile Include="sqlite3.c">
       <Filter>Fichiers de ressources</Filter>
     </ClCompile>
-    <ClCompile Include="SQL.cpp">
+    <ClCompile Include="TestUnitaire.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,11 +95,11 @@
     <ClInclude Include="PrimaryKey.h">
       <Filter>Classe Atomique</Filter>
     </ClInclude>
-    <ClInclude Include="SQL.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="sqlite3.h">
       <Filter>Fichiers de ressources</Filter>
+    </ClInclude>
+    <ClInclude Include="TestUnitaire.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

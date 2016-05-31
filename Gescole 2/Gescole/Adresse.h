@@ -3,7 +3,7 @@
 #include"Text.h"
 #include"PrimaryKey.h"
 class Adresse :
-	public ContainerEntity
+	protected ContainerEntity
 {
 	//DataMenbre
 protected:

@@ -6,6 +6,7 @@
 #include"Adresse.h"
 #include"StatutLivraison.h"
 #include<fstream>
+#include"TestUnitaire.h"
 
 
 using namespace std;
@@ -16,24 +17,19 @@ using namespace std;
 
 void main(void)
 {
-#define ENTITY StatutLivraison
-	ENTITY adr1;
-	ENTITY adr2;
-	ENTITY* adr3 = new ENTITY;
-	cout << adr1;
-	cout << adr2;
-	cout << "Alive ENTITY: " << adr1.getAlive()<<endl;
-	delete adr3;
-	cout << "Alive ENTITY: " << adr1.getAlive()<<endl;
-	ENTITY adr4;
-	cout << adr4;
-	Adresse::
+
+	TestUnitaire::Run();
+
+	Adresse adr;
+	
+	
+	
 
 	Menu menu("Statut Livraison");
-	Application<ENTITY> adresse;
+	Application<StatutLivraison> appli;
 
-	adresse.setMenu(&menu);
-	adresse.run();
+	appli.setMenu(&menu);
+	appli.run();
 	_getch();
 
 }

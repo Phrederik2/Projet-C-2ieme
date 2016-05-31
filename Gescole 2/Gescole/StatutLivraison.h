@@ -3,7 +3,7 @@
 #include<iostream>
 using namespace std;
 class StatutLivraison :
-	public ContainerEntity
+	protected ContainerEntity
 {
 	//DataMembre.
 protected:
