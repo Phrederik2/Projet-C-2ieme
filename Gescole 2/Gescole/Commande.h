@@ -4,7 +4,7 @@ class Commande :
 	public DropdownList<Commande>
 {
 protected:
-	PrimaryKey<Commande> ID;
+	//PrimaryKey<Commande> ID;
 public:
 	Commande();
 	~Commande();
