@@ -152,6 +152,7 @@
     <ClCompile Include="StatutLivraison.cpp" />
     <ClCompile Include="TestUnitaire.cpp" />
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Title.cpp" />
     <ClCompile Include="ZoneSaisie.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +171,7 @@
     <ClInclude Include="StatutLivraison.h" />
     <ClInclude Include="TestUnitaire.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="Title.h" />
     <ClInclude Include="ZoneSaisie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

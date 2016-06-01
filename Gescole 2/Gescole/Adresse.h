@@ -7,8 +7,8 @@ class Adresse :
 {
 	//DataMenbre
 protected:
+	Title<Adresse> Titre;
 	PrimaryKey<Adresse> ID;
-	static char Title[100];
 	Text Localite;
 	Text Rue;
 	int Numero;
@@ -21,14 +21,15 @@ public:
 	Adresse(Adresse& other);
 	~Adresse();
 
+	void setTitle(const char* title);
 	void setLocalite(const char* localite);
 	void setRue(const char* rue);
 	void setNumero(int numero);
 	void setBoite(char boite);
 	void setCodePostal(int codepostal);
 
+	const char* getTitle();
 	unsigned long getID();
-	char* getTitle();
 	const char* getLocalite();
 	const char* getRue();
 	int getNumero();

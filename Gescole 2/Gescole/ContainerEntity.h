@@ -1,14 +1,17 @@
 #pragma once
 #include<iostream>
+#include"Title.h"
 #include"PrimaryKey.h"
 #include"Text.h"
 #include"ZoneSaisie.h"
+
 class ContainerEntity
 {
 	//DataMembre.
 protected:
+	//Title<ContainerEntity> m_Title;
 	PrimaryKey<ContainerEntity> ID;
-	Text text;
+	//Text text;
 
 public:
 	//Constructeur
@@ -20,7 +23,7 @@ public:
 
 
 	//Getteur
-
+	//static char* getTitle();
 	
 
 	virtual unsigned long getID()=0;

@@ -1,9 +1,6 @@
 #include "Adresse.h"
 #include"ZoneSaisie.h"
 
-
-char Adresse::Title[100]= "Adresse";
-
 Adresse::Adresse()
 {
 	Numero = 0;
@@ -20,6 +17,11 @@ Adresse::Adresse(Adresse& other)
 
 Adresse::~Adresse()
 {
+}
+
+void Adresse::setTitle(const char* title)
+{
+	Titre.setTitle(title);
 }
 
 void Adresse::setLocalite(const char * localite)
@@ -52,9 +54,9 @@ unsigned long Adresse::getID()
 	return ID.getPrimaryKey();
 }
 
-char * Adresse::getTitle()
+const char * Adresse::getTitle()
 {
-	return Title;
+	return Titre.getTitle();
 }
 
 const char * Adresse::getLocalite()

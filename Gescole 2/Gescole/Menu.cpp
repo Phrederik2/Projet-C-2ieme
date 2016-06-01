@@ -82,8 +82,9 @@ template<class ENTITY>
 void Menu<ENTITY>::display(ostream & COUT)
 {
 	LigneMenu* temp_Menu;
+	ENTITY temp;
 
-	COUT << getTitle() << endl;
+	COUT << temp.getTitle() << endl;
 	temp_Menu = m_Menu.First();
 	while (temp_Menu)
 	{
