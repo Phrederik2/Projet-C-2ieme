@@ -28,6 +28,11 @@ void Formulaire<ENTITY>::operator<<(ENTITY& other)
 template<class ENTITY>
 void Formulaire<ENTITY>::operator >> (ENTITY& other)
 {
+	if (!other)
+	{
+		cout << "Aucun enregistrement selectionné !"<< endl;
+		return;
+	}
 	other.Encode();
 }
 

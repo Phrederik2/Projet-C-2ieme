@@ -20,9 +20,9 @@ void main(void)
 {
 
 	TestUnitaire::Run();
+	Application<Commande>::Run();
+	Application<Livraison>::Run();
 	Application<RendezVous>::Run();
-	//Application<Livraison>::Run();
-	//Application<Commande>::Run();
 	//Adresse adr;
 	
 

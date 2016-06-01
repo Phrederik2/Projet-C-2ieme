@@ -1,7 +1,7 @@
 #pragma once
 #include "DropdownList.h"
 class Commande :
-	public DropdownList
+	public DropdownList<Commande>
 {
 protected:
 	PrimaryKey<Commande> ID;

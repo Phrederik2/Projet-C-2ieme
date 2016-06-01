@@ -54,23 +54,20 @@
     <ClCompile Include="ContainerEntity.cpp">
       <Filter>DAL\Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="DropdownList.cpp">
-      <Filter>MODEL</Filter>
-    </ClCompile>
     <ClCompile Include="TestUnitaire.cpp">
       <Filter>UTILITY</Filter>
-    </ClCompile>
-    <ClCompile Include="Livraison.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Commande.cpp">
-      <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Date.cpp">
       <Filter>MODEL</Filter>
     </ClCompile>
+    <ClCompile Include="Commande.cpp">
+      <Filter>DAL\Fichiers sources</Filter>
+    </ClCompile>
     <ClCompile Include="RendezVous.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>DAL\Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Livraison.cpp">
+      <Filter>DAL\Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,17 +119,17 @@
     <ClInclude Include="TestUnitaire.h">
       <Filter>UTILITY</Filter>
     </ClInclude>
-    <ClInclude Include="Livraison.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Commande.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Date.h">
       <Filter>MODEL</Filter>
     </ClInclude>
+    <ClInclude Include="Commande.h">
+      <Filter>DAL\Fichiers d%27en-tête</Filter>
+    </ClInclude>
     <ClInclude Include="RendezVous.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>DAL\Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Livraison.h">
+      <Filter>DAL\Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

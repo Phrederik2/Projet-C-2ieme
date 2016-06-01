@@ -1,10 +1,9 @@
 
 #include "DropdownList.h"
 class Livraison :
-	public DropdownList
+	public DropdownList<Livraison>
 {
 protected:
-	PrimaryKey<Livraison> ID;
 public:
 	Livraison();
 	~Livraison();

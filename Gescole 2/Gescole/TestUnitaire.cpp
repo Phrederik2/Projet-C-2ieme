@@ -2,6 +2,11 @@
 #include"Adresse.h"
 #include"DropdownList.h"
 #include"Livraison.h"
+#include"Commande.h"
+#include"RendezVous.h"
+#include<iostream>
+
+using namespace std;
 
 
 template<class ENTITY>
@@ -28,11 +33,13 @@ bool Test<ENTITY>::Run()
 
 void TestUnitaire::Run()
 {
-	if (Test<Adresse>::Run()) cout <<"Adresse: OK" << endl;
+	if (Test<Adresse>::Run()) cout << "Adresse: OK" << endl;
 	else cout << "Adresse: NOK" << endl;
-	if (Test<DropdownList>::Run()) cout <<"DropdownList: OK" << endl;
-	else cout << "DropdownList: NOK" << endl;
+	if (Test<Commande>::Run()) cout << "Commande: OK" << endl;
+	else cout << "Commande: NOK" << endl;
 	if (Test<Livraison>::Run()) cout << "Livraison: OK" << endl;
 	else cout << "Livraison: NOK" << endl;
+	if (Test<RendezVous>::Run()) cout << "RendezVous: OK" << endl;
+	else cout << "RendezVous: NOK" << endl;
 
 }
