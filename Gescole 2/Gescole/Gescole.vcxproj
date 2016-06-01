@@ -152,7 +152,6 @@
     <ClCompile Include="StatutLivraison.cpp" />
     <ClCompile Include="TestUnitaire.cpp" />
     <ClCompile Include="Text.cpp" />
-    <ClCompile Include="Title.cpp" />
     <ClCompile Include="ZoneSaisie.cpp" />
   </ItemGroup>
   <ItemGroup>

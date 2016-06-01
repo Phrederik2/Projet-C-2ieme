@@ -1,12 +1,9 @@
 #include"Application.h"
-#include<fstream>
-#include<iostream>
-#include<conio.h>
-#include"Professeur.h"
+#include"TestUnitaire.h"
+#include"ContainerEntity.h"
 #include"Adresse.h"
 #include"StatutLivraison.h"
-#include<fstream>
-#include"TestUnitaire.h"
+#include<conio.h>
 
 
 using namespace std;
@@ -20,16 +17,15 @@ void main(void)
 
 	TestUnitaire::Run();
 
-	Adresse adr;
-	
-
+	Application<Adresse>::Run();
+	//Adresse adr;
 	
 
 	//Menu menu("Statut Livraison");
-	Application<Adresse> appli;
+	//Application<Adresse> appli;
 
 	//appli.setMenu(&menu);
-	appli.run();
+	//appli.run();
 	_getch();
 
 }

@@ -7,33 +7,33 @@
 
 class ContainerEntity
 {
-	//DataMembre.
+			//DataMembre.
 protected:
 	//Title<ContainerEntity> m_Title;
 	PrimaryKey<ContainerEntity> ID;
 	//Text text;
 
 public:
-	//Constructeur
+			//Constructeur
 	ContainerEntity(); // normal
 	//ContainerEntity(ContainerEntity& other); // recopie
 	virtual ~ContainerEntity(); // destructeur
 
-	//Seteur.
+			//Seteur.
 
 
-	//Getteur
-	//static char* getTitle();
+			//Getteur.
+	//char* getTitle();
 	
 
 	virtual unsigned long getID()=0;
 	virtual unsigned long getAlive()=0;
 
-	//Function membre.
+			//Function membre.
 	virtual void Display(std::ostream& stream = std::cout)=0;
 	virtual void Encode()=0;
 
-	//Surcharge operateur
+			//Surcharge operateur
 	//ContainerEntity& operator=(ContainerEntity& other);
 	//virtual friend ostream& operator<<(ostream& stream, ContainerEntity& other);
 };

@@ -33,6 +33,7 @@ public:
 	void Error();
 	void Quit();
 	void Bydefault();
+	static void Run();
 protected:
 	void Controller(eMENU mnemo);
 };
@@ -133,6 +134,13 @@ void Application<ENTITY>::Quit()
 template <class ENTITY>
 void Application<ENTITY>::Bydefault()
 {
+}
+
+template<class ENTITY>
+inline void Application<ENTITY>::Run()
+{
+	Application Appli;
+	Appli.run();
 }
 
 template <class ENTITY>
