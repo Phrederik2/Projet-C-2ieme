@@ -9,12 +9,24 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Classe Atomique">
-      <UniqueIdentifier>{21c46683-2c20-4545-bea0-573c0da079cf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers de ressources">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DAL">
+      <UniqueIdentifier>{2cb22d8c-bd92-42f3-8880-587aa061c957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DAL\Fichiers d%27en-tête">
+      <UniqueIdentifier>{5177c11b-70d5-4615-adeb-687c49f14b38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DAL\Fichiers sources">
+      <UniqueIdentifier>{4658ffa0-912f-4244-a513-c07898109a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MODEL">
+      <UniqueIdentifier>{21c46683-2c20-4545-bea0-573c0da079cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UTILITY">
+      <UniqueIdentifier>{1a4f1137-76c3-4466-85d8-c16ecdcf8ee7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -27,36 +39,42 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Professeur.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="ZoneSaisie.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Text.cpp">
-      <Filter>Classe Atomique</Filter>
-    </ClCompile>
-    <ClCompile Include="Adresse.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="ContainerEntity.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="StatutLivraison.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>MODEL</Filter>
     </ClCompile>
     <ClCompile Include="sqlite3.c">
       <Filter>Fichiers de ressources</Filter>
     </ClCompile>
+    <ClCompile Include="Adresse.cpp">
+      <Filter>DAL\Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ContainerEntity.cpp">
+      <Filter>DAL\Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DropdownList.cpp">
+      <Filter>MODEL</Filter>
+    </ClCompile>
     <ClCompile Include="TestUnitaire.cpp">
+      <Filter>UTILITY</Filter>
+    </ClCompile>
+    <ClCompile Include="Livraison.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Commande.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Date.cpp">
+      <Filter>MODEL</Filter>
+    </ClCompile>
+    <ClCompile Include="RendezVous.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Container.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="LigneMenu.h">
@@ -65,13 +83,7 @@
     <ClInclude Include="Menu.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Message.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="MultiType.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Professeur.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="ZoneSaisie.h">
@@ -81,28 +93,46 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Text.h">
-      <Filter>Classe Atomique</Filter>
-    </ClInclude>
-    <ClInclude Include="ContainerEntity.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Adresse.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="StatutLivraison.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>MODEL</Filter>
     </ClInclude>
     <ClInclude Include="PrimaryKey.h">
-      <Filter>Classe Atomique</Filter>
+      <Filter>MODEL</Filter>
     </ClInclude>
     <ClInclude Include="sqlite3.h">
       <Filter>Fichiers de ressources</Filter>
     </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>MODEL</Filter>
+    </ClInclude>
+    <ClInclude Include="Adresse.h">
+      <Filter>DAL\Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="ContainerEntity.h">
+      <Filter>DAL\Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="DropdownList.h">
+      <Filter>MODEL</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.h">
+      <Filter>UTILITY</Filter>
+    </ClInclude>
+    <ClInclude Include="Message.h">
+      <Filter>UTILITY</Filter>
+    </ClInclude>
     <ClInclude Include="TestUnitaire.h">
+      <Filter>UTILITY</Filter>
+    </ClInclude>
+    <ClInclude Include="Livraison.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Title.h">
-      <Filter>Classe Atomique</Filter>
+    <ClInclude Include="Commande.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Date.h">
+      <Filter>MODEL</Filter>
+    </ClInclude>
+    <ClInclude Include="RendezVous.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

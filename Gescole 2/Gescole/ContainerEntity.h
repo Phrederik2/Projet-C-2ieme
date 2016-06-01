@@ -3,6 +3,7 @@
 #include"Title.h"
 #include"PrimaryKey.h"
 #include"Text.h"
+#include"Date.h"
 #include"ZoneSaisie.h"
 
 class ContainerEntity

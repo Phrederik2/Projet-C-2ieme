@@ -11,6 +11,7 @@ public:
 	~Title();
 	void setTitle(const char* title);
 	const char* getTitle();
+	Title<ENTITY>& operator=(const char* title);
 };
 
 template <class ENTITY>
@@ -36,4 +37,11 @@ template<class ENTITY>
 const char * Title<ENTITY>::getTitle()
 {
 	return m_Title;
+}
+
+template<class ENTITY>
+inline Title<ENTITY>& Title<ENTITY>::operator=(const char * title)
+{
+	if (title) setTitle(title);
+	return *this;
 }

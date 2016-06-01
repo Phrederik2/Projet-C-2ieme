@@ -1,11 +1,14 @@
 #include "Adresse.h"
 #include"ZoneSaisie.h"
 
+Text Adresse::Title;
+
 Adresse::Adresse()
 {
 	Numero = 0;
 	Boite = ' ';
 	CodePostal = 0;
+	setTitle("Adresse");
 
 }
 
@@ -21,7 +24,22 @@ Adresse::~Adresse()
 
 void Adresse::setTitle(const char* title)
 {
-	Titre.setTitle(title);
+	Title.setText(title);
+}
+
+void Adresse::setNom(const char * nom)
+{
+	Nom.setText(nom);
+}
+
+void Adresse::setPrenom(const char * prenom)
+{
+	Prenom.setText(prenom);
+}
+
+void Adresse::setSociete(const char * societe)
+{
+	Societe.setText(societe);
 }
 
 void Adresse::setLocalite(const char * localite)
@@ -56,7 +74,22 @@ unsigned long Adresse::getID()
 
 const char * Adresse::getTitle()
 {
-	return Titre.getTitle();
+	return Title.getText();
+}
+
+const char * Adresse::getNom()
+{
+	return Nom.getText();
+}
+
+const char * Adresse::getPrenom()
+{
+	return Prenom.getText();
+}
+
+const char * Adresse::getSociete()
+{
+	return Societe.getText();
 }
 
 const char * Adresse::getLocalite()
@@ -92,6 +125,9 @@ unsigned long Adresse::getAlive()
 void Adresse::Display(ostream& stream)
 {
 	stream << "ID: " << getID() << endl;
+	stream << "Nom: " << getNom() << endl;
+	stream << "Prenom: " << getPrenom() << endl;
+	stream << "Societe: " << getSociete() << endl;
 	stream << "Localite: " << getLocalite() << endl;
 	stream << "Rue: " << getRue() << endl;
 	stream << "Numero: " << getNumero() << endl;
@@ -104,6 +140,12 @@ void Adresse::Encode()
 	ZoneSaisie zs;
 
 	cout << "ID: " << getID() << endl;
+	cout << "Nom: " << endl;
+	if (zs.Ask()) setNom(zs.ValString());
+	cout << "Prenom: " << endl;
+	if (zs.Ask()) setPrenom(zs.ValString());
+	cout << "Societe: " << endl;
+	if (zs.Ask()) setSociete(zs.ValString());
 	cout << "Localite: " << endl;
 	if (zs.Ask()) setLocalite(zs.ValString());
 	cout << "Rue: " << endl;
@@ -122,6 +164,9 @@ Adresse & Adresse::operator=(Adresse & other)
 {
 	if (this == &other)return *this;
 
+	setNom(other.getNom());
+	setPrenom(other.getPrenom());
+	setSociete(other.getSociete());
 	setLocalite(other.getLocalite());
 	setRue(other.getRue());
 	setNumero(other.getNumero());

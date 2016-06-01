@@ -2,8 +2,12 @@
 #include"TestUnitaire.h"
 #include"ContainerEntity.h"
 #include"Adresse.h"
-#include"StatutLivraison.h"
+#include"DropdownList.h"
 #include<conio.h>
+#include"Livraison.h"
+#include"Commande.h"
+#include"Date.h"
+#include"RendezVous.h"
 
 
 using namespace std;
@@ -16,12 +20,13 @@ void main(void)
 {
 
 	TestUnitaire::Run();
-
-	Application<Adresse>::Run();
+	Application<RendezVous>::Run();
+	//Application<Livraison>::Run();
+	//Application<Commande>::Run();
 	//Adresse adr;
 	
 
-	//Menu menu("Statut Livraison");
+	//Menu menu("Statut DropdownList");
 	//Application<Adresse> appli;
 
 	//appli.setMenu(&menu);

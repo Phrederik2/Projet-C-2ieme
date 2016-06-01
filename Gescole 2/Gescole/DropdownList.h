@@ -2,24 +2,27 @@
 #include "ContainerEntity.h"
 #include<iostream>
 using namespace std;
-class StatutLivraison :
+class DropdownList :
 	protected ContainerEntity
 {
 	//DataMembre.
 protected:
-	PrimaryKey<StatutLivraison> ID;
+	Title<DropdownList> Titre;
+	//PrimaryKey<DropdownList> ID;
 	Text Name;
 
 public:
 	//Constructeur
-	StatutLivraison();// normal
-	StatutLivraison(StatutLivraison& other); // recopie
-	~StatutLivraison(); // destructeur
+	DropdownList();// normal
+	DropdownList(DropdownList& other); // recopie
+	~DropdownList(); // destructeur
 
 					  //Seteur.
+	void setTitle(const char* title);
 	void setName(const char* name);
 
 					  //Getteur
+	const char* getTitle();
 	const char* getName();
 
 	
@@ -32,7 +35,7 @@ public:
 	void Encode();
 
 	//Surcharge operateur
-	StatutLivraison& operator=(StatutLivraison& other);
-	friend ostream& operator<<(ostream& COUT, StatutLivraison& other);
+	DropdownList& operator=(DropdownList& other);
+	friend ostream& operator<<(ostream& COUT, DropdownList& other);
 };
 

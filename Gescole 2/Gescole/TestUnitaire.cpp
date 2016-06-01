@@ -1,6 +1,7 @@
 #include "TestUnitaire.h"
 #include"Adresse.h"
-#include"StatutLivraison.h"
+#include"DropdownList.h"
+#include"Livraison.h"
 
 
 template<class ENTITY>
@@ -29,6 +30,9 @@ void TestUnitaire::Run()
 {
 	if (Test<Adresse>::Run()) cout <<"Adresse: OK" << endl;
 	else cout << "Adresse: NOK" << endl;
-	if (Test<StatutLivraison>::Run()) cout <<"StatutLivraison: OK" << endl;
-	else cout << "StatutLivraison: NOK" << endl;
+	if (Test<DropdownList>::Run()) cout <<"DropdownList: OK" << endl;
+	else cout << "DropdownList: NOK" << endl;
+	if (Test<Livraison>::Run()) cout << "Livraison: OK" << endl;
+	else cout << "Livraison: NOK" << endl;
+
 }

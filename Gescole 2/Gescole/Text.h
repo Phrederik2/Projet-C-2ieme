@@ -5,7 +5,6 @@
 #define TAILLEGRD TAILLESTD*2
 
 using namespace std;
-
 class Text
 {
 protected:
@@ -18,9 +17,13 @@ public:
 	Text& operator=(Text& other); // operateur de copie
 	Text& operator=(const char* other); // operateur d'assignation
 	friend ostream& operator<<(ostream& COUT, Text& other);
+	Text& operator+(const char* other);
+	Text& operator+(unsigned int other);
 	~Text(); // destructeur (delete)
 	void setText(const char* text);
 	const char* getText();
+	
+
 
 
 protected:

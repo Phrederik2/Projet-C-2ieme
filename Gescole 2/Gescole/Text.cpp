@@ -1,6 +1,6 @@
 #include "Text.h"
 #include<iostream>
-#include<cstring>
+#include<string>
 using namespace std;
 
 Text::Text(size_t size)
@@ -25,9 +25,9 @@ Text& Text::operator=(Text& other)
 	return *this;
 }
 
-Text & Text::operator=(const char * other)
+Text & Text::operator=(const char * text)
 {
-	setText(other);
+	setText(text);
 	return *this;
 }
 
@@ -35,6 +35,20 @@ ostream &  operator<<(ostream& COUT, Text & other)
 {
 	COUT << other.getText();
 	return COUT;
+}
+
+Text & Text::operator+(const char * other)
+{
+	strcat(m_Text, other);
+	return *this;
+}
+
+Text & Text::operator+(unsigned int other)
+{
+	char text[100];
+	sprintf(text,"%d", other);
+	*this + text;
+	return *this;
 }
 
 Text::~Text()

@@ -143,13 +143,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Adresse.cpp" />
+    <ClCompile Include="Commande.cpp" />
     <ClCompile Include="ContainerEntity.cpp" />
+    <ClCompile Include="Date.cpp" />
     <ClCompile Include="LigneMenu.cpp" />
+    <ClCompile Include="Livraison.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="Professeur.cpp" />
+    <ClCompile Include="RendezVous.cpp" />
     <ClCompile Include="sqlite3.c" />
-    <ClCompile Include="StatutLivraison.cpp" />
+    <ClCompile Include="DropdownList.cpp" />
     <ClCompile Include="TestUnitaire.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="ZoneSaisie.cpp" />
@@ -157,17 +160,20 @@
   <ItemGroup>
     <ClInclude Include="Adresse.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Commande.h" />
     <ClInclude Include="Container.h" />
     <ClInclude Include="ContainerEntity.h" />
+    <ClInclude Include="Date.h" />
     <ClInclude Include="Formulaire.h" />
     <ClInclude Include="LigneMenu.h" />
+    <ClInclude Include="Livraison.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="MultiType.h" />
     <ClInclude Include="PrimaryKey.h" />
-    <ClInclude Include="Professeur.h" />
+    <ClInclude Include="RendezVous.h" />
     <ClInclude Include="sqlite3.h" />
-    <ClInclude Include="StatutLivraison.h" />
+    <ClInclude Include="DropdownList.h" />
     <ClInclude Include="TestUnitaire.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Title.h" />
