@@ -1,9 +1,10 @@
 #include "TestUnitaire.h"
-#include"Adresse.h"
 #include"DropdownList.h"
+#include"Client.h"
 #include"Livraison.h"
 #include"Commande.h"
 #include"RendezVous.h"
+#include"Dossier.h"
 #include<iostream>
 
 using namespace std;
@@ -33,13 +34,16 @@ bool Test<ENTITY>::Run()
 
 void TestUnitaire::Run()
 {
-	if (Test<Adresse>::Run()) cout << "Adresse: OK" << endl;
-	else cout << "Adresse: NOK" << endl;
+	if (Test<Client>::Run()) cout << "Client: OK" << endl;
+	else cout << "Client: NOK" << endl;
 	if (Test<Commande>::Run()) cout << "Commande: OK" << endl;
 	else cout << "Commande: NOK" << endl;
 	if (Test<Livraison>::Run()) cout << "Livraison: OK" << endl;
 	else cout << "Livraison: NOK" << endl;
 	if (Test<RendezVous>::Run()) cout << "RendezVous: OK" << endl;
 	else cout << "RendezVous: NOK" << endl;
+	if (Test<Dossier>::Run()) cout << "Dossier: OK" << endl;
+	else cout << "Dossier: NOK" << endl;
+	cout << endl;
 
 }

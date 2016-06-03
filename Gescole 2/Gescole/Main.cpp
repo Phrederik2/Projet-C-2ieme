@@ -1,13 +1,14 @@
 #include"Application.h"
 #include"TestUnitaire.h"
 #include"ContainerEntity.h"
-#include"Adresse.h"
+#include"Client.h"
 #include"DropdownList.h"
 #include<conio.h>
 #include"Livraison.h"
 #include"Commande.h"
 #include"Date.h"
 #include"RendezVous.h"
+#include"Dossier.h"
 
 
 using namespace std;
@@ -20,14 +21,16 @@ void main(void)
 {
 
 	TestUnitaire::Run();
+
 	Application<Commande>::Run();
 	Application<Livraison>::Run();
 	Application<RendezVous>::Run();
-	//Adresse adr;
+	Application<Dossier>::Run();
+	//Client adr;
 	
 
 	//Menu menu("Statut DropdownList");
-	//Application<Adresse> appli;
+	//Application<Client> appli;
 
 	//appli.setMenu(&menu);
 	//appli.run();

@@ -1,128 +1,128 @@
-#include "Adresse.h"
+#include "Client.h"
 #include"ZoneSaisie.h"
 
-Text Adresse::Title;
+Text Client::Title;
 
-Adresse::Adresse()
+Client::Client()
 {
 	Numero = 0;
 	Boite = ' ';
 	CodePostal = 0;
-	setTitle("Adresse");
+	setTitle("Client");
 
 }
 
-Adresse::Adresse(Adresse& other)
+Client::Client(Client& other)
 {
 	*this = other;
 }
 
 
-Adresse::~Adresse()
+Client::~Client()
 {
 }
 
-void Adresse::setTitle(const char* title)
+void Client::setTitle(const char* title)
 {
 	Title.setText(title);
 }
 
-void Adresse::setNom(const char * nom)
+void Client::setNom(const char * nom)
 {
 	Nom.setText(nom);
 }
 
-void Adresse::setPrenom(const char * prenom)
+void Client::setPrenom(const char * prenom)
 {
 	Prenom.setText(prenom);
 }
 
-void Adresse::setSociete(const char * societe)
+void Client::setSociete(const char * societe)
 {
 	Societe.setText(societe);
 }
 
-void Adresse::setLocalite(const char * localite)
+void Client::setLocalite(const char * localite)
 {
 	Localite.setText(localite);
 }
 
-void Adresse::setRue(const char * rue)
+void Client::setRue(const char * rue)
 {
 	Rue.setText(rue);
 }
 
-void Adresse::setNumero(int numero)
+void Client::setNumero(int numero)
 {
 	Numero = numero;
 }
 
-void Adresse::setBoite(char boite)
+void Client::setBoite(char boite)
 {
 	Boite = boite;
 }
 
-void Adresse::setCodePostal(int codepostal)
+void Client::setCodePostal(int codepostal)
 {
 	CodePostal = codepostal;
 }
 
-unsigned long Adresse::getID()
+unsigned long Client::getID()
 {
 	return ID.getPrimaryKey();
 }
 
-const char * Adresse::getTitle()
+const char * Client::getTitle()
 {
 	return Title.getText();
 }
 
-const char * Adresse::getNom()
+const char * Client::getNom()
 {
 	return Nom.getText();
 }
 
-const char * Adresse::getPrenom()
+const char * Client::getPrenom()
 {
 	return Prenom.getText();
 }
 
-const char * Adresse::getSociete()
+const char * Client::getSociete()
 {
 	return Societe.getText();
 }
 
-const char * Adresse::getLocalite()
+const char * Client::getLocalite()
 {
 	return Localite.getText();
 }
 
-const char * Adresse::getRue()
+const char * Client::getRue()
 {
 	return Rue.getText();
 }
 
-int Adresse::getNumero()
+int Client::getNumero()
 {
 	return Numero;
 }
 
-char Adresse::getBoite()
+char Client::getBoite()
 {
 	return Boite;
 }
 
-int Adresse::getCodePostal()
+int Client::getCodePostal()
 {
 	return CodePostal;
 }
 
-unsigned long Adresse::getAlive()
+unsigned long Client::getAlive()
 {
 	return ID.getAlive();
 }
 
-void Adresse::Display(ostream& stream)
+void Client::Display(ostream& stream)
 {
 	stream << "ID: " << getID() << endl;
 	stream << "Nom: " << getNom() << endl;
@@ -135,7 +135,7 @@ void Adresse::Display(ostream& stream)
 	stream << "Code Postal: " << getCodePostal() << endl;
 }
 
-void Adresse::Encode()
+void Client::Encode()
 {
 	ZoneSaisie zs;
 
@@ -160,7 +160,7 @@ void Adresse::Encode()
 	cout << "------------------" << endl;
 }
 
-Adresse & Adresse::operator=(Adresse & other)
+Client & Client::operator=(Client & other)
 {
 	if (this == &other)return *this;
 
@@ -176,7 +176,7 @@ Adresse & Adresse::operator=(Adresse & other)
 	
 }
 
-ostream & operator<<(ostream & COUT, Adresse& other)
+ostream & operator<<(ostream & COUT, Client& other)
 {
 	other.Display(COUT);
 	return COUT;

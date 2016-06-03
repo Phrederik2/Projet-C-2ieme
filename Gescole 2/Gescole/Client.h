@@ -2,13 +2,13 @@
 #include "ContainerEntity.h"
 #include"Text.h"
 #include"PrimaryKey.h"
-class Adresse :
+class Client :
 	protected ContainerEntity
 {
 	//DataMenbre
 protected:
 	static Text Title;
-	PrimaryKey<Adresse> ID;
+	PrimaryKey<Client> ID;
 	Text Nom;
 	Text Prenom;
 	Text Societe;
@@ -20,9 +20,9 @@ protected:
 
 
 public:
-	Adresse();
-	Adresse(Adresse& other);
-	~Adresse();
+	Client();
+	Client(Client& other);
+	~Client();
 
 	void setTitle(const char* title);
 	void setNom(const char* nom);
@@ -49,6 +49,6 @@ public:
 	void Display(ostream& stream = cout);
 	void Encode();
 
-	Adresse& operator=(Adresse& other);
-	friend ostream& operator<<(ostream& COUT, Adresse& other);
+	Client& operator=(Client& other);
+	friend ostream& operator<<(ostream& COUT, Client& other);
 };

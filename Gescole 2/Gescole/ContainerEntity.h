@@ -6,11 +6,12 @@
 #include"Date.h"
 #include"ZoneSaisie.h"
 
+
 class ContainerEntity
 {
 			//DataMembre.
 protected:
-	//Title<ContainerEntity> m_Title;
+	//Text Title;
 	PrimaryKey<ContainerEntity> ID;
 	//Text text;
 
@@ -21,10 +22,10 @@ public:
 	virtual ~ContainerEntity(); // destructeur
 
 			//Seteur.
-
+	virtual void setTitle(const char* title)=0;
 
 			//Getteur.
-	//char* getTitle();
+	virtual const char* getTitle()=0;
 	
 
 	virtual unsigned long getID()=0;
@@ -36,6 +37,6 @@ public:
 
 			//Surcharge operateur
 	//ContainerEntity& operator=(ContainerEntity& other);
-	//virtual friend ostream& operator<<(ostream& stream, ContainerEntity& other);
+	//friend ostream& operator<<(ostream& stream, ContainerEntity& other);
 };
 

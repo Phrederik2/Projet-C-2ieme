@@ -15,7 +15,7 @@ public:
 };
 
 template <class ENTITY>
-char Title<ENTITY>::m_Title[100] = "Adresse";
+char Title<ENTITY>::m_Title[100] = "Client";
 
 template <class ENTITY>
 Title<ENTITY>::Title()
