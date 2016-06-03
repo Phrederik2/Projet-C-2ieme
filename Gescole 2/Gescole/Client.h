@@ -1,7 +1,8 @@
-
+#pragma once
 #include "ContainerEntity.h"
 #include"Text.h"
 #include"PrimaryKey.h"
+
 class Client :
 	protected ContainerEntity
 {
@@ -46,9 +47,5 @@ public:
 	int getCodePostal();
 	unsigned long getAlive();
 
-	void Display(ostream& stream = cout);
-	void Encode();
-
 	Client& operator=(Client& other);
-	friend ostream& operator<<(ostream& COUT, Client& other);
 };

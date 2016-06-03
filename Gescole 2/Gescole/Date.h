@@ -20,9 +20,5 @@ public:
 	void setMonth(int month);
 	void setDay(int day);
 	const char* getDate();
-
-	void Encode();
-
-	friend ostream& operator<<(ostream& stream, Date& date);
 };
 

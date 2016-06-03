@@ -45,20 +45,3 @@ const char * Date::getDate()
 	TDate + Day + "/" + Month + "/" + Year;
 	return TDate.getText();
 }
-
-void Date::Encode()
-{
-	ZoneSaisie zs;
-	cout << "Jour: " << endl;
-	if (zs.Ask()) setDay(zs.ValUInt());
-	cout << "Mois: " << endl;
-	if (zs.Ask()) setMonth(zs.ValUInt());
-	cout << "Annee: " << endl;
-	if (zs.Ask()) setYear(zs.ValUInt());
-}
-
-ostream & operator<<(ostream & stream, Date & date)
-{
-	stream << date.getDate();
-	return stream;
-}

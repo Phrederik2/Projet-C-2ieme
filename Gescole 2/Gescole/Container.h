@@ -97,6 +97,7 @@ ENTITY * Container<ENTITY>::First()
 	}
 
 	return (*m_it);
+
 }
 
 template<class ENTITY>

@@ -35,11 +35,9 @@ public:
 	unsigned long getAlive();
 
 	//Function membre.
-	void Display(std::ostream& stream = std::cout);
-	void Encode();
+	
 
 	//Surcharge operateur
 	RendezVous& operator=(RendezVous& other);
-	friend ostream& operator<<(ostream& stream, RendezVous& other);
 };
 

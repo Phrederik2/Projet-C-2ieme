@@ -22,10 +22,11 @@ void main(void)
 				  //test
 	TestUnitaire::Run();
 
-	Application<Commande>::Run();
-	Application<Livraison>::Run();
-	Application<RendezVous>::Run();
-	Application<Dossier>::Run();
+	//Application<Client>::Run();
+	//Application<Commande>::Run();
+	//Application<Livraison>::Run();
+	//Application<RendezVous>::Run();
+	//Application<Dossier>::Run();
 	//Client adr;
 	
 

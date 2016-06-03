@@ -32,8 +32,6 @@ public:
 	virtual unsigned long getAlive()=0;
 
 			//Function membre.
-	virtual void Display(std::ostream& stream = std::cout)=0;
-	virtual void Encode()=0;
 
 			//Surcharge operateur
 	//ContainerEntity& operator=(ContainerEntity& other);

@@ -82,15 +82,6 @@ unsigned long Dossier::getAlive()
 	return ID.getAlive();
 }
 
-void Dossier::Display(std::ostream & stream)
-{
-	stream << "test";
-}
-
-void Dossier::Encode()
-{
-}
-
 Dossier & Dossier::operator=(Dossier & other)
 {
 	if (this == &other)return *this;
@@ -101,7 +92,3 @@ Dossier & Dossier::operator=(Dossier & other)
 	return *this;
 }
 
-ostream & operator<<(ostream & stream, Dossier & other)
-{
-	return stream;
-}

@@ -148,59 +148,63 @@ void Application<ENTITY>::Create()
 {
 	Temp = new ENTITY;
 	Container.Add(Temp);
-	Frm >> *Temp;
+	Frm >> Temp;
 
 }
 
 template <class ENTITY>
 void Application<ENTITY>::Update()
 {
-	Frm >> *Temp;
+	Frm >> Temp;
 }
 
 template <class ENTITY>
 void Application<ENTITY>::List()
 {
 	this->Temp = this->Container.First();
-	while (this->Temp)
+	if (Temp)
 	{
-		Frm << *Temp;
-		this->Temp = this->Container.Next();
+		while (this->Temp)
+		{
+			Frm << Temp;
+			this->Temp = this->Container.Next();
+		}
 	}
+	
 }
 
 template <class ENTITY>
 void Application<ENTITY>::First()
 {
 	this->Temp = this->Container.First();
-	Frm << *this->Temp;
+	Frm << this->Temp;
 }
 
 template <class ENTITY>
 void Application<ENTITY>::Next()
 {
 	this->Temp = this->Container.Next();
-	Frm << *this->Temp;
+	Frm << this->Temp;
 }
 
 template <class ENTITY>
 void Application<ENTITY>::Last()
 {
 	this->Temp = this->Container.Last();
-	Frm << *this->Temp;
+	Frm << this->Temp;
 }
 
 template <class ENTITY>
 void Application<ENTITY>::Previous()
 {
 	this->Temp = this->Container.Previous();
-	Frm << *this->Temp;
+	Frm << this->Temp;
 }
 
 template <class ENTITY>
 void Application<ENTITY>::Read()
 {
-	Frm << *Temp;
+	Frm << Temp;
 }
 
 

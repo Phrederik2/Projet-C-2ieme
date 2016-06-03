@@ -1,3 +1,4 @@
+
 #include "Client.h"
 #include"ZoneSaisie.h"
 
@@ -122,44 +123,6 @@ unsigned long Client::getAlive()
 	return ID.getAlive();
 }
 
-void Client::Display(ostream& stream)
-{
-	stream << "ID: " << getID() << endl;
-	stream << "Nom: " << getNom() << endl;
-	stream << "Prenom: " << getPrenom() << endl;
-	stream << "Societe: " << getSociete() << endl;
-	stream << "Localite: " << getLocalite() << endl;
-	stream << "Rue: " << getRue() << endl;
-	stream << "Numero: " << getNumero() << endl;
-	stream << "Boite: " << getBoite() << endl;
-	stream << "Code Postal: " << getCodePostal() << endl;
-}
-
-void Client::Encode()
-{
-	ZoneSaisie zs;
-
-	cout << "ID: " << getID() << endl;
-	cout << "Nom: " << endl;
-	if (zs.Ask()) setNom(zs.ValString());
-	cout << "Prenom: " << endl;
-	if (zs.Ask()) setPrenom(zs.ValString());
-	cout << "Societe: " << endl;
-	if (zs.Ask()) setSociete(zs.ValString());
-	cout << "Localite: " << endl;
-	if (zs.Ask()) setLocalite(zs.ValString());
-	cout << "Rue: " << endl;
-	if (zs.Ask()) setRue(zs.ValString());
-	cout << "Numero: " <<endl;
-	if (zs.Ask()) setNumero(zs.ValInt());
-	cout << "Boite: " <<  endl;
-	if (zs.Ask()) setBoite(zs.ValChar());
-	cout << "Code Postal: " <<  endl;
-	if (zs.Ask()) setCodePostal(zs.ValInt());
-	
-	cout << "------------------" << endl;
-}
-
 Client & Client::operator=(Client & other)
 {
 	if (this == &other)return *this;
@@ -176,8 +139,3 @@ Client & Client::operator=(Client & other)
 	
 }
 
-ostream & operator<<(ostream & COUT, Client& other)
-{
-	other.Display(COUT);
-	return COUT;
-}

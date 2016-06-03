@@ -33,12 +33,9 @@ public:
 	unsigned long getAlive();
 
 	//Function membre.
-	void Display(std::ostream& stream = std::cout);
-	void Encode();
 
 	//Surcharge operateur
 	DropdownList& operator=(DropdownList& other);
-	friend ostream& operator<<(ostream& COUT, DropdownList& other);
 };
 
 template<class ENTITY>
@@ -98,33 +95,9 @@ unsigned long DropdownList<ENTITY>::getAlive()
 }
 
 template<class ENTITY>
-void DropdownList<ENTITY>::Display(std::ostream & stream)
-{
-	stream << ID.getPrimaryKey() << endl;
-	stream << Name.getText() << endl;
-
-}
-
-template<class ENTITY>
-void DropdownList<ENTITY>::Encode()
-{
-	ZoneSaisie zs;
-	cout << "ID: " << getID() << endl;
-	cout << "Statut: " << endl;
-	if (zs.Ask()) setName(zs.ValString());
-}
-
-template<class ENTITY>
 DropdownList<ENTITY> & DropdownList<ENTITY>::operator=(DropdownList<ENTITY> & other)
 {
 	if (this == &other)return *this;
 	Name = other.Name;
 	return *this;
-}
-
-template<class ENTITY>
-ostream & operator<<(ostream & stream, DropdownList<ENTITY> & other)
-{
-	other.Display(stream);
-	return stream;
 }
