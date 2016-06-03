@@ -7,6 +7,7 @@
 #include "Message.h"
 #include <iostream>
 #include "ZoneSaisie.h"
+#include"Search.h"
 
 template<class ENTITY>
 class Formulaire
@@ -23,12 +24,15 @@ public:
 	void Display( ostream& stream, RendezVous* other);
 	void Display( ostream& stream, Dossier* other);
 
+	void Display_Client(Dossier* other);
+
 	void Encode(Client* other);
 	void Encode(Livraison* other);
 	void Encode(Commande* other);
 	void Encode(RendezVous* other);
 	void Encode(Dossier* other);
 	void Encode(Date* other);
+
 
 };
 
@@ -95,7 +99,21 @@ inline void Formulaire<ENTITY>::Display(ostream & stream, RendezVous * other)
 template<class ENTITY>
 inline void Formulaire<ENTITY>::Display(ostream & stream, Dossier * other)
 {
+	stream << "ID: " << other->getID() << endl;
+	stream << "Client: ";
+	Display_Client(other);
+}
 
+template<class ENTITY>
+inline void Formulaire<ENTITY>::Display_Client(Dossier * other)
+{
+	Client* temp;
+	Search<Client> s;
+	temp = s.ReturnValue(other->getID());
+	if (temp)
+	{
+		Display(cout,temp);
+	}
 }
 
 template<class ENTITY>
@@ -153,6 +171,9 @@ inline void Formulaire<ENTITY>::Encode(RendezVous * other)
 template<class ENTITY>
 inline void Formulaire<ENTITY>::Encode(Dossier * other)
 {
+	cout << "ID: " << other->getID() << endl;
+	cout << "Client: ";
+	other->setID_Client(4);
 }
 
 template<class ENTITY>

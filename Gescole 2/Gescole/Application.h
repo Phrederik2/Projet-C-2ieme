@@ -10,13 +10,14 @@ class Application
 protected:
 	Menu<ENTITY> MenuStandart;
 	bool Again;
-	Container<ENTITY> Container;
+	static Container<ENTITY> Container;
 	Formulaire<ENTITY> Frm;
 	ENTITY* Temp;
 
 public:
 	Application();
 	~Application();
+
 	void run();
 	void Create();
 	void Read();
@@ -24,12 +25,12 @@ public:
 	void Delete();
 	void DeleteAll();
 	void List();
-	void First();
-	void Next();
-	void Last();
-	void Previous();
+	ENTITY* First();
+	ENTITY* Next();
+	ENTITY* Last();
+	ENTITY* Previous();
 	void Sort();
-	void Shearch();
+	void Search();
 	void Error();
 	void Quit();
 	void Bydefault();
@@ -38,7 +39,8 @@ protected:
 	void Controller(eMENU mnemo);
 };
 
-
+template <class ENTITY>
+Container<ENTITY> Application<ENTITY>::Container ;
 
 template <class ENTITY>
 Application<ENTITY>::Application()
@@ -84,7 +86,7 @@ void Application<ENTITY>::Controller(eMENU mnemo)
 	case eLAST:			Last();		break;
 	case ePREVIOUS:		Previous();	break;
 	case eSORT:			Sort();		break;
-	case eSEARCH:		Shearch();	break;
+	case eSEARCH:		Search();	break;
 	case eERROR:		Error();	break;
 	case eQUIT:			Quit();		break;
 	default:			Bydefault(); break;
@@ -113,9 +115,9 @@ void Application<ENTITY>::Sort()
 }
 
 template <class ENTITY>
-void Application<ENTITY>::Shearch()
+void Application<ENTITY>::Search()
 {
-	cout << "Shearch" << endl;
+	cout << "Search" << endl;
 }
 
 template <class ENTITY>
@@ -174,31 +176,35 @@ void Application<ENTITY>::List()
 }
 
 template <class ENTITY>
-void Application<ENTITY>::First()
+ENTITY* Application<ENTITY>::First()
 {
 	this->Temp = this->Container.First();
 	Frm << this->Temp;
+	return Temp;
 }
 
 template <class ENTITY>
-void Application<ENTITY>::Next()
+ENTITY* Application<ENTITY>::Next()
 {
 	this->Temp = this->Container.Next();
 	Frm << this->Temp;
+	return Temp;
 }
 
 template <class ENTITY>
-void Application<ENTITY>::Last()
+ENTITY* Application<ENTITY>::Last()
 {
 	this->Temp = this->Container.Last();
 	Frm << this->Temp;
+	return Temp;
 }
 
 template <class ENTITY>
-void Application<ENTITY>::Previous()
+ENTITY* Application<ENTITY>::Previous()
 {
 	this->Temp = this->Container.Previous();
 	Frm << this->Temp;
+	return Temp;
 }
 
 template <class ENTITY>
