@@ -3,8 +3,11 @@
 class Livraison :
 	public DropdownList<Livraison>
 {
-protected:
 public:
 	Livraison();
 	~Livraison();
+
+	void setName(const char* value);
+
+	const char* getName();
 };

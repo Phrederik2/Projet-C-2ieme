@@ -18,7 +18,7 @@ public:
 	Application();
 	~Application();
 
-	void run();
+	void run(bool value= 0);
 	void Create();
 	void Read();
 	void Update();
@@ -34,7 +34,7 @@ public:
 	void Error();
 	void Quit();
 	void Bydefault();
-	static void Run();
+	static void Run(bool value = 0);
 protected:
 	void Controller(eMENU mnemo);
 };
@@ -54,14 +54,14 @@ Application<ENTITY>::~Application()
 }
 
 template <class ENTITY>
-void Application<ENTITY>::run()
+void Application<ENTITY>::run(bool value)
 {
 	this->Again = true;
 
 
 	do
 	{
-		this->MenuStandart.display(cout);
+		this->MenuStandart.display(cout,value);
 
 		Controller(this->MenuStandart.askChoice(cout));
 
@@ -139,10 +139,10 @@ void Application<ENTITY>::Bydefault()
 }
 
 template<class ENTITY>
-inline void Application<ENTITY>::Run()
+inline void Application<ENTITY>::Run(bool value)
 {
 	Application Appli;
-	Appli.run();
+	Appli.run(value);
 }
 
 template <class ENTITY>

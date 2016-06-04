@@ -18,13 +18,16 @@ public:
 	void operator<<(ENTITY* other);
 	void operator>>(ENTITY* other);
 
-	void Display( ostream& stream, Client* other);
-	void Display( ostream& stream, Livraison* other);
-	void Display( ostream& stream, Commande* other);
-	void Display( ostream& stream, RendezVous* other);
-	void Display( ostream& stream, Dossier* other);
+	void Display(ostream& stream, Client* other);
+	void Display(ostream& stream, Livraison* other);
+	void Display(ostream& stream, Commande* other);
+	void Display(ostream& stream, RendezVous* other);
+	void Display(ostream& stream, Dossier* other);
 
-	void Display_Client(Dossier* other);
+	void DisplayClient(ostream& stream, Dossier* other);
+	void DisplayLivraison(ostream& stream, Dossier* other);
+	void DisplayCommande(ostream& stream, Dossier* other);
+	void DisplayRendezVous(ostream& stream, Dossier* other);
 
 	void Encode(Client* other);
 	void Encode(Livraison* other);
@@ -40,23 +43,13 @@ public:
 template<class ENTITY>
 void Formulaire<ENTITY>::operator<<(ENTITY* other)
 {
-	if (other)
-	{
-		//other->Display();
-		Display(cout, other);
-	}
-
+	if (other) Display(cout, other);
 }
 
 template<class ENTITY>
 void Formulaire<ENTITY>::operator>>(ENTITY* other)
 {
-	if (other)
-	{
-		//other->Encode();
-		Encode(other);
-	}
-	
+	if (other) Encode(other);	
 }
 
 template<class ENTITY>
@@ -77,14 +70,14 @@ template<class ENTITY>
 inline void Formulaire<ENTITY>::Display(ostream & stream, Livraison * other)
 {
 	stream << "ID: " << other->getID() << endl;
-	stream << "Statut: " << other->Name.getText() << endl;
+	stream << "Statut: " << other->getName() << endl;
 }
 
 template<class ENTITY>
 inline void Formulaire<ENTITY>::Display(ostream & stream, Commande * other)
 {
 	stream << "ID: " << other->getID() << endl;
-	stream << "Statut: " << other->Name.getText() << endl;
+	stream << "Statut: " << other->getName() << endl;
 }
 
 template<class ENTITY>
@@ -101,20 +94,66 @@ inline void Formulaire<ENTITY>::Display(ostream & stream, Dossier * other)
 {
 	stream << "ID: " << other->getID() << endl;
 	stream << "Client: ";
-	Display_Client(other);
+	DisplayClient(stream, other);
+	stream << "RDV: ";
+	DisplayRendezVous(stream, other);
+	stream << "Livraison: ";
+	DisplayLivraison(stream, other);
+	stream << "Commande: ";
+	DisplayCommande(stream, other);
+}
+
+
+template<typename ENTITY>
+inline void Formulaire<ENTITY>::DisplayClient(ostream& stream, Dossier * other)
+{
+	Client* temp;
+	Search<Client> search;
+	temp = search.ReturnValue(other->getID());
+	if (temp != NULL)
+	{
+		stream << temp->getNom() << " " << temp->getPrenom() << endl;
+		stream << temp->getSociete() << endl;
+		stream << temp->getRue() << " " << temp->getNumero() << temp->getBoite() << ", " << temp->getCodePostal() << temp->getLocalite() << endl;
+	}
 }
 
 template<class ENTITY>
-inline void Formulaire<ENTITY>::Display_Client(Dossier * other)
+inline void Formulaire<ENTITY>::DisplayLivraison(ostream & stream, Dossier * other)
 {
-	Client* temp;
-	Search<Client> s;
-	temp = s.ReturnValue(other->getID());
-	if (temp)
+	Livraison* temp;
+	Search<Livraison> search;
+	temp = search.ReturnValue(other->getID());
+	if (temp != NULL)
 	{
-		Display(cout,temp);
+		stream << temp->getName() << endl;
 	}
 }
+
+template<class ENTITY>
+inline void Formulaire<ENTITY>::DisplayCommande(ostream & stream, Dossier * other)
+{
+	Commande* temp;
+	Search<Commande> search;
+	temp = search.ReturnValue(other->getID());
+	if (temp != NULL)
+	{
+		stream << temp->getName() << endl;
+	}
+}
+
+template<class ENTITY>
+inline void Formulaire<ENTITY>::DisplayRendezVous(ostream & stream, Dossier * other)
+{
+	RendezVous* temp;
+	Search<RendezVous> search;
+	temp = search.ReturnValue(other->getID());
+	if (temp != NULL)
+	{
+		stream << "Debut: " << temp->getDateDebut() << " Fin: " << temp->getDateFin();
+	}
+}
+
 
 template<class ENTITY>
 inline void Formulaire<ENTITY>::Encode(Client * other)
@@ -173,7 +212,7 @@ inline void Formulaire<ENTITY>::Encode(Dossier * other)
 {
 	cout << "ID: " << other->getID() << endl;
 	cout << "Client: ";
-	other->setID_Client(4);
+	Application<Client>::Run(1);
 }
 
 template<class ENTITY>

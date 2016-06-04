@@ -5,7 +5,7 @@
 #include"Container.h"
 
 template<class ENTITY>
-class Menu//: protected Container<LigneMenu>
+class Menu
 {
 
 protected:
@@ -17,14 +17,13 @@ protected:
 
 public:
 	Menu();				// sans paramettre
-	Menu(char* title);	// avec paramettre
 	Menu(const Menu<ENTITY>& other);	// recopie
 	~Menu();			// Destructeur
 	Menu<ENTITY>& operator=(Menu<ENTITY>& other); // copie
 
 	const char* getTitle() const;
 	void setTitle(const char* Title);
-	void display(ostream& COUT);
+	void display(ostream& COUT, bool value=0);
 	eMENU askChoice(ostream & COUT);
 	eMENU translateHotkey(char hotkey);
 };

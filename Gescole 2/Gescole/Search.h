@@ -13,7 +13,7 @@ public:
 };
 
 template<class ENTITY>
-ENTITY* Search<ENTITY>::ReturnValue(int id)
+inline ENTITY* Search<ENTITY>::ReturnValue(int id)
 {
 	Application<ENTITY>	app;
 	ENTITY* temp;

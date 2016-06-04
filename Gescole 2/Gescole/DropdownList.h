@@ -5,7 +5,7 @@ using namespace std;
 
 template<class ENTITY>
 class DropdownList :
-	protected ContainerEntity
+	public ContainerEntity
 {
 	//DataMembre.
 protected:

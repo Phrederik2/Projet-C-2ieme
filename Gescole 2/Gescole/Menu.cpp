@@ -8,6 +8,7 @@ Menu<ENTITY>::Menu()
 	m_title = new string("Test");
 	m_choice = eNULL;
 
+	m_Menu.Add(new LigneMenu(eSELECT, 'T', "Selectionner."));
 	m_Menu.Add(new LigneMenu(eCREATE, 'C', "Cree."));
 	m_Menu.Add(new LigneMenu(eREAD, 'A', "Afficher l'enregistrement courant."));
 	m_Menu.Add(new LigneMenu(eUPDATE, 'M', "Modifier."));
@@ -18,27 +19,6 @@ Menu<ENTITY>::Menu()
 	m_Menu.Add(new LigneMenu(eLAST, 'D', "Dernier."));
 	m_Menu.Add(new LigneMenu(eLIST, 'L', "Lister les enregistrement."));
 	m_Menu.Add(new LigneMenu(eQUIT, 'Q', "Quitter."));
-}
-
-template<class ENTITY>
-Menu<ENTITY>::Menu(char * title)
-{
-	m_title = new string("Test");
-	m_choice = eNULL;
-
-
-	m_Menu.Add(new LigneMenu(eCREATE, 'C', "Cree."));
-	m_Menu.Add(new LigneMenu(eREAD, 'A', "Afficher l'enregistrement courant."));
-	m_Menu.Add(new LigneMenu(eUPDATE, 'M', "Modifier."));
-	m_Menu.Add(new LigneMenu(eDELETE, 'E', "Effacer l'enregistrement courant."));
-	m_Menu.Add(new LigneMenu(eFIRST, 'P', "Premier."));
-	m_Menu.Add(new LigneMenu(eNEXT, 'S', "Suivant."));
-	m_Menu.Add(new LigneMenu(ePREVIOUS, 'R', "Precedent."));
-	m_Menu.Add(new LigneMenu(eLAST, 'D', "Dernier."));
-	m_Menu.Add(new LigneMenu(eLIST, 'L', "Lister les enregistrement."));
-	m_Menu.Add(new LigneMenu(eQUIT, 'Q', "Quitter."));
-	
-	
 }
 
 template<class ENTITY>
@@ -79,7 +59,7 @@ void Menu<ENTITY>::setTitle(const char * Title)
 }
 
 template<class ENTITY>
-void Menu<ENTITY>::display(ostream & COUT)
+void Menu<ENTITY>::display(ostream & COUT, bool value)
 {
 	LigneMenu* temp_Menu;
 	ENTITY temp;
@@ -88,7 +68,7 @@ void Menu<ENTITY>::display(ostream & COUT)
 	temp_Menu = m_Menu.First();
 	while (temp_Menu)
 	{
-		COUT << "\t" << temp_Menu->getHockey() << " - " << *(temp_Menu->getLigne()) << endl;
+		if ((value == 1 ||  temp_Menu->getNemo() != eSELECT)) COUT << "\t" << temp_Menu->getHockey() << " - " << *(temp_Menu->getLigne()) << endl;
 		temp_Menu = m_Menu.Next();
 	}
 

@@ -3,11 +3,13 @@
 class Commande :
 	public DropdownList<Commande>
 {
-protected:
-	//PrimaryKey<Commande> ID;
 public:
 	Commande();
 	~Commande();
+
+	void setName(const char* value);
+
+	const char* getName();
 
 };
 

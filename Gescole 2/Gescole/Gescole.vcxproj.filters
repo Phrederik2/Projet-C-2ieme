@@ -72,9 +72,6 @@
     <ClCompile Include="Client.cpp">
       <Filter>3. DAL</Filter>
     </ClCompile>
-    <ClCompile Include="Search.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Text.h">
@@ -141,7 +138,7 @@
       <Filter>3. DAL</Filter>
     </ClInclude>
     <ClInclude Include="Search.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>4. UTILITY</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
