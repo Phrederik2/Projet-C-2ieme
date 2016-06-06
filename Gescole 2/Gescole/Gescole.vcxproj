@@ -150,7 +150,6 @@
     <ClCompile Include="LigneMenu.cpp" />
     <ClCompile Include="Livraison.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="RendezVous.cpp" />
     <ClCompile Include="sqlite3.c" />
     <ClCompile Include="TestUnitaire.cpp" />
@@ -161,12 +160,12 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Commande.h" />
-    <ClInclude Include="Container.h" />
     <ClInclude Include="ContainerEntity.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="Dossier.h" />
     <ClInclude Include="Formulaire.h" />
     <ClInclude Include="LigneMenu.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="Livraison.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Message.h" />

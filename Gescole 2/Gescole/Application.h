@@ -1,16 +1,16 @@
 #pragma once
-#include"Menu.cpp"
-#include"Container.h"
+#include"List.h"
 #include"Formulaire.h"
+#include"Menu.h"
 
 template<class ENTITY>
 class Application
 {
 
 protected:
-	static Menu<ENTITY> MenuStandart;
+	Menu<ENTITY>* MenuStandart;
 	bool Again;
-	static Container<ENTITY> Container;
+	static List<ENTITY> Container;
 	Formulaire<ENTITY> Frm;
 	ENTITY* Temp;
 
@@ -40,20 +40,21 @@ protected:
 	void Controller(eMENU mnemo);
 };
 
+//template <class ENTITY>
+//Menu<ENTITY> Application<ENTITY>::MenuStandart;
 template <class ENTITY>
-Menu<ENTITY> Application<ENTITY>::MenuStandart;
-template <class ENTITY>
-Container<ENTITY> Application<ENTITY>::Container ;
+List<ENTITY> Application<ENTITY>::Container;
 
 template <class ENTITY>
 Application<ENTITY>::Application()
 {
-
+	MenuStandart = new Menu<ENTITY>;
 }
 
 template <class ENTITY>
 Application<ENTITY>::~Application()
 {
+	delete MenuStandart;
 }
 
 template <class ENTITY>
@@ -64,9 +65,9 @@ ENTITY* Application<ENTITY>::run(bool value)
 
 	do
 	{
-		this->MenuStandart.display(cout,value);
+		this->MenuStandart->display(cout,value);
 
-		Controller(this->MenuStandart.askChoice(cout));
+		Controller(this->MenuStandart->askChoice(cout));
 
 	} while (this->Again);
 

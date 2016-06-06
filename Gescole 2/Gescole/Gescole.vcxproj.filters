@@ -66,9 +66,6 @@
     <ClCompile Include="Dossier.cpp">
       <Filter>3. DAL</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>4. UTILITY</Filter>
-    </ClCompile>
     <ClCompile Include="Client.cpp">
       <Filter>3. DAL</Filter>
     </ClCompile>
@@ -88,9 +85,6 @@
     </ClInclude>
     <ClInclude Include="DropdownList.h">
       <Filter>4. MODEL</Filter>
-    </ClInclude>
-    <ClInclude Include="Container.h">
-      <Filter>4. UTILITY</Filter>
     </ClInclude>
     <ClInclude Include="Message.h">
       <Filter>4. UTILITY</Filter>
@@ -138,6 +132,9 @@
       <Filter>3. DAL</Filter>
     </ClInclude>
     <ClInclude Include="Search.h">
+      <Filter>4. UTILITY</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
       <Filter>4. UTILITY</Filter>
     </ClInclude>
   </ItemGroup>
