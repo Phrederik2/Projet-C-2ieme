@@ -58,7 +58,7 @@ Text::~Text()
 
 void Text::setText(const char * text)
 {
-	strncpy(m_Text, text, getSize());
+	strncpy(m_Text, text, (size_t)getSize());
 }
 
 const char * Text::getText()

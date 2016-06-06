@@ -5,18 +5,21 @@
 template<class ENTITY>
 class Search
 {
+
 public:
 
-	ENTITY* ReturnValue(int id);
+	ENTITY* _ReturnValue(int id);
+	static ENTITY* ReturnValue(int id);
 	Search();
 	~Search();
 };
 
 template<class ENTITY>
-inline ENTITY* Search<ENTITY>::ReturnValue(int id)
+inline ENTITY* Search<ENTITY>::_ReturnValue(int id)
 {
-	Application<ENTITY>	app;
+	Application<ENTITY> app;
 	ENTITY* temp;
+
 	temp = app.First();
 
 	while (temp)
@@ -25,6 +28,14 @@ inline ENTITY* Search<ENTITY>::ReturnValue(int id)
 		temp = app.Next();
 	}
 
+	return NULL;
+}
+
+template<class ENTITY>
+inline ENTITY * Search<ENTITY>::ReturnValue(int id)
+{
+	Search search;
+	search._ReturnValue(id);
 	return NULL;
 }
 

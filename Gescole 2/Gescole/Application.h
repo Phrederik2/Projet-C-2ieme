@@ -8,7 +8,7 @@ class Application
 {
 
 protected:
-	Menu<ENTITY> MenuStandart;
+	static Menu<ENTITY> MenuStandart;
 	bool Again;
 	static Container<ENTITY> Container;
 	Formulaire<ENTITY> Frm;
@@ -18,7 +18,8 @@ public:
 	Application();
 	~Application();
 
-	void run(bool value= 0);
+	ENTITY* run(bool value= 0);
+	ENTITY* Select();
 	void Create();
 	void Read();
 	void Update();
@@ -34,11 +35,13 @@ public:
 	void Error();
 	void Quit();
 	void Bydefault();
-	static void Run(bool value = 0);
+	static ENTITY* Run(bool value = 0);
 protected:
 	void Controller(eMENU mnemo);
 };
 
+template <class ENTITY>
+Menu<ENTITY> Application<ENTITY>::MenuStandart;
 template <class ENTITY>
 Container<ENTITY> Application<ENTITY>::Container ;
 
@@ -54,7 +57,7 @@ Application<ENTITY>::~Application()
 }
 
 template <class ENTITY>
-void Application<ENTITY>::run(bool value)
+ENTITY* Application<ENTITY>::run(bool value)
 {
 	this->Again = true;
 
@@ -67,6 +70,15 @@ void Application<ENTITY>::run(bool value)
 
 	} while (this->Again);
 
+	return Temp;
+
+}
+
+template<class ENTITY>
+inline ENTITY * Application<ENTITY>::Select()
+{
+	Quit();
+	return Temp;
 }
 
 template <class ENTITY>
@@ -74,17 +86,17 @@ void Application<ENTITY>::Controller(eMENU mnemo)
 {
 	switch (mnemo)
 	{
-
+	case eSELECT:		Select();	break;
 	case eCREATE:		Create();	break;
 	case eREAD:			Read();		break;
 	case eUPDATE:		Update();	break;
 	case eDELETE:		Delete();	break;
 	case eDELETEALL:	DeleteAll(); break;
 	case eLIST:			List();		break;
-	case eFIRST:		First();	break;
-	case eNEXT:			Next();		break;
-	case eLAST:			Last();		break;
-	case ePREVIOUS:		Previous();	break;
+	case eFIRST:		Frm << First();  	break;
+	case eNEXT:			Frm << Next();		break;
+	case eLAST:			Frm << Last();		break;
+	case ePREVIOUS:		Frm << Previous(); 	break;
 	case eSORT:			Sort();		break;
 	case eSEARCH:		Search();	break;
 	case eERROR:		Error();	break;
@@ -139,10 +151,10 @@ void Application<ENTITY>::Bydefault()
 }
 
 template<class ENTITY>
-inline void Application<ENTITY>::Run(bool value)
+ENTITY*  Application<ENTITY>::Run(bool value)
 {
 	Application Appli;
-	Appli.run(value);
+	return Appli.run(value);
 }
 
 template <class ENTITY>
@@ -179,7 +191,6 @@ template <class ENTITY>
 ENTITY* Application<ENTITY>::First()
 {
 	this->Temp = this->Container.First();
-	Frm << this->Temp;
 	return Temp;
 }
 
@@ -187,7 +198,6 @@ template <class ENTITY>
 ENTITY* Application<ENTITY>::Next()
 {
 	this->Temp = this->Container.Next();
-	Frm << this->Temp;
 	return Temp;
 }
 
@@ -195,7 +205,6 @@ template <class ENTITY>
 ENTITY* Application<ENTITY>::Last()
 {
 	this->Temp = this->Container.Last();
-	Frm << this->Temp;
 	return Temp;
 }
 
@@ -203,7 +212,6 @@ template <class ENTITY>
 ENTITY* Application<ENTITY>::Previous()
 {
 	this->Temp = this->Container.Previous();
-	Frm << this->Temp;
 	return Temp;
 }
 

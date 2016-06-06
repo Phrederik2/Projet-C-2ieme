@@ -22,7 +22,8 @@ void main(void)
 				  //test
 	TestUnitaire::Run();
 
-	Application<Client>::Run();
+	//Application<Client>::Run();
+	//Application<Client>::Run();
 	Application<Dossier>::Run();
 	//Application<Commande>::Run();
 	//Application<Livraison>::Run();

@@ -176,7 +176,7 @@ bool Container<ENTITY>::Flush()
 template<class ENTITY>
 size_t Container<ENTITY>::Size() const
 {
-	if (!idOwner) return 0;
+	//if (!idOwner) return 0;
 	return m_container.size();
 }
 
