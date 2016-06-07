@@ -29,7 +29,6 @@ public:
 	bool Step();
 	size_t NumberColumn();
 	std::string NameColumn(int row);
-	void AddFile(std::string path = "");
 	void Display();
 };
 

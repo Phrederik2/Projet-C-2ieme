@@ -21,6 +21,8 @@ public:
 	void setTitle(const char* title);
 	void setDateDebut(int day, int month, int year);
 	void setDateFin(int day, int month, int year);
+	Date* setDateDebut();
+	Date* setDateFin();
 	void setRemark(const char* remark);
 
 

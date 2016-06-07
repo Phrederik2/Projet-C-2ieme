@@ -93,13 +93,13 @@ template<class ENTITY>
 inline void Formulaire<ENTITY>::Display(ostream & stream, Dossier * other)
 {
 	stream << "ID: " << other->getID() << endl;
-	stream << "Client: ";
+	stream << "Client: " << other->getID_Client() << endl;
 	DisplayClient(stream, other);
-	stream << "RDV: ";
+	stream << "RDV: " << other->getID_RDV() << endl;
 	DisplayRendezVous(stream, other);
-	stream << "Livraison: ";
+	stream << "Livraison: " << other->getID_Livraison() << endl;
 	DisplayLivraison(stream, other);
-	stream << "Commande: ";
+	stream << "Commande: " << other->getID_Commande() << endl;
 	DisplayCommande(stream, other);
 }
 
@@ -107,10 +107,9 @@ inline void Formulaire<ENTITY>::Display(ostream & stream, Dossier * other)
 template<typename ENTITY>
 inline void Formulaire<ENTITY>::DisplayClient(ostream& stream, Dossier * other)
 {
-	if (!other->getID_Client()) return;
 	Client* temp;
-	temp = Search<Client>::ReturnValue(other->getID());
-	if (temp != NULL)
+	temp = Search<Client>::ReturnValue(other->getID_Client());
+	if (temp)
 	{
 		stream << temp->getNom() << " " << temp->getPrenom() << endl;
 		stream << temp->getSociete() << endl;
@@ -121,10 +120,9 @@ inline void Formulaire<ENTITY>::DisplayClient(ostream& stream, Dossier * other)
 template<class ENTITY>
 inline void Formulaire<ENTITY>::DisplayLivraison(ostream & stream, Dossier * other)
 {
-	if (!other->getID_Livraison()) return;
 	Livraison* temp;
 	temp = Search<Livraison>::ReturnValue(other->getID_Livraison());
-	if (temp != NULL)
+	if (temp)
 	{
 		stream << temp->getName() << endl;
 	}
@@ -133,10 +131,9 @@ inline void Formulaire<ENTITY>::DisplayLivraison(ostream & stream, Dossier * oth
 template<class ENTITY>
 inline void Formulaire<ENTITY>::DisplayCommande(ostream & stream, Dossier * other)
 {
-	if (!other->getID_Commande()) return;
 	Commande* temp;
 	temp = Search<Commande>::ReturnValue(other->getID_Commande());
-	if (temp != NULL)
+	if (temp)
 	{
 		stream << temp->getName() << endl;
 	}
@@ -145,10 +142,9 @@ inline void Formulaire<ENTITY>::DisplayCommande(ostream & stream, Dossier * othe
 template<class ENTITY>
 inline void Formulaire<ENTITY>::DisplayRendezVous(ostream & stream, Dossier * other)
 {
-	if (!other->getID_RDV()) return;
 	RendezVous* temp;
 	temp = Search<RendezVous>::ReturnValue(other->getID_RDV());
-	if (temp != NULL)
+	if (temp)
 	{
 		stream << "Debut: " << temp->getDateDebut() << " Fin: " << temp->getDateFin();
 	}
@@ -200,11 +196,11 @@ inline void Formulaire<ENTITY>::Encode(RendezVous * other)
 {
 	cout << "ID: " << other->getID() << endl;
 	cout << "Date de debut: " << endl;
-	Encode(other->DateDebut);
+	Encode(other->setDateDebut());
 	cout << "Date de fin: " << endl;
-	Encode(other->DateFin);
+	Encode(other->setDateFin());
 	cout << "Requarque: " << endl;
-	if (zs.Ask()) other->Remark.setText(zs.ValString());
+	if (zs.Ask()) other->setRemark(zs.ValString());
 }
 
 template<class ENTITY>
@@ -212,22 +208,32 @@ inline void Formulaire<ENTITY>::Encode(Dossier * other)
 {
 	Client* client;
 	Commande* commande;
+	Livraison* livraison;
+	RendezVous* rendezvous;
+
 	cout << "ID: " << other->getID() << endl;
 	cout << "Client: " << endl;
 	cout << endl;
 	client = Application<Client>::Run(1);
 	other->setID_Client(client->getID());
+	cout << "Commande: " << endl;
 	commande = Application<Commande>::Run(1);
-	other->setID_Client(commande->getID());
+	other->setID_Commande(commande->getID());
+	cout << "Livraison: " << endl;
+	livraison = Application<Livraison>::Run(1);
+	other->setID_Livraison(commande->getID());
+	cout << "Rendez-vous: " << endl;
+	rendezvous = Application<RendezVous>::Run(1);
+	other->setID_RDV(commande->getID());
 }
 
 template<class ENTITY>
 inline void Formulaire<ENTITY>::Encode(Date * other)
 {
 	cout << "Jour: " << endl;
-	if (zs.Ask()) setDay(zs.ValUInt());
+	if (zs.Ask()) other->setDay(zs.ValUInt());
 	cout << "Mois: " << endl;
-	if (zs.Ask()) setMonth(zs.ValUInt());
+	if (zs.Ask()) other->setMonth(zs.ValUInt());
 	cout << "Annee: " << endl;
-	if (zs.Ask()) setYear(zs.ValUInt());
+	if (zs.Ask()) other->setYear(zs.ValUInt());
 }

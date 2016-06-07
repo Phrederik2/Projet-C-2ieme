@@ -9,6 +9,8 @@
 #include"Date.h"
 #include"RendezVous.h"
 #include"Dossier.h"
+#include"Stream.h"
+#include"SQL.h"
 
 
 using namespace std;
@@ -21,10 +23,14 @@ void main(void)
 {
 				  //test
 	TestUnitaire::Run();
+	SQL sql("Test.db");
 
+	string requete = R"(select * from client;)";
+
+	sql.Select(requete);
+	Application<RendezVous>::Run();
 	//Application<Client>::Run();
-	//Application<Client>::Run();
-	Application<Dossier>::Run();
+	//Application<Dossier>::Run();
 	//Application<Commande>::Run();
 	//Application<Livraison>::Run();
 	//Application<RendezVous>::Run();

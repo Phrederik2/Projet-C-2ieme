@@ -147,11 +147,14 @@
     <ClCompile Include="ContainerEntity.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="Dossier.cpp" />
+    <ClCompile Include="File.cpp" />
     <ClCompile Include="LigneMenu.cpp" />
     <ClCompile Include="Livraison.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RendezVous.cpp" />
+    <ClCompile Include="SQL.cpp" />
     <ClCompile Include="sqlite3.c" />
+    <ClCompile Include="Stream.cpp" />
     <ClCompile Include="TestUnitaire.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="ZoneSaisie.cpp" />
@@ -163,6 +166,7 @@
     <ClInclude Include="ContainerEntity.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="Dossier.h" />
+    <ClInclude Include="File.h" />
     <ClInclude Include="Formulaire.h" />
     <ClInclude Include="LigneMenu.h" />
     <ClInclude Include="List.h" />
@@ -173,8 +177,10 @@
     <ClInclude Include="PrimaryKey.h" />
     <ClInclude Include="RendezVous.h" />
     <ClInclude Include="Search.h" />
-    <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="SQL.h" />
     <ClInclude Include="DropdownList.h" />
+    <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="Stream.h" />
     <ClInclude Include="TestUnitaire.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Title.h" />

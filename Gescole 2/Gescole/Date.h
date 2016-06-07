@@ -16,6 +16,7 @@ protected:
 	int format(int value, int min, int max);
 
 public:
+	Date* setDate();
 	void setYear(int year);
 	void setMonth(int month);
 	void setDay(int day);

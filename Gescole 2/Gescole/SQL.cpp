@@ -4,7 +4,9 @@
 #include<iostream>
 #include"List.h"
 #include<fstream>
+#include"File.h"
 
+using namespace std;
 
 
 SQL::SQL(std::string path)
@@ -33,11 +35,9 @@ int SQL::Initialize(std::string path)
 	else
 	{
 		Open(path);
-		string createDB = R"(\\Mac\Google Drive\Notes de cours 2015-2016\SGBD\Dossier SGBD\Test_DB_SQLite\Test_DB_SQLite\CreateDB SQLite.txt)";
-		AddFile(createDB);
-		std::cout << "Base de donnée '" << path << "' a ete recree." << std::endl;
-		string file = R"(\\Mac\Google Drive\Notes de cours 2015-2016\SGBD\Dossier SGBD\Test_DB_SQLite\Test_DB_SQLite\INSERT.txt)";
-		AddFile(file);
+		//string createDB = R"(Create.txt)";
+		Exec(R"(CREATE TABLE `client` (`ID`	INTEGER,`nom`TEXT,`prenom`TEXT,`societe`TEXT,`localite` TEXT,`rue`TEXT,`numero`	INTEGER,`boite`	TEXT,`codepostal`INTEGER,PRIMARY KEY(ID));)");
+
 	}
 	return 0;
 }
@@ -118,20 +118,6 @@ std::string SQL::NameColumn(int row)
 	return sqlite3_column_name(this->Requete, row);
 }
 
-void SQL::AddFile(std::string path)
-{
-	
-	int i = 0;
-	if (!path.size()) std::cout << "Introduisez le fichier a charger dans la base." << std::endl;
-	File file(path);
-
-	while (file.RecoverNextLine())
-	{
-		Exec(file.getCurrentLine());
-		i++;
-	}
-	std::cout << " Ligne chargees = " << i << " Chargement termine." << std::endl;
-}
 
 void SQL::Display()
 {

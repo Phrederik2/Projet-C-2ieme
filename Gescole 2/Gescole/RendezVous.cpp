@@ -35,6 +35,16 @@ void RendezVous::setDateFin(int day, int month, int year)
 	DateFin.setYear(year);
 }
 
+Date* RendezVous::setDateDebut()
+{
+	return DateDebut.setDate();
+}
+
+Date* RendezVous::setDateFin()
+{
+	return DateFin.setDate();
+}
+
 void RendezVous::setRemark(const char * remark)
 {
 	Remark = remark;

@@ -35,8 +35,7 @@ template<class ENTITY>
 inline ENTITY * Search<ENTITY>::ReturnValue(int id)
 {
 	Search search;
-	search._ReturnValue(id);
-	return NULL;
+	return search._ReturnValue(id);
 }
 
 template<class ENTITY>

@@ -17,6 +17,11 @@ Date::~Date()
 
 
 
+Date * Date::setDate()
+{
+	return this;
+}
+
 void Date::setYear(int year)
 {
 	Year = format(1970, 2030, year);
