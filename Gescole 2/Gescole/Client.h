@@ -4,7 +4,7 @@
 #include"PrimaryKey.h"
 
 class Client :
-	protected ContainerEntity
+	public ContainerEntity
 {
 	//DataMenbre
 protected:
@@ -26,6 +26,7 @@ public:
 	~Client();
 
 	void setTitle(const char* title);
+	void setID(int id);
 	void setNom(const char* nom);
 	void setPrenom(const char* prenom);
 	void setSociete(const char* societe);

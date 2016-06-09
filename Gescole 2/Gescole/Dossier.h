@@ -19,6 +19,7 @@ public:
 	virtual ~Dossier(); // destructeur
 
 	//Seteur.
+	void setID(int id);
 	void setID_Client(unsigned int id_client);
 	void setID_Commande(unsigned int id_commande);
 	void setID_Livraison(unsigned int id_livraison);

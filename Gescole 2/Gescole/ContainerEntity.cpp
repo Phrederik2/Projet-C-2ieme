@@ -4,7 +4,9 @@
 
 ContainerEntity::ContainerEntity()
 {
-
+	IsNew = false;
+	IsChanged = false;
+	IsDelete = false;
 }
 
 

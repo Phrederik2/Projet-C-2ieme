@@ -17,9 +17,13 @@ protected:
 
 public:
 	Date* setDate();
+	void setDate(const char* date);
 	void setYear(int year);
 	void setMonth(int month);
 	void setDay(int day);
 	const char* getDate();
+	int getYear();
+	int getMonth();
+	int getDay();
 };
 

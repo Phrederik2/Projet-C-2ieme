@@ -1,45 +1,43 @@
 #pragma once
 #include <string>
-#include <fstream>
-#include "List.h"
+#include<fstream>
+#include"List.h"
+
+using namespace std;
 
 class File
 {
-private:
-	std::ifstream Input;
-	std::ofstream Output;
-	std::string Line;
-	std::string Path;
-	std::streamoff Position;
+protected:
+	string Path;
+	streamoff Position;
+	streamoff EndOfFile;
+	string CurrentLine;
+	ifstream Input;
+	ofstream Output;
+	
 
-	bool OpenInput(const std::string & path);
-	bool OpenOutput(const std::string & path);
-	bool OpenOutput(const std::string & path, bool append);
-	void CloseInput();
-	void CloseOutput();
-
-	unsigned long GetInputLength();
-	std::string ReadInput(unsigned long length);
-	bool InputIsReadable();
+protected:
+	bool OpenIN();
+	bool OpenOUT();
+	void LastPosition();
+	void RegisterCurrentPosition();
+	void Close();
+	void Initialize(string path);
 
 public:
-	File(const std::string & path);
+	File(string path = "");
+	File(File& other);
+	File& operator= (File& other);
 
-	static bool Exists(const std::string & path);
-	static bool Remove(const std::string & path);
+	string Read();
+	bool RecoverNextLine();
+	string getCurrentLine();
+	void WriteLine(string line);
+	void Empty();
 
-	std::string Read();
-	std::string ReadLine();
-	List<std::string> ReadLines();
-	bool Write(const std::string & data);
-	bool WriteLine(const std::string & line);
-	bool WriteLines(List<std::string> & lines);
-	bool IsReadable();
-	void Rewind();
+	static List<string>& ReadLines(string path = "");
+	static void Write(List<string>& list, bool emptyfile = false, string path = "");
 
-	static std::string Read(const std::string & path);
-	static List<std::string> ReadLines(const std::string & path);
-	static bool Write(const std::string & path, const std::string & data);
-	static bool WriteLines(const std::string & path, List<std::string> & lines);
 	
 };
+

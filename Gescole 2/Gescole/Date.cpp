@@ -1,5 +1,6 @@
 #include "Date.h"
 #include"ZoneSaisie.h"
+#include<ctime>
 
 
 Date::Date()
@@ -20,6 +21,12 @@ Date::~Date()
 Date * Date::setDate()
 {
 	return this;
+}
+
+void Date::setDate(const char * date)
+{
+	string ddate = date;
+	ddate.find('/');
 }
 
 void Date::setYear(int year)
@@ -49,4 +56,19 @@ const char * Date::getDate()
 	TDate = "";
 	TDate + Day + "/" + Month + "/" + Year;
 	return TDate.getText();
+}
+
+int Date::getYear()
+{
+	return Year;
+}
+
+int Date::getMonth()
+{
+	return Month;
+}
+
+int Date::getDay()
+{
+	return Day;
 }

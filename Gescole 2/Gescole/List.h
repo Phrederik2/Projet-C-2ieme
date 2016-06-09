@@ -1,28 +1,16 @@
 #pragma once
-
 #include <list>
 
 template <typename T> class List
 {
 protected:
-	static List<T>* Owner;
 	std::list<T*> Container;
 	typename std::list<T*>::iterator Current;
-	static unsigned long Alive;
-
 public:
 	List();
 	~List();
-	List(const List<T> & source);
-	List<T> & operator=(List<T> & source);
 
-	void Flush();
-
-	size_t Size() const;
-
-	List<T>* GetOwner() const;
-
-	List<T> & Add(T * element);
+	void Add(T* element);
 	T* GetCurrent();
 	T* First();
 	T* Last();
@@ -30,88 +18,24 @@ public:
 	T* Previous();
 };
 
-template <class T>
-List<T>* List<T>::Owner = 0;
-
-template <class T>
-unsigned long List<T>::Alive = 0;
-
 template <typename T> List<T>::List()
 {
-	this->Current = this->Container.end();
-	if (!this->Owner) this->Owner = this;
-	this->Alive++;
 }
 
 template <typename T> List<T>::~List()
 {
-	this->Flush();
-	this->Alive--;
-	if (this->Owner == this) this->Owner = 0;
-}
-
-template<typename T>
-List<T>::List(const List<T> & source)
-{
-	if (!&source) return;
-	if (&source == this) return;
-
-	if (!this->Owner) this->Owner = this;
-	this->Container = source.Container;
-	this->Current = this->Container.begin();
-	while (
-		this->Current != this->Container.end() &&
-		*this->Current != *source.Current
-		)
-		this->Current++;
-	this->Alive++;
-}
-
-template<typename T>
-List<T> & List<T>::operator=(List<T> & source)
-{
-	if (&source == this) return *this;
-	this->Container = source.Container;
-	this->Current = this->Container.begin();
-	while (
-		this->Current != this->Container.end() &&
-		*this->Current != *source.Current
-		)
-		this->Current++;
-
-	return *this;
-}
-
-template <class T>
-void List<T>::Flush()
-{
-	if (this->Owner == this && this->Alive > 1) return;
-	while (this->Size())
+	while (!this->Container.empty())
 	{
-		if (this->Owner == this)
-			delete this->Container.back();
-		this->Container.pop_back();
+		delete this->Container.back();		//suppression de l'élément
+		this->Container.pop_back();			//suppression du pointeur vers l'élément
 	}
 }
 
-template <class T>
-size_t List<T>::Size() const
+template<typename T> void List<T>::Add(T * element)
 {
-	return this->Container.size();
-}
-
-template <class T>
-List<T>* List<T>::GetOwner() const
-{
-	return this->Owner;
-}
-
-template<typename T>
-List<T> & List<T>::Add(T * element)
-{
-	this->Container.push_back(element);
+	if (!element) return;
+	this->Container.push_back(element); 
 	this->Current = --this->Container.end();
-	return *this;
 }
 
 template<typename T> T* List<T>::GetCurrent()
@@ -149,6 +73,4 @@ template<typename T> T* List<T>::Previous()
 	this->Current--;
 	return this->GetCurrent();
 }
-
-
 

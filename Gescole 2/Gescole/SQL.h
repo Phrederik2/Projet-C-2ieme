@@ -1,6 +1,7 @@
 #pragma once
 #include"sqlite3.h"
 #include<string>
+#include"File.h"
 
 class SQL
 {
@@ -25,10 +26,13 @@ public:
 	void Exec(std::string sql);
 	void Select(std::string sql);
 	int Requete_int(int row);
-	std::string Requete_string(int row);
+	bool Requete_bool(int row);
+	const unsigned char* Requete_string(int row);
+	const char Requete_char(int row);
 	bool Step();
 	size_t NumberColumn();
 	std::string NameColumn(int row);
+	void AddFile(std::string path = "");
 	void Display();
 };
 

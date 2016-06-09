@@ -14,6 +14,10 @@ protected:
 	//Text Title;
 	PrimaryKey<ContainerEntity> ID;
 	//Text text;
+public:
+	bool IsNew;
+	bool IsChanged;
+	bool IsDelete;
 
 public:
 			//Constructeur

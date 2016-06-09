@@ -66,9 +66,6 @@
     <ClCompile Include="Client.cpp">
       <Filter>3. DAL</Filter>
     </ClCompile>
-    <ClCompile Include="Stream.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="SQL.cpp">
       <Filter>4. MODEL</Filter>
     </ClCompile>
@@ -76,6 +73,9 @@
       <Filter>4. MODEL</Filter>
     </ClCompile>
     <ClCompile Include="sqlite3.c">
+      <Filter>4. UTILITY</Filter>
+    </ClCompile>
+    <ClCompile Include="Stream.cpp">
       <Filter>4. UTILITY</Filter>
     </ClCompile>
   </ItemGroup>
@@ -122,9 +122,6 @@
     <ClInclude Include="LigneMenu.h">
       <Filter>4. UTILITY</Filter>
     </ClInclude>
-    <ClInclude Include="Application.h">
-      <Filter>4. UTILITY</Filter>
-    </ClInclude>
     <ClInclude Include="Dossier.h">
       <Filter>3. DAL</Filter>
     </ClInclude>
@@ -143,9 +140,6 @@
     <ClInclude Include="List.h">
       <Filter>4. UTILITY</Filter>
     </ClInclude>
-    <ClInclude Include="Stream.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="SQL.h">
       <Filter>4. MODEL</Filter>
     </ClInclude>
@@ -154,6 +148,12 @@
     </ClInclude>
     <ClInclude Include="sqlite3.h">
       <Filter>4. UTILITY</Filter>
+    </ClInclude>
+    <ClInclude Include="Stream.h">
+      <Filter>4. UTILITY</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>2. BLL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

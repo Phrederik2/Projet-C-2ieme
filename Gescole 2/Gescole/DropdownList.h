@@ -22,6 +22,7 @@ public:
 					  //Seteur.
 	void setTitle(const char* title);
 	void setName(const char* name);
+	void setID(int id);
 
 					  //Getteur
 	const char* getTitle();
@@ -68,6 +69,12 @@ template<class ENTITY>
 void DropdownList<ENTITY>::setName(const char * name)
 {
 	Name = name;
+}
+
+template<class ENTITY>
+inline void DropdownList<ENTITY>::setID(int id)
+{
+	ID.setPrimaryKey(id);
 }
 
 template<class ENTITY>

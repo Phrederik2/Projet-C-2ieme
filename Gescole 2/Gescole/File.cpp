@@ -1,193 +1,183 @@
-#include <fstream>
-#include <ios>
 #include "File.h"
+#include<iostream>
 
-File::File(const std::string & path)
+using namespace std;
+
+bool File::OpenIN()
 {
+	
+	bool Value = 0;
+	Input.open(this->Path);
+
+	if (!Input.good())
+	{
+		cout << "Le fichier '" << this->Path << "' n'existe pas!" << endl;
+		cout << "Aucune fonction de lecture ne peux etre utilisee" << endl;
+
+		std::cout << " good()=" << Input.good() << endl;
+		std::cout << " eof()=" << Input.eof() << endl;
+		std::cout << " fail()=" << Input.fail() << endl;
+		std::cout << " bad()=" << Input.bad() << endl;
+		return Value;
+	}
+	Value = Input.good();
+	Input.clear();
+	return Value;
+
+}
+bool File::OpenOUT()
+{
+	bool Value=0;
+	
+	Output.open(Path, ios_base::app);
+	if (!Output.good())
+	{
+		cout << "Le fichier '" << Path << "' ne peux pas etre cree!" << endl;
+		cout << "Aucune fonction d'ecriture ne peux etre utilisee" << endl;
+		return Value;
+	}
+
+	Value = Output.good();
+	Output.clear();
+	return Value;
+}
+void File::Empty()
+{
+	if (Output.good())
+	{
+		Output.open(Path, ios_base::trunc);
+		if (!Output.good())
+		{
+			return;
+		}
+
+		Output.clear();
+		Close();
+	}
+	
+}
+void File::LastPosition()
+{
+	Input.seekg(ios_base::beg + this->Position);
+}
+void File::RegisterCurrentPosition()
+{
+	this->Position = Input.tellg();
+	if (this->Position == -1) this->Position = this->EndOfFile;
+}
+void File::Close()
+{
+	Input.close();
+	Output.close();
+}
+void File::Initialize(string path)
+{
+	this->Position = 0;
 	this->Path = path;
-	this->Position = 0;
+	OpenIN();
+	Input.seekg(0, ios_base::end);
+	this->EndOfFile = Input.tellg();
+	Close();
+	OpenOUT();
+	Close();
 }
-
-bool File::OpenInput(const std::string & path)
+File::File(string path)
 {
-	this->Input.open(path);
-	return this->Input.good();
-}
-
-bool File::OpenOutput(const std::string & path)
-{
-	this->Output.open(path);
-	return this->Output.good();
-}
-
-bool File::OpenOutput(const std::string & path, bool append)
-{
-	if (append)
-		this->Output.open(path, std::fstream::app);
+	
+	if (path.size()) Initialize(path);
 	else
-		return this->OpenOutput(path);
-	return this->Output.good();
-}
-
-void File::CloseInput()
-{
-	if (!this->Input.is_open()) return;
-	this->Input.close();
-}
-
-void File::CloseOutput()
-{
-	if (!this->Output.is_open()) return;
-	this->Output.close();
-}
-
-unsigned long File::GetInputLength()
-{
-	this->Input.seekg(0, this->Input.end);
-	unsigned long length = (unsigned long)this->Input.tellg();
-	this->Input.seekg(0, this->Input.beg);
-	return length;
-}
-
-std::string File::ReadInput(unsigned long length)
-{
-	char * buffer = new char[length + 1];
-	memset(buffer, 0, length + 1);
-
-	this->Input.read(buffer, length);
-	std::string data(buffer);
-
-	delete[] buffer;
-
-	return data;
-
-}
-
-bool File::Exists(const std::string & path)
-{
-	struct stat buffer;
-	return (!stat(path.c_str(), &buffer));
-}
-
-bool File::Remove(const std::string & path)
-{
-	bool fileExists = File::Exists(path);
-	if (fileExists) std::remove(path.c_str());
-
-	return fileExists;
-}
-
-std::string File::Read()
-{
-	std::string data;
-
-	if (this->OpenInput(this->Path))
-		data = this->ReadInput(this->GetInputLength());
-
-	this->CloseInput();
-	return data;
-
-}
-
-std::string File::ReadLine()
-{
-	if (!OpenInput(this->Path)) return std::string();
-	this->Input.seekg(this->Position);
-	if (!this->IsReadable())
 	{
-		this->CloseInput();
-		return std::string();
+		string path;
+		int begin = 0, end = 0;
+		getline(cin, path);
+		begin = path.find_first_of('\"') + 1;
+		end = path.find_last_of('\"') - 1;
+		cout << "Path:" << endl;
+		cout << path.substr(begin, end) << endl;
+
+		Initialize(path.substr(begin, end));
 	}
-	std::getline(this->Input, this->Line);
-	this->Position = this->Input.tellg();
-
-	this->CloseInput();
-	return this->Line;
+	
 }
-
-List<std::string> File::ReadLines()
+File::File(File & other)
 {
-	List<std::string> lines;
-	std::string line;
-
-	if (this->OpenInput(this->Path))
-		while (std::getline(this->Input, line))
-			lines.Add(new std::string(line));
-
-	this->CloseInput();
-	return lines;
+	*this = other;
 }
-
-bool File::Write(const std::string & data)
+File & File::operator=(File & other)
 {
-	bool openSuccess = this->OpenOutput(this->Path);
+	if (this == &other) return *this;
 
-	if (openSuccess)
-		this->Output.write(data.c_str(), data.length());
+	this->Position = other.Position;
+	this->EndOfFile = other.EndOfFile;
+	this->CurrentLine = other.CurrentLine;
 
-	this->CloseOutput();
-	return openSuccess;
+	return *this;
 }
-
-bool File::WriteLine(const std::string & line)
+string File::Read()
 {
-	if (!OpenOutput(this->Path, true)) return false;
-	this->Output.write(line.c_str(), line.length());
-	this->Output.write("\n", 1);
-	this->CloseOutput();
-	return true;
+	char* buffeur = new char[this->EndOfFile + 1];
+	memset(buffeur, 0, sizeof buffeur);
+	OpenIN();
+
+	Input.read(buffeur, this->EndOfFile);
+
+	Close();
+	string data(buffeur);
+	delete[] buffeur;
+	return data;
 }
-
-bool File::WriteLines(List<std::string> & lines)
+bool File::RecoverNextLine()
 {
-	if (!OpenOutput(this->Path)) return false;
-
-	std::string * line = lines.First();
-	while (line)
+	if (OpenIN() && (this->Position < this->EndOfFile))
 	{
-		this->Output.write(line->c_str(), line->length());
-		this->Output.write("\n", 1);
-		line = lines.Next();
+		LastPosition();
+		getline(Input, this->CurrentLine);
+		RegisterCurrentPosition();
+		
+		Close();
+		return true;
+	}
+	
+	return false;
+}
+string File::getCurrentLine()
+{
+	return this->CurrentLine;
+}
+void File::WriteLine(string line)
+{
+	if (Output.good())
+	{
+		OpenOUT();
+		Output << line << endl;
+		Close();
+	}
+}
+List<string>& File::ReadLines(string path)
+{
+	File file(path);
+	List<string>* list;
+	list = new List<string>;
+
+	while (file.RecoverNextLine())
+	{
+		list->Add(new string(file.getCurrentLine()));
 	}
 
-	this->CloseOutput();
-	return true;
+	return *list;
 }
-
-bool File::InputIsReadable() 
-{
-	return this->Position != -1;
-}
-
-void File::Rewind()
-{
-	this->Position = 0;
-}
-
-bool File::IsReadable() {
-	return this->InputIsReadable();
-}
-
-std::string File::Read(const std::string & path)
+void File::Write(List<string>& list, bool emptyfile, string path)
 {
 	File file(path);
-	return file.Read();
-}
 
-List<std::string> File::ReadLines(const std::string & path)
-{
-	File file(path);
-	return file.ReadLines();
-}
+	if (emptyfile) file.Empty();
 
-bool File::Write(const std::string & path, const std::string & data)
-{
-	File file(path);
-	return file.Write(data);
-}
+	list.First();
 
-bool File::WriteLines(const std::string & path, List<std::string> & lines)
-{
-	File file(path);
-	return file.WriteLines(lines);
+	do
+	{
+		file.WriteLine(*list.GetCurrent());
+	} while (list.Next());
+
+
 }

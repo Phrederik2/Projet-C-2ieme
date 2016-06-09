@@ -22,6 +22,11 @@ Dossier::~Dossier()
 {
 }
 
+void Dossier::setID(int id)
+{
+	ID.setPrimaryKey(id);
+}
+
 void Dossier::setID_Client(unsigned int id_client)
 {
 	ID_Client = id_client;

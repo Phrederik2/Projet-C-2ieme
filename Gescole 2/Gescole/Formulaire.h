@@ -8,6 +8,7 @@
 #include <iostream>
 #include "ZoneSaisie.h"
 #include"Search.h"
+#include"Stream.h"
 
 template<class ENTITY>
 class Formulaire
@@ -24,10 +25,10 @@ public:
 	void Display(ostream& stream, RendezVous* other);
 	void Display(ostream& stream, Dossier* other);
 
-	void DisplayClient(ostream& stream, Dossier* other);
-	void DisplayLivraison(ostream& stream, Dossier* other);
-	void DisplayCommande(ostream& stream, Dossier* other);
-	void DisplayRendezVous(ostream& stream, Dossier* other);
+	void DisplayClient(ostream& stream, Client* temp);
+	void DisplayLivraison(ostream& stream, Livraison* temp);
+	void DisplayCommande(ostream& stream, Commande* temp);
+	void DisplayRendezVous(ostream& stream, RendezVous* temp);
 
 	void Encode(Client* other);
 	void Encode(Livraison* other);
@@ -43,12 +44,18 @@ public:
 template<class ENTITY>
 void Formulaire<ENTITY>::operator<<(ENTITY* other)
 {
-	if (other) Display(cout, other);
+	if (other->IsDelete)return;
+	if (other)
+	{
+		cout << endl;
+		Display(cout, other);
+	}
 }
 
 template<class ENTITY>
 void Formulaire<ENTITY>::operator>>(ENTITY* other)
 {
+	if (other->IsDelete)return;
 	if (other) Encode(other);	
 }
 
@@ -92,23 +99,31 @@ inline void Formulaire<ENTITY>::Display(ostream & stream, RendezVous * other)
 template<class ENTITY>
 inline void Formulaire<ENTITY>::Display(ostream & stream, Dossier * other)
 {
+	Client* client=NULL;
+	Livraison* livraison=NULL;
+	Commande* commande=NULL;
+	RendezVous* rendezvous=NULL;
+	Stream sql;
 	stream << "ID: " << other->getID() << endl;
-	stream << "Client: " << other->getID_Client() << endl;
-	DisplayClient(stream, other);
-	stream << "RDV: " << other->getID_RDV() << endl;
-	DisplayRendezVous(stream, other);
-	stream << "Livraison: " << other->getID_Livraison() << endl;
-	DisplayLivraison(stream, other);
-	stream << "Commande: " << other->getID_Commande() << endl;
-	DisplayCommande(stream, other);
+	stream << "Client: " << endl;
+	sql.Write(other->getID_Client(), client, "client");
+	DisplayClient(stream, client);
+	stream << "RDV: "  << endl;
+	sql.Write(other->getID_RDV(), rendezvous, "rendezvous");
+	DisplayRendezVous(stream, rendezvous);
+	stream << "Livraison: " << endl;
+	sql.Write(other->getID_Livraison(), livraison, "livraison");
+	DisplayLivraison(stream, livraison);
+	stream << "Commande: " << endl;
+	sql.Write(other->getID_Commande(), commande, "commande");
+	DisplayCommande(stream, commande);
 }
 
 
 template<typename ENTITY>
-inline void Formulaire<ENTITY>::DisplayClient(ostream& stream, Dossier * other)
+inline void Formulaire<ENTITY>::DisplayClient(ostream& stream, Client * temp)
 {
-	Client* temp;
-	temp = Search<Client>::ReturnValue(other->getID_Client());
+	
 	if (temp)
 	{
 		stream << temp->getNom() << " " << temp->getPrenom() << endl;
@@ -118,10 +133,8 @@ inline void Formulaire<ENTITY>::DisplayClient(ostream& stream, Dossier * other)
 }
 
 template<class ENTITY>
-inline void Formulaire<ENTITY>::DisplayLivraison(ostream & stream, Dossier * other)
+inline void Formulaire<ENTITY>::DisplayLivraison(ostream & stream, Livraison * temp)
 {
-	Livraison* temp;
-	temp = Search<Livraison>::ReturnValue(other->getID_Livraison());
 	if (temp)
 	{
 		stream << temp->getName() << endl;
@@ -129,10 +142,8 @@ inline void Formulaire<ENTITY>::DisplayLivraison(ostream & stream, Dossier * oth
 }
 
 template<class ENTITY>
-inline void Formulaire<ENTITY>::DisplayCommande(ostream & stream, Dossier * other)
+inline void Formulaire<ENTITY>::DisplayCommande(ostream & stream, Commande * temp)
 {
-	Commande* temp;
-	temp = Search<Commande>::ReturnValue(other->getID_Commande());
 	if (temp)
 	{
 		stream << temp->getName() << endl;
@@ -140,10 +151,8 @@ inline void Formulaire<ENTITY>::DisplayCommande(ostream & stream, Dossier * othe
 }
 
 template<class ENTITY>
-inline void Formulaire<ENTITY>::DisplayRendezVous(ostream & stream, Dossier * other)
+inline void Formulaire<ENTITY>::DisplayRendezVous(ostream & stream, RendezVous * temp)
 {
-	RendezVous* temp;
-	temp = Search<RendezVous>::ReturnValue(other->getID_RDV());
 	if (temp)
 	{
 		stream << "Debut: " << temp->getDateDebut() << " Fin: " << temp->getDateFin();
@@ -206,25 +215,17 @@ inline void Formulaire<ENTITY>::Encode(RendezVous * other)
 template<class ENTITY>
 inline void Formulaire<ENTITY>::Encode(Dossier * other)
 {
-	Client* client;
-	Commande* commande;
-	Livraison* livraison;
-	RendezVous* rendezvous;
 
 	cout << "ID: " << other->getID() << endl;
 	cout << "Client: " << endl;
 	cout << endl;
-	client = Application<Client>::Run(1);
-	other->setID_Client(client->getID());
+	other->setID_Client(Application<Client>::Run(1));
 	cout << "Commande: " << endl;
-	commande = Application<Commande>::Run(1);
-	other->setID_Commande(commande->getID());
+	other->setID_Commande(Application<Commande>::Run(1));
 	cout << "Livraison: " << endl;
-	livraison = Application<Livraison>::Run(1);
-	other->setID_Livraison(commande->getID());
+	other->setID_Livraison(Application<Livraison>::Run(1));
 	cout << "Rendez-vous: " << endl;
-	rendezvous = Application<RendezVous>::Run(1);
-	other->setID_RDV(commande->getID());
+	other->setID_RDV(Application<RendezVous>::Run(1));
 }
 
 template<class ENTITY>

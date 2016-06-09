@@ -28,6 +28,11 @@ void Client::setTitle(const char* title)
 	Title.setText(title);
 }
 
+void Client::setID(int id)
+{
+	ID.setPrimaryKey(id);
+}
+
 void Client::setNom(const char * nom)
 {
 	Nom.setText(nom);
