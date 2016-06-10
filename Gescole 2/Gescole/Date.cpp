@@ -31,23 +31,23 @@ void Date::setDate(const char * date)
 
 void Date::setYear(int year)
 {
-	Year = format(1970, 2030, year);
+	Year = format(year, 1070, 2030);
 }
 
 void Date::setMonth(int month)
 {
-	Month = format(1, 12, month);
+	Month = format(month, 1, 12);
 }
 
 void Date::setDay(int day)
 {
-	Day = format(1, 31, day);
+	Day = format(day, 1, 31);
 }
 
 int Date::format(int value, int min, int max)
 {
 	if (value < min) value = min;
-	else if (value > max) value = max;
+	if (value > max) value = max;
 	return value;
 }
 

@@ -22,6 +22,7 @@ Dossier::~Dossier()
 {
 }
 
+
 void Dossier::setID(int id)
 {
 	ID.setPrimaryKey(id);

@@ -3,6 +3,7 @@
 #include"Client.h"
 #include"Application.h"
 #include<sstream>
+#include"Lancer.h"
 
 
 class Stream
@@ -25,6 +26,7 @@ public:
 	void Write(List<Commande>& container);
 	void Write(List<RendezVous>& container);
 	void Write(List<Dossier>& container);
+	void Write(List<Lancer>& container);
 
 	template<typename ENTITY>
 	ENTITY* Write(int id, ENTITY* temp, string table);
@@ -35,6 +37,7 @@ public:
 	void Read(List<Commande>& container);
 	void Read(List<RendezVous>& container);
 	void Read(List<Dossier>& container);
+	void Read(List<Lancer>& container);
 
 protected:
 	template<typename ENTITY>
@@ -48,7 +51,6 @@ ENTITY * Stream::Write(int id, ENTITY * temp, string table)
 	requete << R"(Select * from )" << table << R"( WHERE id=)" << id << R"(;)";
 	sql.Select(requete.str());
 
-	temp = new ENTITY;
 
 	while (sql.Step()) Write(temp);
 

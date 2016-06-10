@@ -14,7 +14,7 @@ Stream::~Stream()
 void Stream::Write(List<Client>& container)
 {
 	Client* temp;
-	std::string requete = R"(Select * from client;)";
+	std::string requete = R"(Select * from client WHERE isdelete = 0;)";
 	sql.Select(requete);
 	while (sql.Step())
 	{
@@ -27,7 +27,7 @@ void Stream::Write(List<Client>& container)
 void Stream::Write(List<Livraison>& container)
 {
 	Livraison* temp;
-	std::string requete = R"(Select * from livraison;)";
+	std::string requete = R"(Select * from livraison WHERE isdelete = 0;)";
 	sql.Select(requete);
 	while (sql.Step())
 	{
@@ -39,7 +39,7 @@ void Stream::Write(List<Livraison>& container)
 void Stream::Write(List<Commande>& container)
 {
 	Commande* temp;
-	std::string requete = R"(Select * from commande;)";
+	std::string requete = R"(Select * from commande WHERE isdelete = 0;)";
 	sql.Select(requete);
 	while (sql.Step())
 	{
@@ -51,7 +51,7 @@ void Stream::Write(List<Commande>& container)
 void Stream::Write(List<RendezVous>& container)
 {
 	RendezVous* temp;
-	std::string requete = R"(Select * from rendezvous;)";
+	std::string requete = R"(Select * from rendezvous WHERE isdelete = 0;)";
 	sql.Select(requete);
 	while (sql.Step())
 	{
@@ -63,7 +63,7 @@ void Stream::Write(List<RendezVous>& container)
 void Stream::Write(List<Dossier>& container)
 {
 	Dossier* temp;
-	std::string requete = R"(Select * from rendezvous;)";
+	std::string requete = R"(Select * from dossier WHERE isdelete = 0;)";
 	sql.Select(requete);
 	while (sql.Step())
 	{
@@ -72,6 +72,10 @@ void Stream::Write(List<Dossier>& container)
 	}
 }
 
+void Stream::Write(List<Lancer>& container)
+{
+	
+}
 
 Client* Stream::Write(Client* temp)
 {
@@ -302,6 +306,11 @@ void Stream::Read(List<Dossier>& container)
 
 		temp = container.Next();
 	}
+}
+
+void Stream::Read(List<Lancer>& container)
+{
+	
 }
 
 

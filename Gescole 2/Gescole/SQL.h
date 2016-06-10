@@ -12,7 +12,7 @@ protected:
 public:
 	sqlite3_stmt* Requete; // Objet requete qui contien les row de retour d'un select
 public:
-	SQL(std::string path = "maBaseDeDonne.db");
+	SQL(std::string path = "maBaseDeDonnee.db");
 	~SQL();
 
 protected:
@@ -20,6 +20,7 @@ protected:
 	int Initialize(std::string path);
 	int Open(std::string path);
 	void Close();
+	void Create();
 
 public:
 

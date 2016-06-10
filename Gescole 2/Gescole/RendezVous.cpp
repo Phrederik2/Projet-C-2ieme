@@ -32,6 +32,7 @@ void RendezVous::setDateDebut(int day, int month, int year)
 	DateDebut.setDay(day);
 	DateDebut.setMonth(month);
 	DateDebut.setYear(year);
+	setDateFin(day, month, year);
 }
 
 void RendezVous::setDateDebutYear(int year)

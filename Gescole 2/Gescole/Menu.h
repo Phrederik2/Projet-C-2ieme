@@ -30,11 +30,22 @@ Menu<ENTITY>::Menu()
 {
 	m_Menu = new List<LigneMenu>;
 
-	
-		m_choice = eNULL;
+	string entity = typeid(ENTITY).name();
 
-		//cout << m_Menu->Size();
+	m_choice = eNULL;
 
+	std::size_t found = entity.find("Lancer");
+	if (found != std::string::npos)
+	{
+		m_Menu->Add(new LigneMenu(eDOSSIER, 'W', "Dossier."));
+		m_Menu->Add(new LigneMenu(eCLIENT, 'X', "Client."));
+		m_Menu->Add(new LigneMenu(eLIVRAISON, 'V', "Livraison."));
+		m_Menu->Add(new LigneMenu(eCOMMANDE, 'B', "Commande."));
+		m_Menu->Add(new LigneMenu(eRENDEZVOUS, 'N', "Rendez-vous."));
+
+	}
+	else
+	{
 		m_Menu->Add(new LigneMenu(eSELECT, 'T', "Selectionner."));
 		m_Menu->Add(new LigneMenu(eCREATE, 'C', "Cree."));
 		m_Menu->Add(new LigneMenu(eREAD, 'A', "Afficher l'enregistrement courant."));
@@ -45,11 +56,11 @@ Menu<ENTITY>::Menu()
 		m_Menu->Add(new LigneMenu(ePREVIOUS, 'R', "Precedent."));
 		m_Menu->Add(new LigneMenu(eLAST, 'D', "Dernier."));
 		m_Menu->Add(new LigneMenu(eLIST, 'L', "Lister les enregistrement."));
-		m_Menu->Add(new LigneMenu(eQUIT, 'Q', "Quitter."));
+		
+	}
+
+	m_Menu->Add(new LigneMenu(eQUIT, 'Q', "Quitter."));
 	
-
-
-
 }
 
 template<class ENTITY>
@@ -79,10 +90,13 @@ template<class ENTITY>
 void Menu<ENTITY>::display(ostream & COUT, bool value)
 {
 	LigneMenu* temp_Menu;
-	ENTITY temp;
+	//ENTITY temp;
 	eMENU HotKey;
-
-	COUT << temp.getTitle() << endl;
+	string* title;
+	title = new string;
+	Formulaire<ENTITY>::getTitle(title);
+	COUT << endl << *title << endl;
+	//COUT << temp.getTitle() << endl;
 	temp_Menu = m_Menu->First();
 	HotKey = temp_Menu->getNemo();
 
@@ -91,6 +105,8 @@ void Menu<ENTITY>::display(ostream & COUT, bool value)
 		if ((value == 1 || temp_Menu->getNemo() != eSELECT)) COUT << "\t" << temp_Menu->getHockey() << " - " << *(temp_Menu->getLigne()) << endl;
 		temp_Menu = m_Menu->Next();
 	}while (temp_Menu);
+
+	delete title;
 
 }
 

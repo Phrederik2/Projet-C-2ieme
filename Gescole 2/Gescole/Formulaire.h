@@ -9,6 +9,7 @@
 #include "ZoneSaisie.h"
 #include"Search.h"
 #include"Stream.h"
+#include"Lancer.h"
 
 template<class ENTITY>
 class Formulaire
@@ -24,6 +25,7 @@ public:
 	void Display(ostream& stream, Commande* other);
 	void Display(ostream& stream, RendezVous* other);
 	void Display(ostream& stream, Dossier* other);
+	void Display(ostream& stream, Lancer* other);
 
 	void DisplayClient(ostream& stream, Client* temp);
 	void DisplayLivraison(ostream& stream, Livraison* temp);
@@ -36,7 +38,9 @@ public:
 	void Encode(RendezVous* other);
 	void Encode(Dossier* other);
 	void Encode(Date* other);
+	void Encode(Lancer* other);
 
+	static void getTitle(string* title);
 
 };
 
@@ -44,9 +48,10 @@ public:
 template<class ENTITY>
 void Formulaire<ENTITY>::operator<<(ENTITY* other)
 {
-	if (other->IsDelete)return;
+	
 	if (other)
 	{
+		if (other->IsDelete)return;
 		cout << endl;
 		Display(cout, other);
 	}
@@ -99,10 +104,10 @@ inline void Formulaire<ENTITY>::Display(ostream & stream, RendezVous * other)
 template<class ENTITY>
 inline void Formulaire<ENTITY>::Display(ostream & stream, Dossier * other)
 {
-	Client* client=NULL;
-	Livraison* livraison=NULL;
-	Commande* commande=NULL;
-	RendezVous* rendezvous=NULL;
+	Client* client = new Client;
+	Livraison* livraison = new Livraison;
+	Commande* commande = new Commande;
+	RendezVous* rendezvous = new RendezVous;
 	Stream sql;
 	stream << "ID: " << other->getID() << endl;
 	stream << "Client: " << endl;
@@ -117,6 +122,16 @@ inline void Formulaire<ENTITY>::Display(ostream & stream, Dossier * other)
 	stream << "Commande: " << endl;
 	sql.Write(other->getID_Commande(), commande, "commande");
 	DisplayCommande(stream, commande);
+
+	delete client;
+	delete livraison;
+	delete commande;
+	delete rendezvous;
+}
+
+template<class ENTITY>
+inline void Formulaire<ENTITY>::Display(ostream & stream, Lancer * other)
+{
 }
 
 
@@ -155,7 +170,7 @@ inline void Formulaire<ENTITY>::DisplayRendezVous(ostream & stream, RendezVous *
 {
 	if (temp)
 	{
-		stream << "Debut: " << temp->getDateDebut() << " Fin: " << temp->getDateFin();
+		stream << "Debut: " << temp->getDateDebut() << " Fin: " << temp->getDateFin() << endl;
 	}
 }
 
@@ -219,13 +234,13 @@ inline void Formulaire<ENTITY>::Encode(Dossier * other)
 	cout << "ID: " << other->getID() << endl;
 	cout << "Client: " << endl;
 	cout << endl;
-	other->setID_Client(Application<Client>::Run(1));
+	other->setID_Client(Application<Client>::Run(other->getID_Client()));
 	cout << "Commande: " << endl;
-	other->setID_Commande(Application<Commande>::Run(1));
+	other->setID_Commande(Application<Commande>::Run(other->getID_Commande()));
 	cout << "Livraison: " << endl;
-	other->setID_Livraison(Application<Livraison>::Run(1));
+	other->setID_Livraison(Application<Livraison>::Run(other->getID_Livraison()));
 	cout << "Rendez-vous: " << endl;
-	other->setID_RDV(Application<RendezVous>::Run(1));
+	other->setID_RDV(Application<RendezVous>::Run(other->getID_RDV()));
 }
 
 template<class ENTITY>
@@ -237,4 +252,23 @@ inline void Formulaire<ENTITY>::Encode(Date * other)
 	if (zs.Ask()) other->setMonth(zs.ValUInt());
 	cout << "Annee: " << endl;
 	if (zs.Ask()) other->setYear(zs.ValUInt());
+}
+
+template<class ENTITY>
+inline void Formulaire<ENTITY>::Encode(Lancer * other)
+{
+}
+
+template<class ENTITY>
+inline void Formulaire<ENTITY>::getTitle(string* title)
+{
+	string entity = typeid(ENTITY).name();
+
+	if (entity.find("Lancer") != std::string::npos) *title = "Menu Principal";
+	if (entity.find("Dossier") != std::string::npos) *title = "Dossier";
+	if (entity.find("Livraison") != std::string::npos) *title = "Livraison";
+	if (entity.find("Commande") != std::string::npos) *title = "Commande";
+	if (entity.find("Client") != std::string::npos) *title = "Client";
+	if (entity.find("RendezVous") != std::string::npos) *title = "Rendez-Vous";
+
 }

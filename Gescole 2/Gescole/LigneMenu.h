@@ -5,25 +5,30 @@
 #include<vector>
 
 using namespace std;
-enum eMENU 
+enum eMENU
 {
-eNULL=0,
-eNONE=0,
-eCREATE,
-eREAD,
-eUPDATE,
-eDELETE,
-eDELETEALL,
-eLIST,
-eFIRST,
-eNEXT,
-eLAST,
-ePREVIOUS,
-eSORT,
-eSEARCH,
-eSELECT,
-eERROR=-1,
-eQUIT=999
+	eNULL = 0,
+	eNONE = 0,
+	eCREATE,
+	eREAD,
+	eUPDATE,
+	eDELETE,
+	eDELETEALL,
+	eLIST,
+	eFIRST,
+	eNEXT,
+	eLAST,
+	ePREVIOUS,
+	eSORT,
+	eSEARCH,
+	eSELECT,
+	eDOSSIER,
+	eCLIENT,
+	eLIVRAISON,
+	eCOMMANDE,
+	eRENDEZVOUS,
+	eERROR=-1,
+	eQUIT=999
 };
 
 class LigneMenu
