@@ -11,7 +11,6 @@ class ContainerEntity
 {
 			//DataMembre.
 protected:
-	//Text Title;
 	PrimaryKey<ContainerEntity> ID;
 	//Text text;
 public:
@@ -26,10 +25,8 @@ public:
 	virtual ~ContainerEntity(); // destructeur
 
 			//Seteur.
-	virtual void setTitle(const char* title)=0;
 
 			//Getteur.
-	virtual const char* getTitle()=0;
 	
 
 	virtual unsigned long getID()=0;

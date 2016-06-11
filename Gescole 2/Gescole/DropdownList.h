@@ -9,7 +9,6 @@ class DropdownList :
 {
 	//DataMembre.
 protected:
-	static Text Title;
 	PrimaryKey<ENTITY> ID;
 	Text Name;
 
@@ -20,12 +19,10 @@ public:
 	~DropdownList(); // destructeur
 
 					  //Seteur.
-	void setTitle(const char* title);
 	void setName(const char* name);
 	void setID(int id);
 
 					  //Getteur
-	const char* getTitle();
 	const char* getName();
 
 	
@@ -40,12 +37,8 @@ public:
 };
 
 template<class ENTITY>
-Text DropdownList<ENTITY>::Title;
-
-template<class ENTITY>
 DropdownList<ENTITY>::DropdownList()
 {
-	Title = "DropdownList";
 }
 
 template<class ENTITY>
@@ -60,12 +53,6 @@ DropdownList<ENTITY>::~DropdownList()
 }
 
 template<class ENTITY>
-void DropdownList<ENTITY>::setTitle(const char * title)
-{
-	Title = title;
-}
-
-template<class ENTITY>
 void DropdownList<ENTITY>::setName(const char * name)
 {
 	Name = name;
@@ -75,12 +62,6 @@ template<class ENTITY>
 inline void DropdownList<ENTITY>::setID(int id)
 {
 	ID.setPrimaryKey(id);
-}
-
-template<class ENTITY>
-const char * DropdownList<ENTITY>::getTitle()
-{
-	return Title.getText();
 }
 
 template<class ENTITY>

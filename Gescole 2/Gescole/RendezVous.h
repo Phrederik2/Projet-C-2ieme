@@ -6,7 +6,6 @@ class RendezVous :
 {
 	//DataMembre.
 protected:
-	Title<RendezVous> m_Title;
 	PrimaryKey<RendezVous> ID;
 	Date DateDebut;
 	Date DateFin;
@@ -19,7 +18,6 @@ public:
 	~RendezVous(); // destructeur
 
 					//Seteur.
-	void setTitle(const char* title);
 	void setID(int id);
 	void setDateDebut(int day, int month, int year);
 	void setDateDebutYear(int year);
@@ -38,7 +36,6 @@ public:
 
 
 					//Getteur.
-	const char* getTitle();
 	const char* getDateDebut();
 	int getDateDebutYear();
 	int getDateDebutMonth();

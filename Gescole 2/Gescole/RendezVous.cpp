@@ -5,7 +5,6 @@
 
 RendezVous::RendezVous()
 {
-	setTitle("Rendez-vous");
 }
 
 RendezVous::RendezVous(RendezVous & other)
@@ -15,11 +14,6 @@ RendezVous::RendezVous(RendezVous & other)
 
 RendezVous::~RendezVous()
 {
-}
-
-void RendezVous::setTitle(const char * title)
-{
-	m_Title.setTitle(title);
 }
 
 void RendezVous::setID(int id)
@@ -93,11 +87,6 @@ Date* RendezVous::setDateFin()
 void RendezVous::setRemark(const char * remark)
 {
 	Remark = remark;
-}
-
-const char * RendezVous::getTitle()
-{
-	return m_Title.getTitle();
 }
 
 const char * RendezVous::getDateDebut()

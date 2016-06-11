@@ -8,6 +8,5 @@ public:
 	Lancer();
 	~Lancer();
 	int getID();
-	const char* getTitle();
 };
 

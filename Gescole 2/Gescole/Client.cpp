@@ -2,15 +2,11 @@
 #include "Client.h"
 #include"ZoneSaisie.h"
 
-Text Client::Title;
-
 Client::Client()
 {
 	Numero = 0;
 	Boite = ' ';
 	CodePostal = 0;
-	setTitle("Client");
-
 }
 
 Client::Client(Client& other)
@@ -21,11 +17,6 @@ Client::Client(Client& other)
 
 Client::~Client()
 {
-}
-
-void Client::setTitle(const char* title)
-{
-	Title.setText(title);
 }
 
 void Client::setID(int id)
@@ -76,11 +67,6 @@ void Client::setCodePostal(int codepostal)
 unsigned long Client::getID()
 {
 	return ID.getPrimaryKey();
-}
-
-const char * Client::getTitle()
-{
-	return Title.getText();
 }
 
 const char * Client::getNom()
