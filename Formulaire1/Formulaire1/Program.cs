@@ -17,10 +17,12 @@ namespace Formulaire1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 			FormPrincipal Form = new FormPrincipal();
-			List<Professeur> ContainerProf = new List<Professeur>();
-            ConnectAccess Mydb = new ConnectAccess(ContainerProf);
-			Form.setContainer(ContainerProf);
+			List<Client> Container = new List<Client>();
+            ConnectSQLite Sqlite = new ConnectSQLite();
+            Sqlite.Write(Container);
+			Form.setContainer(Container);
 			Application.Run(Form);
+            Sqlite.Read(Container);
 
         }
     }

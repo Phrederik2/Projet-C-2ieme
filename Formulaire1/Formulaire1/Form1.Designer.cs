@@ -28,180 +28,258 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-			this.LabNom = new System.Windows.Forms.Label();
-			this.TextNom = new System.Windows.Forms.TextBox();
-			this.TextPrenom = new System.Windows.Forms.TextBox();
-			this.LabPrenom = new System.Windows.Forms.Label();
-			this.BtSave = new System.Windows.Forms.Button();
-			this.BtModifier = new System.Windows.Forms.Button();
-			this.TextCountProf = new System.Windows.Forms.TextBox();
-			this.LblCountProf = new System.Windows.Forms.Label();
-			this.BtNew = new System.Windows.Forms.Button();
-			this.BtPrevious = new System.Windows.Forms.Button();
-			this.BtNext = new System.Windows.Forms.Button();
-			this.BtFirst = new System.Windows.Forms.Button();
-			this.BtLast = new System.Windows.Forms.Button();
-			this.BtCancel = new System.Windows.Forms.Button();
-			this.SuspendLayout();
-			// 
-			// LabNom
-			// 
-			this.LabNom.AutoSize = true;
-			this.LabNom.Location = new System.Drawing.Point(72, 66);
-			this.LabNom.Name = "LabNom";
-			this.LabNom.Size = new System.Drawing.Size(42, 20);
-			this.LabNom.TabIndex = 0;
-			this.LabNom.Text = "Nom";
-			// 
-			// TextNom
-			// 
-			this.TextNom.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.TextNom.Location = new System.Drawing.Point(177, 66);
-			this.TextNom.Name = "TextNom";
-			this.TextNom.ReadOnly = true;
-			this.TextNom.Size = new System.Drawing.Size(232, 19);
-			this.TextNom.TabIndex = 1;
-			// 
-			// TextPrenom
-			// 
-			this.TextPrenom.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.TextPrenom.Location = new System.Drawing.Point(177, 98);
-			this.TextPrenom.Name = "TextPrenom";
-			this.TextPrenom.ReadOnly = true;
-			this.TextPrenom.Size = new System.Drawing.Size(232, 19);
-			this.TextPrenom.TabIndex = 3;
-			// 
-			// LabPrenom
-			// 
-			this.LabPrenom.AutoSize = true;
-			this.LabPrenom.Location = new System.Drawing.Point(72, 98);
-			this.LabPrenom.Name = "LabPrenom";
-			this.LabPrenom.Size = new System.Drawing.Size(64, 20);
-			this.LabPrenom.TabIndex = 2;
-			this.LabPrenom.Text = "Prenom";
-			// 
-			// BtSave
-			// 
-			this.BtSave.Enabled = false;
-			this.BtSave.Location = new System.Drawing.Point(289, 256);
-			this.BtSave.Name = "BtSave";
-			this.BtSave.Size = new System.Drawing.Size(106, 51);
-			this.BtSave.TabIndex = 4;
-			this.BtSave.Text = "Save";
-			this.BtSave.UseVisualStyleBackColor = true;
-			// 
-			// BtModifier
-			// 
-			this.BtModifier.Location = new System.Drawing.Point(177, 256);
-			this.BtModifier.Name = "BtModifier";
-			this.BtModifier.Size = new System.Drawing.Size(106, 51);
-			this.BtModifier.TabIndex = 5;
-			this.BtModifier.Text = "Modifier";
-			this.BtModifier.UseVisualStyleBackColor = true;
-			// 
-			// TextCountProf
-			// 
-			this.TextCountProf.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.TextCountProf.Location = new System.Drawing.Point(177, 32);
-			this.TextCountProf.Name = "TextCountProf";
-			this.TextCountProf.ReadOnly = true;
-			this.TextCountProf.Size = new System.Drawing.Size(232, 19);
-			this.TextCountProf.TabIndex = 7;
-			// 
-			// LblCountProf
-			// 
-			this.LblCountProf.AutoSize = true;
-			this.LblCountProf.Location = new System.Drawing.Point(72, 32);
-			this.LblCountProf.Name = "LblCountProf";
-			this.LblCountProf.Size = new System.Drawing.Size(65, 20);
-			this.LblCountProf.TabIndex = 6;
-			this.LblCountProf.Text = "Nombre";
-			// 
-			// BtNew
-			// 
-			this.BtNew.Location = new System.Drawing.Point(65, 256);
-			this.BtNew.Name = "BtNew";
-			this.BtNew.Size = new System.Drawing.Size(106, 51);
-			this.BtNew.TabIndex = 8;
-			this.BtNew.Text = "Nouveau";
-			this.BtNew.UseVisualStyleBackColor = true;
-			this.BtNew.Click += new System.EventHandler(this.BtNew_Click);
-			// 
-			// BtPrevious
-			// 
-			this.BtPrevious.Location = new System.Drawing.Point(177, 313);
-			this.BtPrevious.Name = "BtPrevious";
-			this.BtPrevious.Size = new System.Drawing.Size(106, 51);
-			this.BtPrevious.TabIndex = 9;
-			this.BtPrevious.Text = "<";
-			this.BtPrevious.UseVisualStyleBackColor = true;
-			this.BtPrevious.Click += new System.EventHandler(this.BtPrevious_Click);
-			// 
-			// BtNext
-			// 
-			this.BtNext.Location = new System.Drawing.Point(289, 313);
-			this.BtNext.Name = "BtNext";
-			this.BtNext.Size = new System.Drawing.Size(106, 51);
-			this.BtNext.TabIndex = 10;
-			this.BtNext.Text = ">";
-			this.BtNext.UseVisualStyleBackColor = true;
-			this.BtNext.Click += new System.EventHandler(this.BtNext_Click);
-			// 
-			// BtFirst
-			// 
-			this.BtFirst.Location = new System.Drawing.Point(65, 313);
-			this.BtFirst.Name = "BtFirst";
-			this.BtFirst.Size = new System.Drawing.Size(106, 51);
-			this.BtFirst.TabIndex = 11;
-			this.BtFirst.Text = "<<";
-			this.BtFirst.UseVisualStyleBackColor = true;
-			this.BtFirst.Click += new System.EventHandler(this.BtFirst_Click);
-			// 
-			// BtLast
-			// 
-			this.BtLast.Location = new System.Drawing.Point(401, 313);
-			this.BtLast.Name = "BtLast";
-			this.BtLast.Size = new System.Drawing.Size(106, 51);
-			this.BtLast.TabIndex = 12;
-			this.BtLast.Text = ">>";
-			this.BtLast.UseVisualStyleBackColor = true;
-			this.BtLast.Click += new System.EventHandler(this.BtLast_Click);
-			// 
-			// BtCancel
-			// 
-			this.BtCancel.Location = new System.Drawing.Point(401, 256);
-			this.BtCancel.Name = "BtCancel";
-			this.BtCancel.Size = new System.Drawing.Size(106, 51);
-			this.BtCancel.TabIndex = 13;
-			this.BtCancel.Text = "Annule";
-			this.BtCancel.UseVisualStyleBackColor = true;
-			this.BtCancel.Click += new System.EventHandler(this.BtCancel_Click);
-			// 
-			// FormPrincipal
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(549, 393);
-			this.Controls.Add(this.BtCancel);
-			this.Controls.Add(this.BtLast);
-			this.Controls.Add(this.BtFirst);
-			this.Controls.Add(this.BtNext);
-			this.Controls.Add(this.BtPrevious);
-			this.Controls.Add(this.BtNew);
-			this.Controls.Add(this.TextCountProf);
-			this.Controls.Add(this.LblCountProf);
-			this.Controls.Add(this.BtModifier);
-			this.Controls.Add(this.BtSave);
-			this.Controls.Add(this.TextPrenom);
-			this.Controls.Add(this.LabPrenom);
-			this.Controls.Add(this.TextNom);
-			this.Controls.Add(this.LabNom);
-			this.Name = "FormPrincipal";
-			this.Text = "FormPrincipal";
-			this.Load += new System.EventHandler(this.FormPrincipal_Load);
-			this.ResumeLayout(false);
-			this.PerformLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.LabNom = new System.Windows.Forms.Label();
+            this.TextNom = new System.Windows.Forms.TextBox();
+            this.TextPrenom = new System.Windows.Forms.TextBox();
+            this.LabPrenom = new System.Windows.Forms.Label();
+            this.BtSave = new System.Windows.Forms.Button();
+            this.BtModifier = new System.Windows.Forms.Button();
+            this.TextCount = new System.Windows.Forms.TextBox();
+            this.LblCountProf = new System.Windows.Forms.Label();
+            this.BtNew = new System.Windows.Forms.Button();
+            this.BtPrevious = new System.Windows.Forms.Button();
+            this.BtNext = new System.Windows.Forms.Button();
+            this.BtFirst = new System.Windows.Forms.Button();
+            this.BtLast = new System.Windows.Forms.Button();
+            this.BtCancel = new System.Windows.Forms.Button();
+            this.TextSociete = new System.Windows.Forms.TextBox();
+            this.LabSociete = new System.Windows.Forms.Label();
+            this.TextLocalite = new System.Windows.Forms.TextBox();
+            this.LabLocalite = new System.Windows.Forms.Label();
+            this.TextNumero = new System.Windows.Forms.TextBox();
+            this.LabNumero = new System.Windows.Forms.Label();
+            this.TextRue = new System.Windows.Forms.TextBox();
+            this.LabRue = new System.Windows.Forms.Label();
+            this.TextBoite = new System.Windows.Forms.TextBox();
+            this.LabBoite = new System.Windows.Forms.Label();
+            this.TextCodePostal = new System.Windows.Forms.TextBox();
+            this.LabCodePostal = new System.Windows.Forms.Label();
+            this.TextID = new System.Windows.Forms.TextBox();
+            this.LabID = new System.Windows.Forms.Label();
+            this.checkBoxSupprimer = new System.Windows.Forms.CheckBox();
+            this.SuspendLayout();
+            // 
+            // LabNom
+            // 
+            resources.ApplyResources(this.LabNom, "LabNom");
+            this.LabNom.Name = "LabNom";
+            // 
+            // TextNom
+            // 
+            this.TextNom.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.TextNom, "TextNom");
+            this.TextNom.Name = "TextNom";
+            this.TextNom.ReadOnly = true;
+            // 
+            // TextPrenom
+            // 
+            this.TextPrenom.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.TextPrenom, "TextPrenom");
+            this.TextPrenom.Name = "TextPrenom";
+            this.TextPrenom.ReadOnly = true;
+            // 
+            // LabPrenom
+            // 
+            resources.ApplyResources(this.LabPrenom, "LabPrenom");
+            this.LabPrenom.Name = "LabPrenom";
+            // 
+            // BtSave
+            // 
+            resources.ApplyResources(this.BtSave, "BtSave");
+            this.BtSave.Name = "BtSave";
+            this.BtSave.UseVisualStyleBackColor = true;
+            // 
+            // BtModifier
+            // 
+            resources.ApplyResources(this.BtModifier, "BtModifier");
+            this.BtModifier.Name = "BtModifier";
+            this.BtModifier.UseVisualStyleBackColor = true;
+            // 
+            // TextCount
+            // 
+            this.TextCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.TextCount, "TextCount");
+            this.TextCount.Name = "TextCount";
+            this.TextCount.ReadOnly = true;
+            this.TextCount.TabStop = false;
+            // 
+            // LblCountProf
+            // 
+            resources.ApplyResources(this.LblCountProf, "LblCountProf");
+            this.LblCountProf.Name = "LblCountProf";
+            // 
+            // BtNew
+            // 
+            resources.ApplyResources(this.BtNew, "BtNew");
+            this.BtNew.Name = "BtNew";
+            this.BtNew.UseVisualStyleBackColor = true;
+            this.BtNew.Click += new System.EventHandler(this.BtNew_Click);
+            // 
+            // BtPrevious
+            // 
+            resources.ApplyResources(this.BtPrevious, "BtPrevious");
+            this.BtPrevious.Name = "BtPrevious";
+            this.BtPrevious.UseVisualStyleBackColor = true;
+            this.BtPrevious.Click += new System.EventHandler(this.BtPrevious_Click);
+            // 
+            // BtNext
+            // 
+            resources.ApplyResources(this.BtNext, "BtNext");
+            this.BtNext.Name = "BtNext";
+            this.BtNext.UseVisualStyleBackColor = true;
+            this.BtNext.Click += new System.EventHandler(this.BtNext_Click);
+            // 
+            // BtFirst
+            // 
+            resources.ApplyResources(this.BtFirst, "BtFirst");
+            this.BtFirst.Name = "BtFirst";
+            this.BtFirst.UseVisualStyleBackColor = true;
+            this.BtFirst.Click += new System.EventHandler(this.BtFirst_Click);
+            // 
+            // BtLast
+            // 
+            resources.ApplyResources(this.BtLast, "BtLast");
+            this.BtLast.Name = "BtLast";
+            this.BtLast.UseVisualStyleBackColor = true;
+            this.BtLast.Click += new System.EventHandler(this.BtLast_Click);
+            // 
+            // BtCancel
+            // 
+            resources.ApplyResources(this.BtCancel, "BtCancel");
+            this.BtCancel.Name = "BtCancel";
+            this.BtCancel.UseVisualStyleBackColor = true;
+            this.BtCancel.Click += new System.EventHandler(this.BtCancel_Click);
+            // 
+            // TextSociete
+            // 
+            this.TextSociete.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.TextSociete, "TextSociete");
+            this.TextSociete.Name = "TextSociete";
+            this.TextSociete.ReadOnly = true;
+            // 
+            // LabSociete
+            // 
+            resources.ApplyResources(this.LabSociete, "LabSociete");
+            this.LabSociete.Name = "LabSociete";
+            // 
+            // TextLocalite
+            // 
+            this.TextLocalite.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.TextLocalite, "TextLocalite");
+            this.TextLocalite.Name = "TextLocalite";
+            this.TextLocalite.ReadOnly = true;
+            // 
+            // LabLocalite
+            // 
+            resources.ApplyResources(this.LabLocalite, "LabLocalite");
+            this.LabLocalite.Name = "LabLocalite";
+            // 
+            // TextNumero
+            // 
+            this.TextNumero.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.TextNumero, "TextNumero");
+            this.TextNumero.Name = "TextNumero";
+            this.TextNumero.ReadOnly = true;
+            // 
+            // LabNumero
+            // 
+            resources.ApplyResources(this.LabNumero, "LabNumero");
+            this.LabNumero.Name = "LabNumero";
+            // 
+            // TextRue
+            // 
+            this.TextRue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.TextRue, "TextRue");
+            this.TextRue.Name = "TextRue";
+            this.TextRue.ReadOnly = true;
+            // 
+            // LabRue
+            // 
+            resources.ApplyResources(this.LabRue, "LabRue");
+            this.LabRue.Name = "LabRue";
+            // 
+            // TextBoite
+            // 
+            this.TextBoite.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.TextBoite, "TextBoite");
+            this.TextBoite.Name = "TextBoite";
+            this.TextBoite.ReadOnly = true;
+            // 
+            // LabBoite
+            // 
+            resources.ApplyResources(this.LabBoite, "LabBoite");
+            this.LabBoite.Name = "LabBoite";
+            // 
+            // TextCodePostal
+            // 
+            this.TextCodePostal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.TextCodePostal, "TextCodePostal");
+            this.TextCodePostal.Name = "TextCodePostal";
+            this.TextCodePostal.ReadOnly = true;
+            // 
+            // LabCodePostal
+            // 
+            resources.ApplyResources(this.LabCodePostal, "LabCodePostal");
+            this.LabCodePostal.Name = "LabCodePostal";
+            // 
+            // TextID
+            // 
+            this.TextID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.TextID, "TextID");
+            this.TextID.Name = "TextID";
+            this.TextID.ReadOnly = true;
+            this.TextID.TabStop = false;
+            // 
+            // LabID
+            // 
+            resources.ApplyResources(this.LabID, "LabID");
+            this.LabID.Name = "LabID";
+            // 
+            // checkBoxSupprimer
+            // 
+            resources.ApplyResources(this.checkBoxSupprimer, "checkBoxSupprimer");
+            this.checkBoxSupprimer.Name = "checkBoxSupprimer";
+            this.checkBoxSupprimer.UseVisualStyleBackColor = true;
+            // 
+            // FormPrincipal
+            // 
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBoxSupprimer);
+            this.Controls.Add(this.TextID);
+            this.Controls.Add(this.LabID);
+            this.Controls.Add(this.TextCodePostal);
+            this.Controls.Add(this.LabCodePostal);
+            this.Controls.Add(this.TextBoite);
+            this.Controls.Add(this.LabBoite);
+            this.Controls.Add(this.TextNumero);
+            this.Controls.Add(this.LabNumero);
+            this.Controls.Add(this.TextRue);
+            this.Controls.Add(this.LabRue);
+            this.Controls.Add(this.TextLocalite);
+            this.Controls.Add(this.LabLocalite);
+            this.Controls.Add(this.TextSociete);
+            this.Controls.Add(this.LabSociete);
+            this.Controls.Add(this.BtCancel);
+            this.Controls.Add(this.BtLast);
+            this.Controls.Add(this.BtFirst);
+            this.Controls.Add(this.BtNext);
+            this.Controls.Add(this.BtPrevious);
+            this.Controls.Add(this.BtNew);
+            this.Controls.Add(this.TextCount);
+            this.Controls.Add(this.LblCountProf);
+            this.Controls.Add(this.BtModifier);
+            this.Controls.Add(this.BtSave);
+            this.Controls.Add(this.TextPrenom);
+            this.Controls.Add(this.LabPrenom);
+            this.Controls.Add(this.TextNom);
+            this.Controls.Add(this.LabNom);
+            this.Name = "FormPrincipal";
+            this.Load += new System.EventHandler(this.FormPrincipal_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 
@@ -213,7 +291,7 @@
 		private System.Windows.Forms.Label LabPrenom;
 		private System.Windows.Forms.Button BtSave;
 		private System.Windows.Forms.Button BtModifier;
-		private System.Windows.Forms.TextBox TextCountProf;
+		private System.Windows.Forms.TextBox TextCount;
 		private System.Windows.Forms.Label LblCountProf;
 		private System.Windows.Forms.Button BtNew;
 		private System.Windows.Forms.Button BtPrevious;
@@ -221,6 +299,21 @@
 		private System.Windows.Forms.Button BtFirst;
 		private System.Windows.Forms.Button BtLast;
 		private System.Windows.Forms.Button BtCancel;
-	}
+        private System.Windows.Forms.TextBox TextSociete;
+        private System.Windows.Forms.Label LabSociete;
+        private System.Windows.Forms.TextBox TextLocalite;
+        private System.Windows.Forms.Label LabLocalite;
+        private System.Windows.Forms.TextBox TextNumero;
+        private System.Windows.Forms.Label LabNumero;
+        private System.Windows.Forms.TextBox TextRue;
+        private System.Windows.Forms.Label LabRue;
+        private System.Windows.Forms.TextBox TextBoite;
+        private System.Windows.Forms.Label LabBoite;
+        private System.Windows.Forms.TextBox TextCodePostal;
+        private System.Windows.Forms.Label LabCodePostal;
+        private System.Windows.Forms.TextBox TextID;
+        private System.Windows.Forms.Label LabID;
+        private System.Windows.Forms.CheckBox checkBoxSupprimer;
+    }
 }
 

@@ -12,29 +12,39 @@ namespace Formulaire1
 {
     public partial class FormPrincipal : Form
     {
-		protected Professeur Prof;
-		protected List<Professeur> ContainerProf;
+		protected Client temp;
+		protected List<Client> CContainer;
 		
 		public FormPrincipal()
 		{
-
 			InitializeComponent();
             AddEvent();
         }
 
-		private void NewProf()
+		private void NewClient()
 		{
-			Prof = new Professeur();
-			ContainerProf.Add(Prof);
+            temp = new Client();
+			CContainer.Add(temp);
 			DisplayToFormProf();
 			ModeEdit(false);
+            temp.IsNew = true;
 
 		}
 
 		private void DisplayToFormProf()
 		{
-			TextNom.Text = Prof.Nom;
-			TextPrenom.Text = Prof.Prenom;
+            checkBoxSupprimer.Checked = temp.IsDelete;
+            TextID.Text = temp.ID.ToString();
+			TextNom.Text = temp.Nom;
+			TextPrenom.Text = temp.Prenom;
+            TextSociete.Text = temp.Societe;
+            TextLocalite.Text = temp.Localite;
+            TextRue.Text = temp.Rue;
+            TextNumero.Text = temp.Numero.ToString();
+            TextBoite.Text = temp.Boite.ToString();
+            TextCodePostal.Text = temp.CodePostal.ToString();
+
+
 			ModeEdit(false);
 		}
 
@@ -52,32 +62,71 @@ namespace Formulaire1
 			this.BtCancel.Enabled = val;
 
 			// Not = val
+            //Entity
 			this.TextNom.ReadOnly = !val;
 			this.TextPrenom.ReadOnly = !val;
-			this.BtModifier.Enabled = !val;
-			this.BtNew.Enabled = !val;
-			this.BtFirst.Enabled = !val;
-			this.BtLast.Enabled = !val;
-			this.BtNext.Enabled = !val;
-			this.BtPrevious.Enabled = !val;
-			ActiveControl = null;
-		}
+            this.TextSociete.ReadOnly = !val;
+            this.TextSociete.ReadOnly = !val;
+            this.TextLocalite.ReadOnly = !val;
+            this.TextRue.ReadOnly = !val;
+            this.TextNumero.ReadOnly = !val;
+            this.TextBoite.ReadOnly = !val;
+            this.TextCodePostal.ReadOnly = !val;
+            this.checkBoxSupprimer.Enabled = val;
+
+            // Bouton
+            this.BtNew.Enabled = !val;
+            // Desactiver les deplacements et les boutons si list vide.
+
+            if (CContainer.Count == 0)
+            {
+                this.BtFirst.Enabled = false;
+                this.BtLast.Enabled = false;
+                this.BtNext.Enabled = false;
+                this.BtPrevious.Enabled = false;
+                this.BtModifier.Enabled = false;
+            }
+            else
+            {
+                this.BtFirst.Enabled = !val;
+                this.BtLast.Enabled = !val;
+                this.BtNext.Enabled = !val;
+                this.BtPrevious.Enabled = !val;
+                this.BtModifier.Enabled = !val;
+            }
+            ActiveControl = null;
+        }
 
 		private void RefreshCount()
 		{
-			this.TextCountProf.Text = ContainerProf.Count.ToString();
+			this.TextCount.Text = CContainer.Count.ToString();
 		}
 
-		public void setContainer(List<Professeur> container)
+		public void setContainer(List<Client> container)
 		{
-			ContainerProf = container;
+			CContainer = container;
 		}
 
-		private void SaveProf()
+		private void Save()
 		{
-			this.Prof.Nom = TextNom.Text;
-			this.Prof.Prenom = TextPrenom.Text;
-		}
+            try
+            {
+                this.temp.IsDelete = checkBoxSupprimer.Checked;
+                this.temp.Nom = TextNom.Text;
+                this.temp.Prenom = TextPrenom.Text;
+                this.temp.Societe = TextSociete.Text;
+                this.temp.Localite = TextLocalite.Text;
+                this.temp.Rue = TextRue.Text;
+                this.temp.Numero = Convert.ToInt32(TextNumero.Text);
+                /*if (this.temp.Boite != '\0')*/ this.temp.Boite = Convert.ToChar(TextBoite.Text);
+                this.temp.CodePostal = Convert.ToInt32(TextCodePostal.Text);
+                if (temp.IsNew) temp.IsChanged = true;
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.TargetSite + ": " + error.Message);
+            }
+        }
 
 		// EVENT .................................
 
@@ -89,7 +138,7 @@ namespace Formulaire1
 
 		private void BtSave_Click(object sender, EventArgs e)
 		{
-			SaveProf();
+			Save();
 			ModeEdit(false);
 
 		}
@@ -97,52 +146,52 @@ namespace Formulaire1
 		private void FormPrincipal_Load(object sender, EventArgs e)
 		{
 			ActiveControl = BtModifier;
-			if (ContainerProf.Count == 0)
+			if (CContainer.Count != 0)
             {
-                Prof = ContainerProf.First();
+                temp = CContainer.First();
                 DisplayToFormProf();
             }
-
+            ModeEdit(false);
 
 		}
 
 		private void BtNew_Click(object sender, EventArgs e)
 		{
-			NewProf();
+			NewClient();
 			ModeEdit(true);
 			RefreshCount();
 		}
 
 		private void BtFirst_Click(object sender, EventArgs e)
 		{
-			Prof = ContainerProf.First();
+            temp = CContainer.First();
 			DisplayToFormProf();
 		}
 
 		private void BtLast_Click(object sender, EventArgs e)
 		{
-			Prof = ContainerProf.Last();
+            temp = CContainer.Last();
 			DisplayToFormProf();
 		}
 
 		private void BtPrevious_Click(object sender, EventArgs e)
 		{
-			if (0 == ContainerProf.IndexOf(Prof)) return;
-			Prof = ContainerProf[ContainerProf.IndexOf(Prof) - 1];
+			if (0 == CContainer.IndexOf(temp)) return;
+            temp = CContainer[CContainer.IndexOf(temp) - 1];
 			DisplayToFormProf();
 		}
 
 		private void BtNext_Click(object sender, EventArgs e)
 		{
-			if (ContainerProf.Count-1 == ContainerProf.IndexOf(Prof)) return;
-			Prof = ContainerProf[ContainerProf.IndexOf(Prof) + 1];
+			if (CContainer.Count-1 == CContainer.IndexOf(temp)) return;
+            temp = CContainer[CContainer.IndexOf(temp) + 1];
 			DisplayToFormProf();
 		}
 
 		private void BtCancel_Click(object sender, EventArgs e)
 		{
 			DisplayToFormProf();
-
 		}
-	}
+
+    }
 }

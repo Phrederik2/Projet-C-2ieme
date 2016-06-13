@@ -10,7 +10,7 @@ namespace Formulaire1
 {
     public class ConnectAccess
     {
-        protected const string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\frederic\Documents\Database.mdb";
+        protected const string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Database.mdb";
         protected List<Professeur> ListProf;
         
 
