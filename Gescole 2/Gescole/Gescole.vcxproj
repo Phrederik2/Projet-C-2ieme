@@ -148,6 +148,7 @@
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="Dossier.cpp" />
     <ClCompile Include="File.cpp" />
+    <ClCompile Include="Lancer.cpp" />
     <ClCompile Include="LigneMenu.cpp" />
     <ClCompile Include="Livraison.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Dossier.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="Formulaire.h" />
+    <ClInclude Include="Lancer.h" />
     <ClInclude Include="LigneMenu.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Livraison.h" />

@@ -4,11 +4,10 @@
 #include"PrimaryKey.h"
 
 class Client :
-	protected ContainerEntity
+	public ContainerEntity
 {
 	//DataMenbre
 protected:
-	static Text Title;
 	PrimaryKey<Client> ID;
 	Text Nom;
 	Text Prenom;
@@ -25,7 +24,7 @@ public:
 	Client(Client& other);
 	~Client();
 
-	void setTitle(const char* title);
+	void setID(int id);
 	void setNom(const char* nom);
 	void setPrenom(const char* prenom);
 	void setSociete(const char* societe);
@@ -35,7 +34,6 @@ public:
 	void setBoite(char boite);
 	void setCodePostal(int codepostal);
 
-	const char* getTitle();
 	const char* getNom();
 	const char* getPrenom();
 	const char* getSociete();

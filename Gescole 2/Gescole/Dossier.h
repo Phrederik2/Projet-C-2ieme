@@ -5,7 +5,6 @@ class Dossier :
 {
 	//DataMembre.
 protected:
-	static Text Title;
 	PrimaryKey<Dossier> ID;
 	unsigned int ID_Client;
 	unsigned int ID_Commande;
@@ -19,19 +18,17 @@ public:
 	virtual ~Dossier(); // destructeur
 
 	//Seteur.
+	void setID(int id);
 	void setID_Client(unsigned int id_client);
 	void setID_Commande(unsigned int id_commande);
 	void setID_Livraison(unsigned int id_livraison);
 	void setID_RDV(unsigned int id_rdv);
-	void setTitle(const char* title);
 
 	//Getteur.
 	unsigned int getID_Client();
 	unsigned int getID_Commande();
 	unsigned int getID_Livraison();
 	unsigned int getID_RDV();
-	const char* getTitle();
-
 
 	unsigned long getID() ;
 	unsigned long getAlive();

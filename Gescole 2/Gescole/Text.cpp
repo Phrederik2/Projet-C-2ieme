@@ -58,6 +58,7 @@ Text::~Text()
 
 void Text::setText(const char * text)
 {
+	if (!text) return;
 	strncpy(m_Text, text, (size_t)getSize());
 }
 

@@ -4,6 +4,7 @@
 #include<iostream>
 #include"List.h"
 #include"ZoneSaisie.h"
+#include"Message.h"
 
 template<class ENTITY>
 class Menu
@@ -18,7 +19,7 @@ public:
 	~Menu();			// Destructeur
 	Menu<ENTITY>& operator=(Menu<ENTITY>& other); // copie
 
-	void display(ostream& COUT, bool value=0);
+	void display(ostream& COUT, int value=0);
 	eMENU askChoice(ostream & COUT);
 	eMENU translateHotkey(char hotkey);
 };
@@ -30,26 +31,37 @@ Menu<ENTITY>::Menu()
 {
 	m_Menu = new List<LigneMenu>;
 
+	string entity = typeid(ENTITY).name();
+
+	m_choice = eNULL;
+
+	std::size_t found = entity.find("Lancer");
+	if (found != std::string::npos)
+	{
+		m_Menu->Add(new LigneMenu(eDOSSIER, 'W', Menu_eDossier Pct_Point));
+		m_Menu->Add(new LigneMenu(eCLIENT, 'X', Menu_eClient Pct_Point));
+		m_Menu->Add(new LigneMenu(eLIVRAISON, 'V', Menu_eLivraison Pct_Point));
+		m_Menu->Add(new LigneMenu(eCOMMANDE, 'B', Menu_eCommande Pct_Point));
+		m_Menu->Add(new LigneMenu(eRENDEZVOUS, 'N', Menu_eRDV Pct_Point));
+
+	}
+	else
+	{
+		m_Menu->Add(new LigneMenu(eSELECT, 'T', Menu_eDossier Pct_Point));
+		m_Menu->Add(new LigneMenu(eCREATE, 'C', Menu_eCreate Pct_Point));
+		m_Menu->Add(new LigneMenu(eREAD, 'A', Menu_eRead Pct_Point));
+		m_Menu->Add(new LigneMenu(eUPDATE, 'M', Menu_eUpdate Pct_Point));
+		m_Menu->Add(new LigneMenu(eDELETE, 'E', Menu_eDelete Pct_Point));
+		m_Menu->Add(new LigneMenu(eFIRST, 'P', Menu_eFirst Pct_Point));
+		m_Menu->Add(new LigneMenu(eNEXT, 'S', Menu_eNext Pct_Point));
+		m_Menu->Add(new LigneMenu(ePREVIOUS, 'R', Menu_ePrevious Pct_Point));
+		m_Menu->Add(new LigneMenu(eLAST, 'D', Menu_eLast Pct_Point));
+		m_Menu->Add(new LigneMenu(eLIST, 'L', Menu_eList Pct_Point));
+		
+	}
+
+	m_Menu->Add(new LigneMenu(eQUIT, 'Q', Menu_eQuit Pct_Point));
 	
-		m_choice = eNULL;
-
-		//cout << m_Menu->Size();
-
-		m_Menu->Add(new LigneMenu(eSELECT, 'T', "Selectionner."));
-		m_Menu->Add(new LigneMenu(eCREATE, 'C', "Cree."));
-		m_Menu->Add(new LigneMenu(eREAD, 'A', "Afficher l'enregistrement courant."));
-		m_Menu->Add(new LigneMenu(eUPDATE, 'M', "Modifier."));
-		m_Menu->Add(new LigneMenu(eDELETE, 'E', "Effacer l'enregistrement courant."));
-		m_Menu->Add(new LigneMenu(eFIRST, 'P', "Premier."));
-		m_Menu->Add(new LigneMenu(eNEXT, 'S', "Suivant."));
-		m_Menu->Add(new LigneMenu(ePREVIOUS, 'R', "Precedent."));
-		m_Menu->Add(new LigneMenu(eLAST, 'D', "Dernier."));
-		m_Menu->Add(new LigneMenu(eLIST, 'L', "Lister les enregistrement."));
-		m_Menu->Add(new LigneMenu(eQUIT, 'Q', "Quitter."));
-	
-
-
-
 }
 
 template<class ENTITY>
@@ -76,21 +88,24 @@ Menu<ENTITY> & Menu<ENTITY>::operator=(Menu<ENTITY> & other)
 }
 
 template<class ENTITY>
-void Menu<ENTITY>::display(ostream & COUT, bool value)
+void Menu<ENTITY>::display(ostream & COUT, int value)
 {
 	LigneMenu* temp_Menu;
-	ENTITY temp;
 	eMENU HotKey;
-
-	COUT << temp.getTitle() << endl;
+	string* title;
+	title = new string;
+	Formulaire<ENTITY>::getTitle(title);
+	COUT << endl << *title << endl;
 	temp_Menu = m_Menu->First();
 	HotKey = temp_Menu->getNemo();
 
 	do
 	{
-		if ((value == 1 || temp_Menu->getNemo() != eSELECT)) COUT << "\t" << temp_Menu->getHockey() << " - " << *(temp_Menu->getLigne()) << endl;
+		if ((value == 1 || temp_Menu->getNemo() != eSELECT)) COUT << Pct_Tabulation << temp_Menu->getHockey() << Pct_Tiret << *(temp_Menu->getLigne()) << endl;
 		temp_Menu = m_Menu->Next();
 	}while (temp_Menu);
+
+	delete title;
 
 }
 
@@ -100,7 +115,7 @@ eMENU Menu<ENTITY>::askChoice(ostream & COUT)
 	ZoneSaisie zs;
 	do
 	{
-		COUT << "Votre choix: ";
+		COUT << Menu_Choice Pct_DeuxPoint;
 	} while (!zs.Ask() || translateHotkey(zs.ValCharUpper()) == eNULL); // doit introduire au moins 1 caractere.
 
 	return m_choice;

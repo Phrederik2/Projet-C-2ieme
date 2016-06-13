@@ -1,14 +1,11 @@
 #include "Dossier.h"
 
-Text Dossier::Title;
-
 Dossier::Dossier()
 {
 	ID_Client = 0;
 	ID_Commande = 0;
 	ID_Livraison = 0;
 	ID_RDV = 0;
-	setTitle("Dossier");
 }
 
 Dossier::Dossier(Dossier & other)
@@ -20,6 +17,12 @@ Dossier::Dossier(Dossier & other)
 
 Dossier::~Dossier()
 {
+}
+
+
+void Dossier::setID(int id)
+{
+	ID.setPrimaryKey(id);
 }
 
 void Dossier::setID_Client(unsigned int id_client)
@@ -42,11 +45,6 @@ void Dossier::setID_RDV(unsigned int id_rdv)
 	ID_RDV = id_rdv;
 }
 
-void Dossier::setTitle(const char * title)
-{
-	Title.setText(title);
-}
-
 unsigned int Dossier::getID_Client()
 {
 	return ID_Client;
@@ -65,11 +63,6 @@ unsigned int Dossier::getID_Livraison()
 unsigned int Dossier::getID_RDV()
 {
 	return ID_RDV;
-}
-
-const char * Dossier::getTitle()
-{
-	return Title.getText();
 }
 
 unsigned long Dossier::getID()

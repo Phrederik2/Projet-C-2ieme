@@ -4,7 +4,6 @@
 
 Livraison::Livraison()
 {
-	setTitle("Livraison");
 }
 
 

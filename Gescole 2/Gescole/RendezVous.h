@@ -1,11 +1,11 @@
 #pragma once
 #include "ContainerEntity.h"
+#include<chrono>
 class RendezVous :
 	public ContainerEntity
 {
 	//DataMembre.
 protected:
-	Title<RendezVous> m_Title;
 	PrimaryKey<RendezVous> ID;
 	Date DateDebut;
 	Date DateFin;
@@ -18,9 +18,17 @@ public:
 	~RendezVous(); // destructeur
 
 					//Seteur.
-	void setTitle(const char* title);
+	void setID(int id);
 	void setDateDebut(int day, int month, int year);
+	void setDateDebutYear(int year);
+	void setDateDebutMonth(int month);
+	void setDateDebutDay(int day);
+	void setDateDebut(const char* date);
 	void setDateFin(int day, int month, int year);
+	void setDateFinYear(int year);
+	void setDateFinMonth(int month);
+	void setDateFinDay(int day);
+	void setDateFin(const char* date);
 	Date* setDateDebut();
 	Date* setDateFin();
 	void setRemark(const char* remark);
@@ -28,9 +36,14 @@ public:
 
 
 					//Getteur.
-	const char* getTitle();
 	const char* getDateDebut();
+	int getDateDebutYear();
+	int getDateDebutMonth();
+	int getDateDebutDay();
 	const char* getDateFin();
+	int getDateFinYear();
+	int getDateFinMonth();
+	int getDateFinDay();
 	const char* getRemark();
 
 	unsigned long getID();

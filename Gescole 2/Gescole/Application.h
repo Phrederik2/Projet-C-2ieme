@@ -2,6 +2,7 @@
 #include"List.h"
 #include"Formulaire.h"
 #include"Menu.h"
+#include"Stream.h"
 
 template<class ENTITY>
 class Application
@@ -10,15 +11,21 @@ class Application
 protected:
 	Menu<ENTITY>* MenuStandart;
 	bool Again;
-	static List<ENTITY> Container;
+	List<ENTITY> Container;
 	Formulaire<ENTITY> Frm;
 	ENTITY* Temp;
+	int ID;
 
 public:
 	Application();
 	~Application();
 
-	ENTITY* run(bool value= 0);
+	void setID(int value);
+	void setTemp(ENTITY* temp);
+	int getID();
+	ENTITY* getTemp();
+
+	int run();
 	ENTITY* Select();
 	void Create();
 	void Read();
@@ -35,49 +42,74 @@ public:
 	void Error();
 	void Quit();
 	void Bydefault();
-	static ENTITY* Run(bool value = 0);
+	static int Run(int value = 0);
 protected:
 	void Controller(eMENU mnemo);
 };
 
-//template <class ENTITY>
-//Menu<ENTITY> Application<ENTITY>::MenuStandart;
-template <class ENTITY>
-List<ENTITY> Application<ENTITY>::Container;
-
 template <class ENTITY>
 Application<ENTITY>::Application()
 {
+	Temp = NULL;
 	MenuStandart = new Menu<ENTITY>;
+	Stream stream;
+	stream.Write(Container);
+	First();
 }
 
 template <class ENTITY>
 Application<ENTITY>::~Application()
 {
+	Stream stream;
+	stream.Read(Container);
 	delete MenuStandart;
 }
 
-template <class ENTITY>
-ENTITY* Application<ENTITY>::run(bool value)
+template<class ENTITY>
+inline void Application<ENTITY>::setID(int value)
 {
-	this->Again = true;
+	ID = value;
+}
 
+template<class ENTITY>
+inline void Application<ENTITY>::setTemp(ENTITY * temp)
+{
+	Temp = temp;
+}
+
+template<class ENTITY>
+inline int Application<ENTITY>::getID()
+{
+	return ID;
+}
+
+template<class ENTITY>
+inline ENTITY * Application<ENTITY>::getTemp()
+{
+	return Temp;
+}
+
+template <class ENTITY>
+int Application<ENTITY>::run()
+{
 
 	do
 	{
-		this->MenuStandart->display(cout,value);
+		this->MenuStandart->display(cout,getID());
 
 		Controller(this->MenuStandart->askChoice(cout));
 
 	} while (this->Again);
 
-	return Temp;
+	if (Temp) return Temp->getID();
+	return 0;
 
 }
 
 template<class ENTITY>
 inline ENTITY * Application<ENTITY>::Select()
 {
+	if (!Temp) return Temp;
 	Quit();
 	return Temp;
 }
@@ -100,6 +132,11 @@ void Application<ENTITY>::Controller(eMENU mnemo)
 	case ePREVIOUS:		Frm << Previous(); 	break;
 	case eSORT:			Sort();		break;
 	case eSEARCH:		Search();	break;
+	case eDOSSIER:			Application<Dossier>::Run(); break;
+	case eCLIENT:			Application<Client>::Run(); break;
+	case eLIVRAISON:		Application<Livraison>::Run(); break;
+	case eCOMMANDE:			Application<Commande>::Run(); break;
+	case eRENDEZVOUS:		Application<RendezVous>::Run(); break;
 	case eERROR:		Error();	break;
 	case eQUIT:			Quit();		break;
 	default:			Bydefault(); break;
@@ -110,7 +147,9 @@ void Application<ENTITY>::Controller(eMENU mnemo)
 template <class ENTITY>
 void Application<ENTITY>::Delete()
 {
-	cout << "Delete" << endl;
+	if (!Temp) return;
+	Temp->IsDelete = true;
+	Temp->IsChanged = true;
 }
 
 template <class ENTITY>
@@ -142,7 +181,6 @@ void Application<ENTITY>::Error()
 template <class ENTITY>
 void Application<ENTITY>::Quit()
 {
-	cout << "Quit" << endl;
 	this->Again = false;
 }
 
@@ -152,16 +190,31 @@ void Application<ENTITY>::Bydefault()
 }
 
 template<class ENTITY>
-ENTITY*  Application<ENTITY>::Run(bool value)
+int  Application<ENTITY>::Run(int value)
 {
-	Application Appli;
-	return Appli.run(value);
+	Application appli;
+	appli.setID(value);
+
+
+	if (value)
+	{
+		appli.setTemp(appli.First());
+		while (appli.getTemp())
+		{
+			if (appli.getTemp()->getID() == value) break;
+			appli.setTemp(appli.Next());
+		}
+	}
+
+	return appli.run();
+	
 }
 
 template <class ENTITY>
 void Application<ENTITY>::Create()
 {
 	Temp = new ENTITY;
+	Temp->IsNew = true;
 	Container.Add(Temp);
 	Frm >> Temp;
 
@@ -170,6 +223,8 @@ void Application<ENTITY>::Create()
 template <class ENTITY>
 void Application<ENTITY>::Update()
 {
+	if (!Temp)return;
+	if(!Temp->IsNew) Temp->IsChanged = true;
 	Frm >> Temp;
 }
 

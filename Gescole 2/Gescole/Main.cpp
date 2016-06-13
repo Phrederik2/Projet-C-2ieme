@@ -1,17 +1,7 @@
 #include"Application.h"
 #include"TestUnitaire.h"
-#include"ContainerEntity.h"
-#include"Client.h"
-#include"DropdownList.h"
+#include"Lancer.h"
 #include<conio.h>
-#include"Livraison.h"
-#include"Commande.h"
-#include"Date.h"
-#include"RendezVous.h"
-#include"Dossier.h"
-#include"Stream.h"
-#include"SQL.h"
-
 
 using namespace std;
 
@@ -21,28 +11,11 @@ using namespace std;
 
 void main(void)
 {
-				  //test
-	TestUnitaire::Run();
-	SQL sql("Test.db");
-
-	string requete = R"(select * from client;)";
-
-	sql.Select(requete);
-	Application<RendezVous>::Run();
-	//Application<Client>::Run();
-	//Application<Dossier>::Run();
-	//Application<Commande>::Run();
-	//Application<Livraison>::Run();
-	//Application<RendezVous>::Run();
-	//Application<Dossier>::Run();
-	//Client adr;
+	//test
+	//TestUnitaire::Run();
 	
-
-	//Menu menu("Statut DropdownList");
-	//Application<Client> appli;
-
-	//appli.setMenu(&menu);
-	//appli.run();
+	Application<Lancer>::Run();
+	
 	_getch();
 
 }

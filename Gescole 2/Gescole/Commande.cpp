@@ -4,7 +4,6 @@
 
 Commande::Commande()
 {
-	setTitle("Commande");
 }
 
 

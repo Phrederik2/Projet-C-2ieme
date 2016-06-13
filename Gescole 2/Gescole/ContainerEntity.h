@@ -11,9 +11,12 @@ class ContainerEntity
 {
 			//DataMembre.
 protected:
-	//Text Title;
 	PrimaryKey<ContainerEntity> ID;
 	//Text text;
+public:
+	bool IsNew;
+	bool IsChanged;
+	bool IsDelete;
 
 public:
 			//Constructeur
@@ -22,10 +25,8 @@ public:
 	virtual ~ContainerEntity(); // destructeur
 
 			//Seteur.
-	virtual void setTitle(const char* title)=0;
 
 			//Getteur.
-	virtual const char* getTitle()=0;
 	
 
 	virtual unsigned long getID()=0;

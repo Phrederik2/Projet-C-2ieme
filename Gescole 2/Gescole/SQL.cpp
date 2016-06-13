@@ -4,9 +4,7 @@
 #include<iostream>
 #include"List.h"
 #include<fstream>
-#include"File.h"
 
-using namespace std;
 
 
 SQL::SQL(std::string path)
@@ -19,7 +17,7 @@ SQL::SQL(std::string path)
 
 SQL::~SQL()
 {
-	sqlite3_finalize(this->Requete);
+	//sqlite3_finalize(this->Requete);
 	sqlite3_close(this->DB);
 }
 
@@ -35,9 +33,7 @@ int SQL::Initialize(std::string path)
 	else
 	{
 		Open(path);
-		//string createDB = R"(Create.txt)";
-		Exec(R"(CREATE TABLE `client` (`ID`	INTEGER,`nom`TEXT,`prenom`TEXT,`societe`TEXT,`localite` TEXT,`rue`TEXT,`numero`	INTEGER,`boite`	TEXT,`codepostal`INTEGER,PRIMARY KEY(ID));)");
-
+		Create();
 	}
 	return 0;
 }
@@ -74,7 +70,6 @@ void SQL::Exec(std::string sql)
 
 void SQL::Select(std::string sql)
 {
-	sqlite3_finalize(this->Requete);
 	this->CodeRetour=sqlite3_prepare_v2(this->DB, sql.c_str(), sql.size(), &this->Requete,NULL);
 	if (this->CodeRetour && this->MessageError != NULL)
 	{
@@ -92,15 +87,26 @@ int SQL::Requete_int(int row)
 	return sqlite3_column_int(this->Requete,row);
 }
 
-std::string SQL::Requete_string(int row)
+bool SQL::Requete_bool(int row)
 {
-	if (sqlite3_column_count(this->Requete) - 1 < row) return "";
+	if (Requete_int(row)) return true;
+	return false;
+}
 
-	unsigned char *temp = NULL;
-	temp = (unsigned char *)sqlite3_column_text(this->Requete, row);
-	std::string buffeur = "";
-	if (temp) buffeur = (char*)temp;
-	return buffeur;
+const unsigned char* SQL::Requete_string(int row)
+{
+//	if (sqlite3_column_count(this->Requete) - 1 < row) return "";
+
+	return (const unsigned char*)sqlite3_column_text(this->Requete, row);
+	
+}
+
+const char SQL::Requete_char(int row)
+{
+	if (sqlite3_column_count(this->Requete) - 1 < row) return ' ';
+
+	return sqlite3_column_text(this->Requete, row)[0];
+
 }
 
 bool SQL::Step()
@@ -118,6 +124,20 @@ std::string SQL::NameColumn(int row)
 	return sqlite3_column_name(this->Requete, row);
 }
 
+void SQL::AddFile(std::string path)
+{
+	
+	int i = 0;
+	if (!path.size()) std::cout << "Introduisez le fichier a charger dans la base." << std::endl;
+	File file(path);
+
+	while (file.RecoverNextLine())
+	{
+		Exec(file.getCurrentLine());
+		i++;
+	}
+	std::cout << " Ligne chargees = " << i << " Chargement termine." << std::endl;
+}
 
 void SQL::Display()
 {
@@ -145,5 +165,50 @@ void SQL::Close()
 {
 	sqlite3_finalize(this->Requete);
 	sqlite3_close(this->DB);
+}
+
+void SQL::Create()
+{
+	Exec(R"(CREATE TABLE "client" (
+	`ID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`nom`	TEXT,
+	`prenom`	TEXT,
+	`societe`	TEXT,
+	`localite`	TEXT,
+	`rue`	TEXT,
+	`numero`	INTEGER,
+	`boite`	TEXT,
+	`codepostal`	INTEGER,
+	`isdelete`	INTEGER
+	);)");
+	Exec(R"(CREATE TABLE "commande" (
+	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`name`	TEXT,
+	`isdelete`	INTEGER
+	);)");
+	Exec(R"(CREATE TABLE "dossier" (
+	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`idclient`	INTEGER,
+	`idcommande`	INTEGER,
+	`idlivraison`	INTEGER,
+	`idrdv`	INTEGER,
+	`isdelete`	INTEGER
+	);)");
+	Exec(R"(CREATE TABLE "livraison" (
+	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`name`	TEXT,
+	`isdelete`	INTEGER
+	);)");
+	Exec(R"(CREATE TABLE "rendezvous" (
+	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`datedebutyear`	INTEGER,
+	`datedebutmonth`	INTEGER,
+	`datedebutday`	INTEGER,
+	`datefinyear`	INTEGER,
+	`datefinmonth`	INTEGER,
+	`datefinday`	INTEGER,
+	`remark`	TEXT,
+	`isdelete`	INTEGER
+	);)");
 }
 
