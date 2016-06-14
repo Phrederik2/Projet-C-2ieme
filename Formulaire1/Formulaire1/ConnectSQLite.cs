@@ -84,10 +84,9 @@ namespace Formulaire1
                 temp.Localite = Reader.GetString(4);
                 temp.Rue = Reader.GetString(5);
                 temp.Numero = Reader.GetInt32(6);
-                temp.Boite = Reader.GetChar(7);
+                temp.Boite = Convert.ToChar(Reader.GetString(7));
                 temp.CodePostal = Reader.GetInt32(8);
                 temp.IsDelete = Reader.GetBoolean(9);
-
 
                 list.Add(temp);
             }
@@ -118,7 +117,7 @@ namespace Formulaire1
                     "'" + temp.Localite + "'," +
                     "'" + temp.Rue + "'," +
                     "" + temp.Numero + "," +
-                    "'" + temp.Boite + "'," +
+                    "'" + Convert.ToChar(temp.Boite) + "'," +
                     "" + temp.CodePostal + "," +
                     "" + Convert.ToInt16(temp.IsDelete) + "" +
                     ");";
@@ -134,7 +133,7 @@ namespace Formulaire1
                     "localite= '" + temp.Localite + "', " +
                     "rue= '" + temp.Rue + "', " +
                     "numero=" + temp.Numero + ", " +
-                    "boite= '" + temp.Boite + "', " +
+                    "boite= '" + Convert.ToChar(temp.Boite) + "', " +
                     "codepostal= " + temp.CodePostal + ", " +
                     "isdelete= " + Convert.ToInt16(temp.IsDelete) + " " +
                     "WHERE id= " + temp.ID + "" +

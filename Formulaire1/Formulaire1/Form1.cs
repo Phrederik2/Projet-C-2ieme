@@ -118,9 +118,9 @@ namespace Formulaire1
                 this.temp.Localite = TextLocalite.Text;
                 this.temp.Rue = TextRue.Text;
                 this.temp.Numero = Convert.ToInt32(TextNumero.Text);
-                /*if (this.temp.Boite != '\0')*/ this.temp.Boite = Convert.ToChar(TextBoite.Text);
+                if (temp.Boite != '\0') this.temp.Boite = Convert.ToChar(TextBoite.Text);
                 this.temp.CodePostal = Convert.ToInt32(TextCodePostal.Text);
-                if (temp.IsNew) temp.IsChanged = true;
+                if (!temp.IsNew) temp.IsChanged = true;
             }
             catch(Exception error)
             {
@@ -138,19 +138,25 @@ namespace Formulaire1
 
 		private void BtSave_Click(object sender, EventArgs e)
 		{
-			Save();
-			ModeEdit(false);
+            try
+            {
+                Save();
+                ModeEdit(false);
+            }
+            catch { ModeEdit(true); }
 
 		}
 
 		private void FormPrincipal_Load(object sender, EventArgs e)
 		{
 			ActiveControl = BtModifier;
+
 			if (CContainer.Count != 0)
             {
                 temp = CContainer.First();
                 DisplayToFormProf();
             }
+
             ModeEdit(false);
 
 		}

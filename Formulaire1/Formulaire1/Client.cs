@@ -34,6 +34,7 @@ namespace Formulaire1
             Boite = other.Boite;
             CodePostal = other.CodePostal;
         }
+
         public Client()
         {
             if (ID > Compter) Compter = ID;
@@ -140,7 +141,8 @@ namespace Formulaire1
 
             set
             {
-                _Boite = value;
+                if (value == '\0') _Boite = ' ';
+                else _Boite = value;
             }
         }
 
