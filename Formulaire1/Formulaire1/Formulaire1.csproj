@@ -56,7 +56,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
-      <HintPath>\\Mac\Home\Downloads\System.Data.SQLite.dll</HintPath>
+      <HintPath>..\..\..\..\..\Google Drive\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />

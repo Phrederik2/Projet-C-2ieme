@@ -12,16 +12,16 @@ namespace Formulaire1
     public class ConnectSQLite
     {
         // DataMembre
-        protected const string DataBase = @"Database.db";
-        protected const string ConnectionString = @"Data Source = " + DataBase + "; Version=3;";
+        protected const string DataBase = @"C:\Users\Public\Documents\Database.db";
+        protected const string ConnectionString = @"Data Source = " + DataBase + @"; Version=3;";
         protected SQLiteConnection MaConnection;
         protected SQLiteDataReader Reader;
 
         // Function
         public ConnectSQLite()
         {
-            if (!System.IO.File.Exists(DataBase)) CreateDB();
             MaConnection = new SQLiteConnection(ConnectionString);
+            if (!System.IO.File.Exists(DataBase)) CreateDB();
         }
 
         public void Execute(string sql)
@@ -62,19 +62,20 @@ namespace Formulaire1
             {
                 MaConnection.Open();
             }
-            catch(Exception error)
+            catch (Exception error)
             {
                 MessageBox.Show("Connection a " + DataBase + " : Erreur : " + error.Message);
                 Close();
             }
-           
+
         }
 
         public void Write(List<Client> list)
         {
+           
             SelectExecute("SELECT * from client;");
 
-            while(Reader.Read())
+            while (Reader.Read())
             {
                 Client temp = new Client();
                 temp.ID = Reader.GetInt32(0);
@@ -84,15 +85,21 @@ namespace Formulaire1
                 temp.Localite = Reader.GetString(4);
                 temp.Rue = Reader.GetString(5);
                 temp.Numero = Reader.GetInt32(6);
-                temp.Boite = Convert.ToChar(Reader.GetString(7));
+                temp.Boite = Reader.GetString(7);
                 temp.CodePostal = Reader.GetInt32(8);
                 temp.IsDelete = Reader.GetBoolean(9);
 
                 list.Add(temp);
             }
-
-
             Close();
+
+            SelectExecute("SELECT seq FROM sqlite_sequence WHERE name = 'client';");
+            while (Reader.Read())
+            {
+                Client.Compter = Reader.GetInt16(0);
+            }
+            Close();
+
 
         }
 
@@ -117,11 +124,12 @@ namespace Formulaire1
                     "'" + temp.Localite + "'," +
                     "'" + temp.Rue + "'," +
                     "" + temp.Numero + "," +
-                    "'" + Convert.ToChar(temp.Boite) + "'," +
+                    "'" + temp.Boite + "'," +
                     "" + temp.CodePostal + "," +
                     "" + Convert.ToInt16(temp.IsDelete) + "" +
                     ");";
             Execute(requete);
+            Close();
         }
 
         public void Update(Client temp)
@@ -139,18 +147,19 @@ namespace Formulaire1
                     "WHERE id= " + temp.ID + "" +
                     ";";
             Execute(requete);
+            Close();
         }
 
 
         public void Close()
         {
-            if (MaConnection != null)MaConnection.Close();
+            if (MaConnection != null) MaConnection.Close();
         }
 
         public void CreateDB()
         {
             SQLiteConnection.CreateFile(DataBase);
-            string requete = @"CREATE TABLE ""client"" (
+            string requete = @"CREATE TABLE client (
                         	`ID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	                        `nom`	TEXT,
 	                        `prenom`	TEXT,
@@ -163,16 +172,10 @@ namespace Formulaire1
 	                        `isdelete`	INTEGER
                              );";
             Execute(requete);
+
             Close();
         }
 
-
-
-
-
-
-
-
     }
-    
+
 }

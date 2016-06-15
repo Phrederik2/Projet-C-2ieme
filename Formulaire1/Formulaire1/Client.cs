@@ -8,7 +8,7 @@ namespace Formulaire1
 {
     public class Client
     {
-        private static int Compter = 0;
+        private static int _Compter = 0;
         private int _ID = Compter+1;
         private string _Nom = "Inconnu";
         private string _Prenom = "Inconnu";
@@ -16,7 +16,7 @@ namespace Formulaire1
         private string _Localite = "Inconnu";
         private string _Rue = "Inconnu";
         private int _Numero = 0;
-        private char _Boite = ' ';
+        private string _Boite = "";
         private int _CodePostal = 0;
         private bool _IsDelete = false;
         private bool _IsNew = false;
@@ -132,7 +132,7 @@ namespace Formulaire1
             }
         }
 
-        public char Boite
+        public string Boite
         {
             get
             {
@@ -141,8 +141,15 @@ namespace Formulaire1
 
             set
             {
-                if (value == '\0') _Boite = ' ';
-                else _Boite = value;
+                if(value.Length > 1)
+                {
+                char[] temp = value.ToCharArray();
+                 _Boite = temp[0].ToString();
+                }
+                else
+                {
+                    _Boite = value;
+                }
             }
         }
 
@@ -195,6 +202,19 @@ namespace Formulaire1
             set
             {
                 _IsChanged = value;
+            }
+        }
+
+        public static int Compter
+        {
+            get
+            {
+                return _Compter;
+            }
+
+            set
+            {
+                _Compter = value;
             }
         }
     }

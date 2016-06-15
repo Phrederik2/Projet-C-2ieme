@@ -118,7 +118,7 @@ namespace Formulaire1
                 this.temp.Localite = TextLocalite.Text;
                 this.temp.Rue = TextRue.Text;
                 this.temp.Numero = Convert.ToInt32(TextNumero.Text);
-                if (temp.Boite != '\0') this.temp.Boite = Convert.ToChar(TextBoite.Text);
+                this.temp.Boite = TextBoite.Text;
                 this.temp.CodePostal = Convert.ToInt32(TextCodePostal.Text);
                 if (!temp.IsNew) temp.IsChanged = true;
             }
