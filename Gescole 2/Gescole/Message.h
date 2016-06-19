@@ -8,7 +8,7 @@
 #define Pct_Tabulation "\t"
 #define Pct_Tiret " - "
 
-#define LANG_EN
+//#define LANG_EN
 
 #ifndef LANG
 #define LANG_FR

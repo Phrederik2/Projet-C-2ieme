@@ -39,14 +39,14 @@ ostream &  operator<<(ostream& COUT, Text & other)
 
 Text & Text::operator+(const char * other)
 {
-	strcat(m_Text, other);
+	strcat_s(m_Text,m_Size,other);
 	return *this;
 }
 
 Text & Text::operator+(unsigned int other)
 {
 	char text[100];
-	sprintf(text,"%d", other);
+	sprintf_s(text,"%d", other);
 	*this + text;
 	return *this;
 }

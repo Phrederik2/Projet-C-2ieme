@@ -3,20 +3,20 @@
 
 Stream::Stream()
 {
-	
-
+	sql = new SQL(R"(C:\Users\Public\Documents\maBaseDeDonnee.db)");
 }
 
 Stream::~Stream()
 {
+	delete sql;
 }
 
 void Stream::Write(List<Client>& container)
 {
 	Client* temp;
 	std::string requete = R"(Select * from client WHERE isdelete = 0;)";
-	sql.Select(requete);
-	while (sql.Step())
+	sql->Select(requete);
+	while (sql->Step())
 	{
 		temp = new Client;
 		container.Add(Write(temp));
@@ -28,8 +28,8 @@ void Stream::Write(List<Livraison>& container)
 {
 	Livraison* temp;
 	std::string requete = R"(Select * from livraison WHERE isdelete = 0;)";
-	sql.Select(requete);
-	while (sql.Step())
+	sql->Select(requete);
+	while (sql->Step())
 	{
 		temp = new Livraison;
 		container.Add(Write(temp));
@@ -40,8 +40,8 @@ void Stream::Write(List<Commande>& container)
 {
 	Commande* temp;
 	std::string requete = R"(Select * from commande WHERE isdelete = 0;)";
-	sql.Select(requete);
-	while (sql.Step())
+	sql->Select(requete);
+	while (sql->Step())
 	{
 		temp = new Commande;
 		container.Add(Write(temp));
@@ -52,8 +52,8 @@ void Stream::Write(List<RendezVous>& container)
 {
 	RendezVous* temp;
 	std::string requete = R"(Select * from rendezvous WHERE isdelete = 0;)";
-	sql.Select(requete);
-	while (sql.Step())
+	sql->Select(requete);
+	while (sql->Step())
 	{
 		temp = new RendezVous;
 		container.Add(Write(temp));
@@ -64,8 +64,8 @@ void Stream::Write(List<Dossier>& container)
 {
 	Dossier* temp;
 	std::string requete = R"(Select * from dossier WHERE isdelete = 0;)";
-	sql.Select(requete);
-	while (sql.Step())
+	sql->Select(requete);
+	while (sql->Step())
 	{
 		temp = new Dossier;
 		container.Add(Write(temp));
@@ -80,57 +80,57 @@ void Stream::Write(List<Lancer>& container)
 Client* Stream::Write(Client* temp)
 {
 
-	temp->setID(sql.Requete_int(0));
-	temp->setNom((const char*)sql.Requete_string(1));
-	temp->setPrenom((const char*)sql.Requete_string(2));
-	temp->setSociete((const char*)sql.Requete_string(3));
-	temp->setLocalite((const char*)sql.Requete_string(4));
-	temp->setRue((const char*)sql.Requete_string(5));
-	temp->setNumero(sql.Requete_int(6));
-	temp->setBoite(sql.Requete_char(7));
-	temp->setCodePostal(sql.Requete_int(8));
-	temp->IsDelete = sql.Requete_bool(9);
+	temp->setID(sql->Requete_int(0));
+	temp->setNom((const char*)sql->Requete_string(1));
+	temp->setPrenom((const char*)sql->Requete_string(2));
+	temp->setSociete((const char*)sql->Requete_string(3));
+	temp->setLocalite((const char*)sql->Requete_string(4));
+	temp->setRue((const char*)sql->Requete_string(5));
+	temp->setNumero(sql->Requete_int(6));
+	temp->setBoite(sql->Requete_char(7));
+	temp->setCodePostal(sql->Requete_int(8));
+	temp->IsDelete = sql->Requete_bool(9);
 
 	return temp;
 }
 
 Livraison* Stream::Write(Livraison* temp)
 {
-	temp->setID(sql.Requete_int(0));
-	temp->setName((const char*)sql.Requete_string(1));
-	temp->IsDelete = sql.Requete_bool(2);
+	temp->setID(sql->Requete_int(0));
+	temp->setName((const char*)sql->Requete_string(1));
+	temp->IsDelete = sql->Requete_bool(2);
 
 	return temp;
 }
 
 Commande* Stream::Write(Commande* temp)
 {
-	temp->setID(sql.Requete_int(0));
-	temp->setName((const char*)sql.Requete_string(1));
-	temp->IsDelete = sql.Requete_bool(2);
+	temp->setID(sql->Requete_int(0));
+	temp->setName((const char*)sql->Requete_string(1));
+	temp->IsDelete = sql->Requete_bool(2);
 
 	return temp;
 }
 
 RendezVous* Stream::Write(RendezVous* temp)
 {
-	temp->setID(sql.Requete_int(0));
-	temp->setDateDebut(sql.Requete_int(1), sql.Requete_int(2), sql.Requete_int(3));
-	temp->setDateFin(sql.Requete_int(4), sql.Requete_int(5), sql.Requete_int(6));
-	temp->setRemark((const char*)sql.Requete_string(6));
-	temp->IsDelete = sql.Requete_bool(7);
+	temp->setID(sql->Requete_int(0));
+	temp->setDateDebut(sql->Requete_int(1), sql->Requete_int(2), sql->Requete_int(3));
+	temp->setDateFin(sql->Requete_int(4), sql->Requete_int(5), sql->Requete_int(6));
+	temp->setRemark((const char*)sql->Requete_string(6));
+	temp->IsDelete = sql->Requete_bool(7);
 
 	return temp;
 }
 
 Dossier * Stream::Write(Dossier * temp)
 {
-	temp->setID(sql.Requete_int(0));
-	temp->setID_Client(sql.Requete_int(1));
-	temp->setID_Commande(sql.Requete_int(2));
-	temp->setID_Livraison(sql.Requete_int(3));
-	temp->setID_RDV(sql.Requete_int(4));
-	temp->IsDelete = sql.Requete_bool(5);
+	temp->setID(sql->Requete_int(0));
+	temp->setID_Client(sql->Requete_int(1));
+	temp->setID_Commande(sql->Requete_int(2));
+	temp->setID_Livraison(sql->Requete_int(3));
+	temp->setID_RDV(sql->Requete_int(4));
+	temp->IsDelete = sql->Requete_bool(5);
 
 	return temp;
 }
@@ -331,6 +331,6 @@ void Stream::InsertOrUpdate(ENTITY * entity, string insert, string update)
 		entity->IsChanged = false;
 	}
 
-	if (requete.size()) sql.Exec(requete.c_str());
+	if (requete.size()) sql->Exec(requete.c_str());
 
 }

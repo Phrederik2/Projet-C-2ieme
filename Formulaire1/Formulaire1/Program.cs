@@ -18,11 +18,11 @@ namespace Formulaire1
             Application.SetCompatibleTextRenderingDefault(false);
 			FormPrincipal Form = new FormPrincipal();
 			List<Client> Container = new List<Client>();
-            ConnectSQLite Sqlite = new ConnectSQLite();
-            Sqlite.Write(Container);
+            Stream db = new Stream();
+            db.Read(Container);
 			Form.setContainer(Container);
 			Application.Run(Form);
-            Sqlite.Read(Container);
+            db.Write(Container);
 
         }
     }

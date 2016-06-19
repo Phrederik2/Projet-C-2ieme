@@ -12,10 +12,10 @@ namespace Formulaire1
     public class ConnectSQLite
     {
         // DataMembre
-        protected const string DataBase = @"C:\Users\Public\Documents\Database.db";
+        protected const string DataBase = @"C:\Users\Public\Documents\maBaseDeDonnee.db";
         protected const string ConnectionString = @"Data Source = " + DataBase + @"; Version=3;";
         protected SQLiteConnection MaConnection;
-        protected SQLiteDataReader Reader;
+        public SQLiteDataReader Reader;
 
         // Function
         public ConnectSQLite()
@@ -69,87 +69,6 @@ namespace Formulaire1
             }
 
         }
-
-        public void Write(List<Client> list)
-        {
-           
-            SelectExecute("SELECT * from client;");
-
-            while (Reader.Read())
-            {
-                Client temp = new Client();
-                temp.ID = Reader.GetInt32(0);
-                temp.Nom = Reader.GetString(1);
-                temp.Prenom = Reader.GetString(2);
-                temp.Societe = Reader.GetString(3);
-                temp.Localite = Reader.GetString(4);
-                temp.Rue = Reader.GetString(5);
-                temp.Numero = Reader.GetInt32(6);
-                temp.Boite = Reader.GetString(7);
-                temp.CodePostal = Reader.GetInt32(8);
-                temp.IsDelete = Reader.GetBoolean(9);
-
-                list.Add(temp);
-            }
-            Close();
-
-            SelectExecute("SELECT seq FROM sqlite_sequence WHERE name = 'client';");
-            while (Reader.Read())
-            {
-                Client.Compter = Reader.GetInt16(0);
-            }
-            Close();
-
-
-        }
-
-        public void Read(List<Client> list)
-        {
-
-            foreach (var temp in list)
-            {
-                if (temp.IsNew == true) Insert(temp);
-                else if (temp.IsChanged == true) Update(temp);
-            }
-
-        }
-
-        public void Insert(Client temp)
-        {
-            string requete = "INSERT INTO client VALUES(" +
-                    "" + temp.ID + "," +
-                    "'" + temp.Nom + "'," +
-                    "'" + temp.Prenom + "'," +
-                    "'" + temp.Societe + "'," +
-                    "'" + temp.Localite + "'," +
-                    "'" + temp.Rue + "'," +
-                    "" + temp.Numero + "," +
-                    "'" + temp.Boite + "'," +
-                    "" + temp.CodePostal + "," +
-                    "" + Convert.ToInt16(temp.IsDelete) + "" +
-                    ");";
-            Execute(requete);
-            Close();
-        }
-
-        public void Update(Client temp)
-        {
-            string requete = "UPDATE client SET " +
-                    "nom= '" + temp.Nom + "', " +
-                    "prenom= '" + temp.Prenom + "', " +
-                    "societe= '" + temp.Societe + "', " +
-                    "localite= '" + temp.Localite + "', " +
-                    "rue= '" + temp.Rue + "', " +
-                    "numero=" + temp.Numero + ", " +
-                    "boite= '" + Convert.ToChar(temp.Boite) + "', " +
-                    "codepostal= " + temp.CodePostal + ", " +
-                    "isdelete= " + Convert.ToInt16(temp.IsDelete) + " " +
-                    "WHERE id= " + temp.ID + "" +
-                    ";";
-            Execute(requete);
-            Close();
-        }
-
 
         public void Close()
         {

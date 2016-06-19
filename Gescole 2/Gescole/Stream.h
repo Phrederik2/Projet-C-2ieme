@@ -8,7 +8,7 @@
 
 class Stream
 {
-	SQL sql;
+	SQL* sql;
 
 protected:
 	Client* Write(Client* temp);
@@ -49,10 +49,10 @@ ENTITY * Stream::Write(int id, ENTITY * temp, string table)
 {
 	stringstream requete;
 	requete << R"(Select * from )" << table << R"( WHERE id=)" << id << R"(;)";
-	sql.Select(requete.str());
+	sql->Select(requete.str());
 
 
-	while (sql.Step()) Write(temp);
+	while (sql->Step()) Write(temp);
 
 
 	return temp;
