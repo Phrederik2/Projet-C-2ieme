@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Formulaire1
 { 
@@ -13,7 +14,7 @@ namespace Formulaire1
         public void Read(List<Client> list)
         {
 
-            db.SelectExecute("SELECT * from client;");
+            db.SelectExecute("SELECT * from client where isdelete = 0;");
 
             while (db.Reader.Read())
             {
@@ -81,7 +82,7 @@ namespace Formulaire1
                     "localite= '" + temp.Localite + "', " +
                     "rue= '" + temp.Rue + "', " +
                     "numero=" + temp.Numero + ", " +
-                    "boite= '" + Convert.ToChar(temp.Boite) + "', " +
+                    "boite= '" + temp.Boite + "', " +
                     "codepostal= " + temp.CodePostal + ", " +
                     "isdelete= " + Convert.ToInt16(temp.IsDelete) + " " +
                     "WHERE id= " + temp.ID + "" +
